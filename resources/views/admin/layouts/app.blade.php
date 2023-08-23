@@ -11,7 +11,7 @@
 
 </head>
 <body>
-    <div class="antialiased bg-gray-50 dark:bg-gray-900">
+    <div class="antialiased bg-gray-50">
         <!-- Navbar -->
         @include('admin.layouts.navbar')
 
