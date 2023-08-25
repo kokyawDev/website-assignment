@@ -13,7 +13,7 @@
 <body class="bg-[#FFFFF]">
     <div class="container mx-auto">
 {{--        nav--}}
-        <nav class="flex justify-between items-center space-x-4 pt-5 pb-2">
+        <nav class="flex justify-between items-end space-x-4 pt-5 pb-2 border-b border-gray-200">
             <div>
                 <div>The</div>
                 <div class="text-2xl font-medium">Ordinary.</div>
@@ -27,7 +27,7 @@
                     <a href="#" className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Best Sellers</a>
                 </li>
                 <li>
-                    <a href="#" className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">About The Ordinary</a>
+                    <a href="#" className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">About</a>
                 </li>
                 <li>
                     <a href="#" className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Blog</a>
@@ -155,6 +155,151 @@
                                 <img
                                     src="{{ asset('img/product-1.jpg') }}"
                                     class="object-cover w-full h-[480px]"
+                                    alt=""
+                                >
+                            </div>
+                            <div>
+                                <div class="mb-2 flex justify-between mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium">Hyaluronic Acid 2% + B5</div>
+                                        <div class="text-sm font-medium">Hydrating Serum</div>
+                                    </div>
+                                    <div>
+                                        <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="font-semibold">$8.90 - $15.70</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{{--            popular--}}
+            <div>
+                <div class="flex justify-between mb-5">
+                    <div class="text-lg font-semibold">POPULAR</div>
+                    <a href="#" class="text-lg font-semibold underline decoration-black/50">SEE ALL</a>
+                </div>
+
+                <div class="flex flex-wrap flex-row -mx-3">
+                    <div class="md:w-1/4 p-3">
+                        <div class="flex flex-col">
+                            <div class="mb-4">
+                                <img
+                                    src="{{ asset('img/product-1.jpg') }}"
+                                    class="object-cover w-full h-[400px]"
+                                    alt=""
+                                >
+                            </div>
+                            <div>
+                                <div class="mb-2 flex justify-between mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium">Hyaluronic Acid 2% + B5</div>
+                                        <div class="text-sm font-medium">Hydrating Serum</div>
+                                    </div>
+                                    <div>
+                                        <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="font-semibold">$8.90 - $15.70</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/4 p-3">
+                        <div class="flex flex-col">
+                            <div class="mb-4">
+                                <img
+                                    src="{{ asset('img/product-1.jpg') }}"
+                                    class="object-cover w-full h-[400px]"
+                                    alt=""
+                                >
+                            </div>
+                            <div>
+                                <div class="mb-2 flex justify-between mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium">Hyaluronic Acid 2% + B5</div>
+                                        <div class="text-sm font-medium">Hydrating Serum</div>
+                                    </div>
+                                    <div>
+                                        <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="font-semibold">$8.90 - $15.70</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/4 p-3">
+                        <div class="flex flex-col">
+                            <div class="mb-4">
+                                <img
+                                    src="{{ asset('img/product-1.jpg') }}"
+                                    class="object-cover w-full h-[550px]"
+                                    alt=""
+                                >
+                            </div>
+                            <div>
+                                <div class="mb-2 flex justify-between mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium">Hyaluronic Acid 2% + B5</div>
+                                        <div class="text-sm font-medium">Hydrating Serum</div>
+                                    </div>
+                                    <div>
+                                        <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="font-semibold">$8.90 - $15.70</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{{--            blog--}}
+            <div>
+                <div class="flex justify-between mb-5">
+                    <div class="text-lg font-semibold">OUR BLOG</div>
+                    <a href="#" class="text-lg font-semibold underline decoration-black/50">READ MORE</a>
+                </div>
+
+                <div class="flex flex-wrap flex-row -mx-3">
+                    <div class="md:w-1/2 p-3">
+                        <div class="flex flex-col">
+                            <div class="mb-4">
+                                <img
+                                    src="{{ asset('img/product-1.jpg') }}"
+                                    class="object-cover w-full h-[400px]"
+                                    alt=""
+                                >
+                            </div>
+                            <div>
+                                <div class="mb-2 flex justify-between mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium">Hyaluronic Acid 2% + B5</div>
+                                        <div class="text-sm font-medium">Hydrating Serum</div>
+                                    </div>
+                                    <div>
+                                        <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="font-semibold">$8.90 - $15.70</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-3">
+                        <div class="flex flex-col">
+                            <div class="mb-4">
+                                <img
+                                    src="{{ asset('img/product-1.jpg') }}"
+                                    class="object-cover w-full h-[400px]"
                                     alt=""
                                 >
                             </div>
