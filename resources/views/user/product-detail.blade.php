@@ -1,271 +1,499 @@
 @extends('layouts.front')
+
+@section('css')
+    <link
+        rel="stylesheet"
+        media="screen"
+        href="{{ asset('assets/vendor/lightgallery/css/lightgallery-bundle.min.css') }}" />
+@endsection
+
 @section('content')
-    <!-- Hero-->
-    <section>
-        <div
-            class="jarallax bg-dark min-vh-100 py-5"
-            data-jarallax
-            data-type="scroll-opacity"
-            data-speed="0.7">
-            <div
-                class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-40"></div>
-            <div
-                class="jarallax-img"
-                style="
-              background-image: url('{{ asset('assets/img/landing/shop/hero/bg.jpg') }}');
-            "></div>
-            <div
-                class="container position-relative zindex-5 py-sm-4 py-lg-5 mt-4">
-                <!-- Text + button-->
-                <div class="row pt-lg-2 py-xl-4 py-xxl-5 mb-md-4 mb-lg-5">
-                    <div class="col-md-10 col-lg-9 col-xl-8 col-xxl-7 pt-5 mb-5">
-                        <h1 class="display-2 text-light text-uppercase pb-sm-2 pb-md-3">
-                            Decor to create comfort at home
-                        </h1>
-                        <p
-                            class="text-light opacity-70 pb-3 pb-md-4 mb-3"
-                            style="max-width: 520px">
-                            On the site you will find all the wonderful decor items from
-                            photo frames to tablecloths for the dining table
-                        </p>
-                        <a class="btn btn-outline-light" href="shop-catalog.html"
-                        >Explore the catalog</a
-                        >
-                    </div>
-                </div>
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div class="fw-medium text-light text-uppercase">
-                        Most Popular
-                    </div>
-                    <!-- Slider prev/next buttons-->
-                    <div class="d-flex">
-                        <button
-                            class="btn btn-prev btn-icon btn-sm btn-outline-light rounded-circle ms-3"
-                            type="button"
-                            id="popular-prev">
-                            <i class="ai-arrow-left"></i>
-                        </button>
-                        <button
-                            class="btn btn-next btn-icon btn-sm btn-outline-light rounded-circle ms-3"
-                            type="button"
-                            id="popular-next">
-                            <i class="ai-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- Slider (popular items)-->
-                <div
-                    class="swiper"
-                    data-swiper-options='{
-                      "slidesPerView": 1,
-                      "spaceBetween": 24,
-                      "loop": true,
-                      "navigation": {
-                        "prevEl": "#popular-prev",
-                        "nextEl": "#popular-next"
-                      },
-                      "breakpoints": {
-                        "500": {
-                          "slidesPerView": 2
-                        },
-                        "860": {
-                          "slidesPerView": 3
-                        },
-                        "1200": {
-                          "slidesPerView": 4
-                        }
-                      }
-                    }'>
-                    <div class="swiper-wrapper">
-                        <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/01.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-3 ps-md-4">
-                                            <h3 class="fs-sm mb-2">Exquisite glass vase</h3>
-                                            <p class="fs-sm mb-0">$19.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/02.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-3 ps-md-4">
-                                            <h3 class="fs-sm mb-2">Pot for home flowers</h3>
-                                            <p class="fs-sm mb-0">
-                                                $11.00 <del class="text-muted fs-xs">$15.00</del>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/03.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-4">
-                                            <h3 class="fs-sm mb-2">Ceramic soap dispenser</h3>
-                                            <p class="fs-sm mb-0">$16.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/04.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-3 ps-md-4">
-                                            <h3 class="fs-sm mb-2">
-                                                Wooden clock with metal hands
-                                            </h3>
-                                            <p class="fs-sm mb-0">$24.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/05.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-3 ps-md-4">
-                                            <h3 class="fs-sm mb-2">
-                                                Scented candle in ceramic shell
-                                            </h3>
-                                            <p class="fs-sm mb-0">$13.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Page content-->
+    <section class="container py-5 mt-5 mb-sm-2 mb-lg-3 mb-xl-4 mb-xxl-5">
+        <!-- Breadcrumb-->
+        <nav aria-label="breadcrumb">
+            <ol class="pt-lg-3 pb-2 pb-md-4 breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">
+                    <a href="shop-catalog.html">Shop catalog</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Single product
+                </li>
+            </ol>
+        </nav>
+        <!-- Title + price shown on screens < 768px-->
+        <h2 class="h1 d-md-none">Scented candle</h2>
+        <div class="d-flex d-md-none align-items-center pb-3 mb-3">
+            <div class="h3 mb-0 me-3">$14.00</div>
+            <del class="fs-5 fw-medium text-muted me-3">$19.00</del
+            ><span class="badge bg-faded-danger text-danger d-md-none">Sale</span>
         </div>
-    </section>
-    <!-- About-->
-    <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
-        <div class="row pt-2 py-md-4">
-            <div class="col-lg-10 col-xl-9">
-                <p class="lead text-dark pb-md-2 pb-lg-3 mb-2">
-                    We do not believe that one style suits everyone. That is why we
-                    choose three design directions for the new season. Get inspired by
-                    new trends and create an atmosphere of coziness and comfort in
-                    your own home. On the site you will find all the wonderful decor
-                    items from photo frames to tablecloths for the dining table.
-                </p>
-                <a class="btn btn-lg btn-link px-0" href="landing-shop.html#"
-                >About us<i class="ai-arrow-right ms-2"></i
+        <div class="row pb-sm-1 pb-md-4">
+            <!-- Gallery-->
+            <div class="col-md-6 gallery mb-3 mb-md-0">
+                <!-- Item--><a
+                    class="d-block gallery-item card-hover zoom-effect mb-4"
+                    href="assets/img/shop/single/gallery/01.png">
+                    <div
+                        class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
+                        <i
+                            class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
+                        <div
+                            class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
+                    </div>
+                    <div class="zoom-effect-wrapper rounded-1">
+                        <div class="zoom-effect-img bg-secondary p-4">
+                            <img
+                                class="d-block mx-auto"
+                                src="assets/img/shop/single/gallery/01.png"
+                                width="562"
+                                alt="Candle image #1" />
+                        </div></div
+                    ></a>
+                <div class="row row-cols-1 row-cols-sm-2 g-4 mb-4">
+                    <!-- Item-->
+                    <div class="col">
+                        <a
+                            class="d-block gallery-item card-hover zoom-effect"
+                            href="assets/img/shop/single/gallery/01.png">
+                            <div
+                                class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
+                                <i
+                                    class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
+                            </div>
+                            <div class="zoom-effect-wrapper rounded-1">
+                                <div class="zoom-effect-img bg-secondary p-4">
+                                    <img
+                                        class="d-block mx-auto"
+                                        src="assets/img/shop/single/gallery/th01.png"
+                                        width="226"
+                                        alt="Candle image #2" />
+                                </div></div
+                            ></a>
+                    </div>
+                    <!-- Item-->
+                    <div class="col">
+                        <a
+                            class="d-block gallery-item card-hover zoom-effect"
+                            href="assets/img/shop/single/gallery/02.png">
+                            <div
+                                class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
+                                <i
+                                    class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
+                            </div>
+                            <div class="zoom-effect-wrapper rounded-1">
+                                <div class="zoom-effect-img bg-secondary p-4">
+                                    <img
+                                        class="d-block mx-auto"
+                                        src="assets/img/shop/single/gallery/th02.png"
+                                        width="226"
+                                        alt="Candle image #3" />
+                                </div></div
+                            ></a>
+                    </div>
+                </div>
+                <!-- Item--><a
+                    class="d-block gallery-item card-hover zoom-effect"
+                    href="assets/img/shop/single/gallery/03.png">
+                    <div
+                        class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
+                        <i
+                            class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
+                        <div
+                            class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
+                    </div>
+                    <div class="zoom-effect-wrapper rounded-1">
+                        <div class="zoom-effect-img bg-secondary p-4">
+                            <img
+                                class="d-block mx-auto"
+                                src="assets/img/shop/single/gallery/03.png"
+                                width="460"
+                                alt="Candle image #4" />
+                        </div></div
                     ></a>
             </div>
+            <!-- Product details-->
+            <div class="col-md-6 col-xl-5 offset-xl-1">
+                <div class="d-none d-md-block" style="margin-top: -90px"></div>
+                <div class="position-md-sticky top-0 ps-md-4 ps-lg-5 ps-xl-0">
+                    <div class="d-none d-md-block" style="padding-top: 90px"></div>
+                    <div class="d-flex align-items-center pt-3 py-3">
+                <span
+                    class="badge bg-faded-danger text-danger d-none d-md-inline-block me-4"
+                >Sale</span
+                ><span class="fs-sm">V00273124</span>
+                    </div>
+                    <h1 class="d-none d-md-inline-block pb-1 mb-2">Scented candle</h1>
+                    <p class="fs-sm mb-4">
+                        Find aute irure reprehenderit in voluptate velit esse cillum
+                        dolore eu fugiatnulla pariatur neque congue aliqua dolor do amet
+                        sint ovar velit.
+                    </p>
+                    <div class="d-none d-md-flex align-items-center pb-3 mb-3">
+                        <div class="h3 mb-0 me-3">$14.00</div>
+                        <del class="fs-5 fw-medium text-muted">$19.00</del>
+                    </div>
+                    <!-- Color button selector-->
+                    <div class="h6">
+                        Color:<span class="text-muted fw-normal ms-1" id="colorOption"
+                        >Gray concrete</span
+                        >
+                    </div>
+                    <div class="d-flex pb-3">
+                        <div class="me-2 mb-2">
+                            <input
+                                class="btn-check"
+                                type="radio"
+                                name="color"
+                                data-binded-label="colorOption"
+                                value="Gray concrete"
+                                checked
+                                id="color1" />
+                            <label
+                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
+                                for="color1"
+                            ><span
+                                    class="d-block bg-size-cover bg-position-center rounded-circle"
+                                    style="
+                                        width: 1.5rem;
+                                        height: 1.5rem;
+                                        background-color: #c0c0c0;
+                                        background-image: url({{ asset('assets/img/shop/pattern/marble.jpg') }});
+                                        "></span
+                                ></label>
+                        </div>
+                        <div class="me-2 mb-2">
+                            <input
+                                class="btn-check"
+                                type="radio"
+                                name="color"
+                                data-binded-label="colorOption"
+                                value="Soft beige"
+                                id="color2" />
+                            <label
+                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
+                                for="color2"
+                            ><span
+                                    class="d-block rounded-circle"
+                                    style="
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        background-color: #d9c9a1;
+                      "></span
+                                ></label>
+                        </div>
+                        <div class="me-2 mb-2">
+                            <input
+                                class="btn-check"
+                                type="radio"
+                                name="color"
+                                data-binded-label="colorOption"
+                                value="Bluish sky"
+                                id="color3" />
+                            <label
+                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
+                                for="color3"
+                            ><span
+                                    class="d-block rounded-circle"
+                                    style="
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        background-color: #a1b7d9;
+                      "></span
+                                ></label>
+                        </div>
+                        <div class="me-2 mb-2">
+                            <input
+                                class="btn-check"
+                                type="radio"
+                                name="color"
+                                data-binded-label="colorOption"
+                                value="Green grass"
+                                id="color4" />
+                            <label
+                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
+                                for="color4"
+                            ><span
+                                    class="d-block rounded-circle"
+                                    style="
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        background-color: #74947d;
+                      "></span
+                                ></label>
+                        </div>
+                        <div class="me-2 mb-2">
+                            <input
+                                class="btn-check"
+                                type="radio"
+                                name="color"
+                                data-binded-label="colorOption"
+                                value="Woody brown"
+                                id="color5" />
+                            <label
+                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
+                                for="color5"
+                            ><span
+                                    class="d-block bg-size-cover bg-position-center rounded-circle"
+                                    style="
+                                        width: 1.5rem;
+                                        height: 1.5rem;
+                                        background-color: #af8352;
+                                        background-image: url({{ asset('assets/img/shop/pattern/wood.jpg') }});
+                                        "></span
+                                ></label>
+                        </div>
+                    </div>
+                    <!-- Weight button selector-->
+                    <div class="h6">Weight</div>
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <input
+                                class="btn-check"
+                                type="radio"
+                                name="weight"
+                                value="140 g"
+                                checked
+                                id="weight1" />
+                            <label class="btn btn-outline-secondary px-2" for="weight1"
+                            ><span class="mx-1">140 g</span></label
+                            >
+                        </div>
+                        <div class="me-3">
+                            <input
+                                class="btn-check"
+                                type="radio"
+                                name="weight"
+                                value="260 g"
+                                id="weight2" />
+                            <label class="btn btn-outline-secondary px-2" for="weight2"
+                            ><span class="mx-1">260 g</span></label
+                            >
+                        </div>
+                        <div class="me-3">
+                            <input
+                                class="btn-check"
+                                type="radio"
+                                name="weight"
+                                value="440 g"
+                                id="weight3" />
+                            <label class="btn btn-outline-secondary px-2" for="weight3"
+                            ><span class="mx-1">440 g</span></label
+                            >
+                        </div>
+                    </div>
+                    <!-- Action buttons-->
+                    <div
+                        class="d-sm-flex d-md-block d-lg-flex py-4 py-md-5 my-3 my-md-0 mt-lg-0 mb-lg-4">
+                        <div
+                            class="count-input bg-gray rounded-3 me-4 mb-3 mb-sm-0 mb-md-3 mb-lg-0">
+                            <button
+                                class="btn btn-icon btn-lg fs-xl"
+                                type="button"
+                                data-decrement>
+                                -
+                            </button>
+                            <input
+                                class="form-control"
+                                type="number"
+                                value="1"
+                                readonly />
+                            <button
+                                class="btn btn-icon btn-lg fs-xl"
+                                type="button"
+                                data-increment>
+                                +
+                            </button>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button
+                                class="btn btn-lg btn-primary w-100 w-lg-auto me-2"
+                                type="button">
+                                <i class="ai-cart me-2 ms-n1"></i>Add to cart
+                            </button>
+{{--                            <div class="nav">--}}
+{{--                                <a--}}
+{{--                                    class="nav-link fs-3 px-3"--}}
+{{--                                    href="shop-single.html#"--}}
+{{--                                    data-bs-toggle="tooltip"--}}
+{{--                                    title="Add to Favorites"--}}
+{{--                                ><i class="ai-heart"></i--}}
+{{--                                    ></a>--}}
+{{--                            </div>--}}
+                        </div>
+                    </div>
+                    <!-- Sharing-->
+                    <div class="d-flex align-items-center">
+                        <h4 class="h6 me-4">Share product:</h4>
+                        <a
+                            class="btn btn-secondary btn-icon btn-sm btn-telegram rounded-circle me-3 mb-3"
+                            href="shop-single.html#"
+                        ><i class="ai-telegram"></i></a
+                        ><a
+                            class="btn btn-secondary btn-icon btn-sm btn-instagram rounded-circle me-3 mb-3"
+                            href="shop-single.html#"
+                        ><i class="ai-instagram"></i></a
+                        ><a
+                            class="btn btn-secondary btn-icon btn-sm btn-facebook rounded-circle mb-3"
+                            href="shop-single.html#"
+                        ><i class="ai-facebook"></i
+                            ></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <!-- Trending products (carousel)-->
+
+    <!-- Dscription section #1-->
+    <section class="container pb-4 pb-md-5 mb-lg-4">
+        <div
+            class="bg-size-cover bg-repeat-0 bg-position-center rounded-1 mb-md-2 py-xl-4 py-xxl-5"
+            style="background-image: url({{ asset('assets/img/shop/single/01.jpg') }})">
+            <div class="row py-lg-5">
+                <div
+                    class="col-md-8 offset-md-3 col-lg-6 offset-lg-5 col-xl-5 offset-xl-6 py-5">
+                    <div class="bg-light rounded-1 mx-4 p-4 p-md-5">
+                        <div class="py-3 p-sm-3">
+                            <h2 class="h3 mb-sm-4">Scented candle</h2>
+                            <p class="mb-0">
+                                Ut sit at orci cursus gravida pretium proin nulla id purus,
+                                placerat eget mauris eu ac volutpat facilisi eget morbi
+                                ullamcorper turpis nisi aconsequat cursus malesuada leo
+                                ultrices nisl dictumst turpis tortor sem amet, euismod
+                                aliquam, lacus laoreet dui facilisi morbi ullamcorper turpis
+                                nisi aconsequat cursus volutpat facilisi eget.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Dscription section #2-->
+    <section class="container pb-5 mb-sm-2 mb-lg-3 mb-xl-4 mb-xxl-5">
+        <div class="row align-items-center pb-md-3">
+            <div class="col-md-6 col-lg-5 mb-4 mb-md-0">
+                <img
+                    class="rounded-1"
+                    src="{{ asset('assets/img/shop/single/02.jpg') }}"
+                    alt="Image" />
+            </div>
+            <div class="col-md-6 col-lg-5 offset-lg-1">
+                <div class="ps-md-4 ps-lg-0">
+                    <h2 class="h3 mb-sm-4">Description</h2>
+                    <p class="mb-4 mb-lg-5">
+                        Ut sit at orci cursus gravida pretium proin nulla id purus,
+                        placerat eget mauris eu ac volutpat facilisi eget morbi
+                        ullamcorper turpis nisi aconsequat cursus malesuada leo ultrices
+                        nisl dictumst turpis tortor sem eu ac volutpat facilisi eget
+                        morbi
+                    </p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-3">
+                            Weight:<span class="text-dark fw-semibold ms-2"
+                            >140 - 440 gramms</span
+                            >
+                        </li>
+                        <li class="mb-3">
+                            Material:<span class="text-dark fw-semibold ms-2"
+                            >Concrete bowl</span
+                            >
+                        </li>
+                        <li class="mb-3">
+                            Duration:<span class="text-dark fw-semibold ms-2"
+                            >60 hours of comfort and combustion</span
+                            >
+                        </li>
+                        <li class="mb-3">
+                            Composition:<span class="text-dark fw-semibold ms-2"
+                            >100% soy wax, cotton wick</span
+                            >
+                        </li>
+                        <li>
+                            Country:<span class="text-dark fw-semibold ms-2"
+                            >Frances</span
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="d-md-none mb-5" />
+    <!-- Relevant products carousel-->
     <section class="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5">
         <div
             class="d-flex align-items-center justify-content-between pb-4 mb-2 mb-md-3">
-            <h2 class="h1 pt-1 mb-0">Trending products</h2>
+            <h2 class="h1 pt-1 mb-0">You may also like</h2>
             <!-- Slider prev/next buttons-->
             <div class="d-flex">
                 <button
                     class="btn btn-prev btn-icon btn-sm btn-outline-primary rounded-circle ms-3"
                     type="button"
-                    id="trending-prev">
+                    id="relevant-prev">
                     <i class="ai-arrow-left"></i>
                 </button>
                 <button
                     class="btn btn-next btn-icon btn-sm btn-outline-primary rounded-circle ms-3"
                     type="button"
-                    id="trending-next">
+                    id="relevant-next">
                     <i class="ai-arrow-right"></i>
                 </button>
             </div>
         </div>
         <!-- Slider (popular items)-->
         <div
-            class="swiper"
+            class="swiper pb-sm-2 pb-md-3"
             data-swiper-options='{
-      "slidesPerView": 1,
-      "spaceBetween": 24,
-      "loop": true,
-      "navigation": {
-        "prevEl": "#trending-prev",
-        "nextEl": "#trending-next"
-      },
-      "breakpoints": {
-        "500": {
-          "slidesPerView": 2
-        },
-        "768": {
-          "slidesPerView": 3
-        },
-        "1000": {
-          "slidesPerView": 4
-        }
-      }
-    }'>
+              "slidesPerView": 1,
+              "spaceBetween": 24,
+              "loop": true,
+              "navigation": {
+                "prevEl": "#relevant-prev",
+                "nextEl": "#relevant-next"
+              },
+              "breakpoints": {
+                "500": {
+                  "slidesPerView": 2
+                },
+                "768": {
+                  "slidesPerView": 3
+                },
+                "1000": {
+                  "slidesPerView": 4
+                }
+              }
+            }'>
             <div class="swiper-wrapper">
                 <!-- Item-->
                 <div class="swiper-slide">
                     <div
                         class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                <span
-                    class="badge bg-faded-danger text-danger position-absolute top-0 start-0 mt-3 ms-3"
-                >Sale</span
-                >
-                        <button
-                            class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"
-                            type="button">
-                            <i class="ai-heart fs-xl d-dark-mode-none"></i
-                            ><i
-                                class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button
-                        ><a class="d-block p-2 p-xl-4" href="shop-single.html"
-                        ><img
+                        <span
+                            class="badge bg-faded-danger text-danger position-absolute top-0 start-0 mt-3 ms-3"
+                        >
+                            Sale
+                        </span>
+{{--                        <button--}}
+{{--                            class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"--}}
+{{--                            type="button">--}}
+{{--                            <i class="ai-heart fs-xl d-dark-mode-none"></i--}}
+{{--                            >--}}
+{{--                            <i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i>--}}
+{{--                        </button>--}}
+                        <a class="d-block p-2 p-xl-4" href="shop-single.html">
+                            <img
                                 class="d-block mx-auto"
-                                src="assets/img/shop/products/01.png"
+                                src="{{ asset('assets/img/shop/products/01.png') }}"
                                 width="226"
                                 alt="Product"
-                            /></a>
+                            />
+                        </a>
                     </div>
                     <div class="d-flex mb-1">
                         <h3 class="h6 mb-0">
@@ -283,14 +511,15 @@
                                 <label
                                     class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
                                     for="color1-1"
-                                ><span
+                                >
+                                    <span
                                         class="d-block rounded-circle"
                                         style="
-                          width: 0.625rem;
-                          height: 0.625rem;
-                          background-color: #576071;
-                        "></span
-                                    ></label>
+                                        width: 0.625rem;
+                                        height: 0.625rem;
+                                        background-color: #576071;
+                                    "></span>
+                                </label>
                             </div>
                             <div class="ms-1">
                                 <input
@@ -341,7 +570,7 @@
                             data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
                             data-bs-placement="left"
                             title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="landing-shop.html#"
+                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
                             ><i class="ai-cart"></i
                                 ></a>
                         </div>
@@ -360,7 +589,7 @@
                         ><a class="d-block p-2 p-xl-4" href="shop-single.html"
                         ><img
                                 class="d-block mx-auto"
-                                src="assets/img/shop/products/02.png"
+                                src="{{asset('assets/img/shop/products/02.png')}}"
                                 width="226"
                                 alt="Product"
                             /></a>
@@ -378,7 +607,7 @@
                             data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
                             data-bs-placement="left"
                             title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="landing-shop.html#"
+                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
                             ><i class="ai-cart"></i
                                 ></a>
                         </div>
@@ -401,7 +630,7 @@
                         ><a class="d-block p-2 p-xl-4" href="shop-single.html"
                         ><img
                                 class="d-block mx-auto"
-                                src="assets/img/shop/products/03.png"
+                                src="{{ asset('assets/img/shop/products/03.png') }}"
                                 width="226"
                                 alt="Product"
                             /></a>
@@ -480,7 +709,7 @@
                             data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
                             data-bs-placement="left"
                             title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="landing-shop.html#"
+                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
                             ><i class="ai-cart"></i
                                 ></a>
                         </div>
@@ -521,7 +750,7 @@
                             data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
                             data-bs-placement="left"
                             title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="landing-shop.html#"
+                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
                             ><i class="ai-cart"></i
                                 ></a>
                         </div>
@@ -540,7 +769,7 @@
                         ><a class="d-block p-2 p-xl-4" href="shop-single.html"
                         ><img
                                 class="d-block mx-auto"
-                                src="assets/img/shop/products/06.png"
+                                src="{{ asset('assets/img/shop/products/06.png') }}"
                                 width="226"
                                 alt="Product"
                             /></a>
@@ -558,7 +787,7 @@
                             data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
                             data-bs-placement="left"
                             title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="landing-shop.html#"
+                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
                             ><i class="ai-cart"></i
                                 ></a>
                         </div>
@@ -566,21 +795,11 @@
                 </div>
             </div>
         </div>
-        <!-- View all button-->
-        <div
-            class="text-center mt-2 mt-md-0 mb-xxl-2 pt-4 pt-md-5 pb-2 pb-sm-3 pb-md-4">
-            <a
-                class="btn btn-outline-primary w-100 w-sm-auto"
-                href="shop-catalog.html"
-            >View all products</a
-            >
-        </div>
     </section>
-
     <!-- Features (carousel on screens < 992px)-->
-    <section class="container py-5 mt-2 mb-3 mt-sm-3 mb-sm-4 my-md-4 my-lg-5">
+    <section class="container border-top py-5 mb-1 mb-sm-2 mb-md-4 mb-lg-5">
         <div
-            class="swiper pb-xxl-4 mb-xl-2"
+            class="swiper"
             data-swiper-options='{
               "slidesPerView": 1,
               "spaceBetween": 24,
@@ -603,7 +822,6 @@
                 }
               }
             }'>
-
             <div class="swiper-wrapper">
                 <!-- Item-->
                 <div class="swiper-slide text-center text-sm-start">
@@ -685,110 +903,17 @@
                     </p>
                 </div>
             </div>
-
             <!-- Pagination (Bullets)-->
             <div
                 class="swiper-pagination position-relative bottom-0 pt-1 mt-4 d-lg-none"></div>
         </div>
     </section>
-    <!-- Blog-->
-    <section class="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5">
-        <h2 class="h1 pb-3 pb-md-4">Our blog</h2>
-        <div
-            class="swiper"
-            data-swiper-options='{
-              "slidesPerView": 1,
-              "spaceBetween": 24,
-              "pagination": {
-                "el": ".swiper-pagination",
-                "clickable": true
-              },
-              "breakpoints": {
-                "500": {
-                  "slidesPerView": 2
-                },
-                "991": {
-                  "slidesPerView": 3
-                }
-              }
-            }'>
-            <div class="swiper-wrapper">
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div class="position-relative">
-                        <img
-                            class="rounded-1"
-                            src="{{ asset('assets/img/landing/shop/blog/01.jpg') }}"
-                            alt="Post image" />
-                        <div class="pt-3 mt-3">
-                            <h3 class="h4 mb-3">
-                                <a class="stretched-link" href="landing-shop.html#"
-                                >Paintings for home decor</a
-                                >
-                            </h3>
-                            <p class="mb-0">
-                                Morbi et massa fames ac scelerisque sit commodo dignissim
-                                faucibus vel quisque proin lectus laoreet sem adipiscing
-                                sollicitudin erat massa tellus lorem
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div class="position-relative">
-                        <img
-                            class="rounded-1"
-                            src="{{ asset('assets/img/landing/shop/blog/02.jpg') }}"
-                            alt="Post image" />
-                        <div class="pt-3 mt-3">
-                            <h3 class="h4 mb-3">
-                                <a class="stretched-link" href="landing-shop.html#"
-                                >How to keep flowers fresh longer</a
-                                >
-                            </h3>
-                            <p class="mb-0">
-                                Morbi et massa fames ac scelerisque sit commodo dignissim
-                                faucibus vel quisque proin lectus laoreet sem adipiscing
-                                sollicitudin erat massa tellus lorem
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div class="position-relative">
-                        <img
-                            class="rounded-1"
-                            src="{{ asset('assets/img/landing/shop/blog/03.jpg') }}"
-                            alt="Post image" />
-                        <div class="pt-3 mt-3">
-                            <h3 class="h4 mb-3">
-                                <a class="stretched-link" href="landing-shop.html#"
-                                >Bedroom decoration explained</a
-                                >
-                            </h3>
-                            <p class="mb-0">
-                                Morbi et massa fames ac scelerisque sit commodo dignissim
-                                faucibus vel quisque proin lectus laoreet sem adipiscing
-                                sollicitudin erat massa tellus lorem
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Pagination (Bullets)-->
-            <div
-                class="swiper-pagination position-relative bottom-0 pt-1 mt-4 d-lg-none"></div>
-        </div>
-        <!-- View all button-->
-        <div class="text-center mt-2 mb-sm-1 mt-lg-0 pt-4 pt-lg-5 pb-2 pb-md-4">
-            <a
-                class="btn btn-outline-primary w-100 w-sm-auto"
-                href="landing-shop.html#"
-            >More articles</a
-            >
-        </div>
-    </section>
-
 @endsection
+
+@section('js')
+    <script src="{{ asset('assets/vendor/lightgallery/lightgallery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/lightgallery/plugins/fullscreen/lg-fullscreen.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/lightgallery/plugins/zoom/lg-zoom.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/lightgallery/plugins/thumbnail/lg-thumbnail.min.js') }}"></script>
+@endsection
+
