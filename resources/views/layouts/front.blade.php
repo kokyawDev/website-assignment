@@ -110,6 +110,8 @@
 
         let cart = store.get('cart');
 
+        setCartQtyCountBadge(cart)
+
         if(cart.length) {
             addProductsToCart(cart)
         }

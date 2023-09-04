@@ -103,7 +103,7 @@
             class="d-flex justify-content-between align-items-center border-bottom pb-3 pb-sm-4">
             <h2 class="offcanvas-title d-flex align-items-center mb-1">
                 Your cart
-                <span class="fs-base fw-normal text-muted ms-3">(3 items)</span>
+                <span class="fs-base fw-normal text-muted ms-3">(<span id='yourCartQty'>3 items</span>)</span>
             </h2>
             <button
                 class="btn-close mb-1 me-n1"
@@ -241,17 +241,17 @@
     </div>
     <!-- Coupon input + total-->
     <div class="px-4 pb-3 pb-sm-4 pb-sm-5">
-        <div class="d-sm-flex align-items-center border-top pt-4">
-            <div
-                class="input-group input-group-sm border-dashed mb-3 mb-sm-0 me-sm-4 me-md-5">
-                <input
-                    class="form-control text-uppercase"
-                    type="text"
-                    placeholder="Your coupon code" />
-                <button class="btn btn-secondary" type="button">
-                    Apply coupon
-                </button>
-            </div>
+        <div class="d-sm-flex align-items-center justify-content-end border-top pt-4">
+{{--            <div--}}
+{{--                class="input-group input-group-sm border-dashed mb-3 mb-sm-0 me-sm-4 me-md-5">--}}
+{{--                <input--}}
+{{--                    class="form-control text-uppercase"--}}
+{{--                    type="text"--}}
+{{--                    placeholder="Your coupon code" />--}}
+{{--                <button class="btn btn-secondary" type="button">--}}
+{{--                    Apply coupon--}}
+{{--                </button>--}}
+{{--            </div>--}}
             <div class="d-flex align-items-center justify-content-center">
               <span class="fs-xl me-3">Total:</span
               ><span class="h3 mb-0">$92.00</span>
@@ -319,9 +319,10 @@
                 data-bs-toggle="offcanvas"
             ><i class="ai-cart"></i
                 ><span
+                    id="cartQtyBadge"
                     class="badge bg-primary fs-xs position-absolute end-0 top-0 me-n1"
                     style="padding: 0.25rem 0.375rem"
-                >3</span
+                >0</span
                 ></a
             >
         </div>

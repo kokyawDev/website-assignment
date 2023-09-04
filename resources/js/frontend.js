@@ -20,6 +20,8 @@ window.removeProductFromCartById = (id) => {
 
     curProductTmp.remove()
 
+    setCartQtyCountBadge(cart)
+
     notify(`you have successfully removed product from your cart.`, notiBg.success)
 }
 
@@ -32,6 +34,20 @@ window.addProductsToCart = (data) => {
         let cartProductTmp = getCartProductTmp(product)
         cartContainer.insertAdjacentHTML('beforeend', cartProductTmp)
     })
+
+    setCartQtyCountBadge(data)
+}
+
+window.setCartQtyCountBadge = (data) => {
+    let qty_count = data.reduce((acc, cur) => { return acc + cur.qty}, 0)
+
+    let yourCartQty = document.getElementById('yourCartQty')
+
+    let cartQtyBadge = document.getElementById('cartQtyBadge')
+
+    yourCartQty.innerText = `${qty_count}  ${(qty_count > 1) ? 'items' : 'item'}`
+
+    cartQtyBadge.innerText = qty_count
 }
 
 window.getCartProductTmp = (data) => {
@@ -58,8 +74,8 @@ window.getCartProductTmp = (data) => {
                         </div>
                     </div>
                     <div class="text-end ms-auto">
-                        <div class="fs-5 mb-2">${'$'+data.price}</div>
-                        <del class="text-muted ms-auto">$15.00</del>
+                        <div class="fs-5 mb-2">${'$'+ (data.discounted_price ? data.discounted_price : data.price)}</div>
+                        <del class="text-muted ms-auto ${data.discounted_price ? '' : 'd-none'}">${'$'+ data.price}</del>
                     </div>
                 </div>
                 <div class="count-input ms-n3">
