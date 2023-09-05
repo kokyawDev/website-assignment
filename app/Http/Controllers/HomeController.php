@@ -13,8 +13,8 @@ class HomeController extends Controller
                 'id' => '1',
                 'name' => 'Loft style lamp',
                 'status' => 'Sale',
-                'price' => 21,
-                'discounted_price' => 35,
+                'price' => 1100,
+                'discounted_price' => 9999,
                 'thumbnail' => asset('assets/img/shop/products/01.png')
             ],
             [
@@ -29,8 +29,8 @@ class HomeController extends Controller
                 'id' => '3',
                 'name' => 'Glossy round vase',
                 'status' => 'Sale',
-                'price' => 11,
-                'discounted_price' => 15,
+                'price' => 15,
+                'discounted_price' => 11,
                 'thumbnail' => asset('assets/img/shop/products/03.png')
             ],
             [

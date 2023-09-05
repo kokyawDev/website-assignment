@@ -254,7 +254,7 @@
 {{--            </div>--}}
             <div class="d-flex align-items-center justify-content-center">
               <span class="fs-xl me-3">Total:</span
-              ><span class="h3 mb-0">$92.00</span>
+              ><span class="h3 mb-0" id="totalAmount">0</span>
             </div>
         </div>
     </div>
