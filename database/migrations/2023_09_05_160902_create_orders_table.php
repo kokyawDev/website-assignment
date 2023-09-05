@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('user_id');
+            $table->string('status');
+            $table->decimal('total_price', 10, 2);
+            $table->string('payment_method');
+            $table->string('payment_status');
+            $table->string('shipping_method');
+            $table->string('shipping_status');
+            $table->string('shipping_address');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
