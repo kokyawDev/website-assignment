@@ -33,6 +33,14 @@ Route::get('/checkout', function() {
     return view('user.checkout');
 })->name('checkout');
 
+Route::get('/blogs', function() {
+    return view('user.blogs');
+})->name('blogs');
+
+Route::get('/blogs/{id?}', function() {
+    return view('user.blog-detail');
+})->name('blog-detail');
+
 Route::get('/dashboard', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('dashboard');

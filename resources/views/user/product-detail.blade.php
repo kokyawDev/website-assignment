@@ -1,4 +1,4 @@
-@extends('user.layouts.front')
+@extends('user.layouts.app')
 
 @section('css')
     <link
@@ -129,164 +129,168 @@
                 ><span class="fs-sm">V00273124</span>
                     </div>
                     <h1 class="d-none d-md-inline-block pb-1 mb-2">Scented candle</h1>
-                    <p class="fs-sm mb-4">
-                        Find aute irure reprehenderit in voluptate velit esse cillum
-                        dolore eu fugiatnulla pariatur neque congue aliqua dolor do amet
-                        sint ovar velit.
+
+                    <p class="mb-4 mb-lg-5">
+                        Ut sit at orci cursus gravida pretium proin nulla id purus,
+                        placerat eget mauris eu ac volutpat facilisi eget morbi
+                        ullamcorper turpis nisi aconsequat cursus malesuada leo ultrices
+                        nisl dictumst turpis tortor sem eu ac volutpat facilisi eget
+                        morbi
                     </p>
+
                     <div class="d-none d-md-flex align-items-center pb-3 mb-3">
                         <div class="h3 mb-0 me-3">$14.00</div>
                         <del class="fs-5 fw-medium text-muted">$19.00</del>
                     </div>
-                    <!-- Color button selector-->
-                    <div class="h6">
-                        Color:<span class="text-muted fw-normal ms-1" id="colorOption"
-                        >Gray concrete</span
-                        >
-                    </div>
-                    <div class="d-flex pb-3">
-                        <div class="me-2 mb-2">
-                            <input
-                                class="btn-check"
-                                type="radio"
-                                name="color"
-                                data-binded-label="colorOption"
-                                value="Gray concrete"
-                                checked
-                                id="color1" />
-                            <label
-                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
-                                for="color1"
-                            ><span
-                                    class="d-block bg-size-cover bg-position-center rounded-circle"
-                                    style="
-                                        width: 1.5rem;
-                                        height: 1.5rem;
-                                        background-color: #c0c0c0;
-                                        background-image: url({{ asset('assets/img/shop/pattern/marble.jpg') }});
-                                        "></span
-                                ></label>
-                        </div>
-                        <div class="me-2 mb-2">
-                            <input
-                                class="btn-check"
-                                type="radio"
-                                name="color"
-                                data-binded-label="colorOption"
-                                value="Soft beige"
-                                id="color2" />
-                            <label
-                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
-                                for="color2"
-                            ><span
-                                    class="d-block rounded-circle"
-                                    style="
-                        width: 1.5rem;
-                        height: 1.5rem;
-                        background-color: #d9c9a1;
-                      "></span
-                                ></label>
-                        </div>
-                        <div class="me-2 mb-2">
-                            <input
-                                class="btn-check"
-                                type="radio"
-                                name="color"
-                                data-binded-label="colorOption"
-                                value="Bluish sky"
-                                id="color3" />
-                            <label
-                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
-                                for="color3"
-                            ><span
-                                    class="d-block rounded-circle"
-                                    style="
-                        width: 1.5rem;
-                        height: 1.5rem;
-                        background-color: #a1b7d9;
-                      "></span
-                                ></label>
-                        </div>
-                        <div class="me-2 mb-2">
-                            <input
-                                class="btn-check"
-                                type="radio"
-                                name="color"
-                                data-binded-label="colorOption"
-                                value="Green grass"
-                                id="color4" />
-                            <label
-                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
-                                for="color4"
-                            ><span
-                                    class="d-block rounded-circle"
-                                    style="
-                        width: 1.5rem;
-                        height: 1.5rem;
-                        background-color: #74947d;
-                      "></span
-                                ></label>
-                        </div>
-                        <div class="me-2 mb-2">
-                            <input
-                                class="btn-check"
-                                type="radio"
-                                name="color"
-                                data-binded-label="colorOption"
-                                value="Woody brown"
-                                id="color5" />
-                            <label
-                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"
-                                for="color5"
-                            ><span
-                                    class="d-block bg-size-cover bg-position-center rounded-circle"
-                                    style="
-                                        width: 1.5rem;
-                                        height: 1.5rem;
-                                        background-color: #af8352;
-                                        background-image: url({{ asset('assets/img/shop/pattern/wood.jpg') }});
-                                        "></span
-                                ></label>
-                        </div>
-                    </div>
+{{--                    <!-- Color button selector-->--}}
+{{--                    <div class="h6">--}}
+{{--                        Color:<span class="text-muted fw-normal ms-1" id="colorOption"--}}
+{{--                        >Gray concrete</span--}}
+{{--                        >--}}
+{{--                    </div>--}}
+{{--                    <div class="d-flex pb-3">--}}
+{{--                        <div class="me-2 mb-2">--}}
+{{--                            <input--}}
+{{--                                class="btn-check"--}}
+{{--                                type="radio"--}}
+{{--                                name="color"--}}
+{{--                                data-binded-label="colorOption"--}}
+{{--                                value="Gray concrete"--}}
+{{--                                checked--}}
+{{--                                id="color1" />--}}
+{{--                            <label--}}
+{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
+{{--                                for="color1"--}}
+{{--                            ><span--}}
+{{--                                    class="d-block bg-size-cover bg-position-center rounded-circle"--}}
+{{--                                    style="--}}
+{{--                                        width: 1.5rem;--}}
+{{--                                        height: 1.5rem;--}}
+{{--                                        background-color: #c0c0c0;--}}
+{{--                                        background-image: url({{ asset('assets/img/shop/pattern/marble.jpg') }});--}}
+{{--                                        "></span--}}
+{{--                                ></label>--}}
+{{--                        </div>--}}
+{{--                        <div class="me-2 mb-2">--}}
+{{--                            <input--}}
+{{--                                class="btn-check"--}}
+{{--                                type="radio"--}}
+{{--                                name="color"--}}
+{{--                                data-binded-label="colorOption"--}}
+{{--                                value="Soft beige"--}}
+{{--                                id="color2" />--}}
+{{--                            <label--}}
+{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
+{{--                                for="color2"--}}
+{{--                            ><span--}}
+{{--                                    class="d-block rounded-circle"--}}
+{{--                                    style="--}}
+{{--                        width: 1.5rem;--}}
+{{--                        height: 1.5rem;--}}
+{{--                        background-color: #d9c9a1;--}}
+{{--                      "></span--}}
+{{--                                ></label>--}}
+{{--                        </div>--}}
+{{--                        <div class="me-2 mb-2">--}}
+{{--                            <input--}}
+{{--                                class="btn-check"--}}
+{{--                                type="radio"--}}
+{{--                                name="color"--}}
+{{--                                data-binded-label="colorOption"--}}
+{{--                                value="Bluish sky"--}}
+{{--                                id="color3" />--}}
+{{--                            <label--}}
+{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
+{{--                                for="color3"--}}
+{{--                            ><span--}}
+{{--                                    class="d-block rounded-circle"--}}
+{{--                                    style="--}}
+{{--                        width: 1.5rem;--}}
+{{--                        height: 1.5rem;--}}
+{{--                        background-color: #a1b7d9;--}}
+{{--                      "></span--}}
+{{--                                ></label>--}}
+{{--                        </div>--}}
+{{--                        <div class="me-2 mb-2">--}}
+{{--                            <input--}}
+{{--                                class="btn-check"--}}
+{{--                                type="radio"--}}
+{{--                                name="color"--}}
+{{--                                data-binded-label="colorOption"--}}
+{{--                                value="Green grass"--}}
+{{--                                id="color4" />--}}
+{{--                            <label--}}
+{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
+{{--                                for="color4"--}}
+{{--                            ><span--}}
+{{--                                    class="d-block rounded-circle"--}}
+{{--                                    style="--}}
+{{--                        width: 1.5rem;--}}
+{{--                        height: 1.5rem;--}}
+{{--                        background-color: #74947d;--}}
+{{--                      "></span--}}
+{{--                                ></label>--}}
+{{--                        </div>--}}
+{{--                        <div class="me-2 mb-2">--}}
+{{--                            <input--}}
+{{--                                class="btn-check"--}}
+{{--                                type="radio"--}}
+{{--                                name="color"--}}
+{{--                                data-binded-label="colorOption"--}}
+{{--                                value="Woody brown"--}}
+{{--                                id="color5" />--}}
+{{--                            <label--}}
+{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
+{{--                                for="color5"--}}
+{{--                            ><span--}}
+{{--                                    class="d-block bg-size-cover bg-position-center rounded-circle"--}}
+{{--                                    style="--}}
+{{--                                        width: 1.5rem;--}}
+{{--                                        height: 1.5rem;--}}
+{{--                                        background-color: #af8352;--}}
+{{--                                        background-image: url({{ asset('assets/img/shop/pattern/wood.jpg') }});--}}
+{{--                                        "></span--}}
+{{--                                ></label>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <!-- Weight button selector-->
-                    <div class="h6">Weight</div>
-                    <div class="d-flex">
-                        <div class="me-3">
-                            <input
-                                class="btn-check"
-                                type="radio"
-                                name="weight"
-                                value="140 g"
-                                checked
-                                id="weight1" />
-                            <label class="btn btn-outline-secondary px-2" for="weight1"
-                            ><span class="mx-1">140 g</span></label
-                            >
-                        </div>
-                        <div class="me-3">
-                            <input
-                                class="btn-check"
-                                type="radio"
-                                name="weight"
-                                value="260 g"
-                                id="weight2" />
-                            <label class="btn btn-outline-secondary px-2" for="weight2"
-                            ><span class="mx-1">260 g</span></label
-                            >
-                        </div>
-                        <div class="me-3">
-                            <input
-                                class="btn-check"
-                                type="radio"
-                                name="weight"
-                                value="440 g"
-                                id="weight3" />
-                            <label class="btn btn-outline-secondary px-2" for="weight3"
-                            ><span class="mx-1">440 g</span></label
-                            >
-                        </div>
-                    </div>
+{{--                    <div class="h6">Weight</div>--}}
+{{--                    <div class="d-flex">--}}
+{{--                        <div class="me-3">--}}
+{{--                            <input--}}
+{{--                                class="btn-check"--}}
+{{--                                type="radio"--}}
+{{--                                name="weight"--}}
+{{--                                value="140 g"--}}
+{{--                                checked--}}
+{{--                                id="weight1" />--}}
+{{--                            <label class="btn btn-outline-secondary px-2" for="weight1"--}}
+{{--                            ><span class="mx-1">140 g</span></label--}}
+{{--                            >--}}
+{{--                        </div>--}}
+{{--                        <div class="me-3">--}}
+{{--                            <input--}}
+{{--                                class="btn-check"--}}
+{{--                                type="radio"--}}
+{{--                                name="weight"--}}
+{{--                                value="260 g"--}}
+{{--                                id="weight2" />--}}
+{{--                            <label class="btn btn-outline-secondary px-2" for="weight2"--}}
+{{--                            ><span class="mx-1">260 g</span></label--}}
+{{--                            >--}}
+{{--                        </div>--}}
+{{--                        <div class="me-3">--}}
+{{--                            <input--}}
+{{--                                class="btn-check"--}}
+{{--                                type="radio"--}}
+{{--                                name="weight"--}}
+{{--                                value="440 g"--}}
+{{--                                id="weight3" />--}}
+{{--                            <label class="btn btn-outline-secondary px-2" for="weight3"--}}
+{{--                            ><span class="mx-1">440 g</span></label--}}
+{{--                            >--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <!-- Action buttons-->
                     <div
                         class="d-sm-flex d-md-block d-lg-flex py-4 py-md-5 my-3 my-md-0 mt-lg-0 mb-lg-4">
@@ -328,102 +332,27 @@
                         </div>
                     </div>
                     <!-- Sharing-->
-                    <div class="d-flex align-items-center">
-                        <h4 class="h6 me-4">Share product:</h4>
-                        <a
-                            class="btn btn-secondary btn-icon btn-sm btn-telegram rounded-circle me-3 mb-3"
-                            href="shop-single.html#"
-                        ><i class="ai-telegram"></i></a
-                        ><a
-                            class="btn btn-secondary btn-icon btn-sm btn-instagram rounded-circle me-3 mb-3"
-                            href="shop-single.html#"
-                        ><i class="ai-instagram"></i></a
-                        ><a
-                            class="btn btn-secondary btn-icon btn-sm btn-facebook rounded-circle mb-3"
-                            href="shop-single.html#"
-                        ><i class="ai-facebook"></i
-                            ></a>
-                    </div>
+{{--                    <div class="d-flex align-items-center">--}}
+{{--                        <h4 class="h6 me-4">Share product:</h4>--}}
+{{--                        <a--}}
+{{--                            class="btn btn-secondary btn-icon btn-sm btn-telegram rounded-circle me-3 mb-3"--}}
+{{--                            href="shop-single.html#"--}}
+{{--                        ><i class="ai-telegram"></i></a--}}
+{{--                        ><a--}}
+{{--                            class="btn btn-secondary btn-icon btn-sm btn-instagram rounded-circle me-3 mb-3"--}}
+{{--                            href="shop-single.html#"--}}
+{{--                        ><i class="ai-instagram"></i></a--}}
+{{--                        ><a--}}
+{{--                            class="btn btn-secondary btn-icon btn-sm btn-facebook rounded-circle mb-3"--}}
+{{--                            href="shop-single.html#"--}}
+{{--                        ><i class="ai-facebook"></i--}}
+{{--                            ></a>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Dscription section #1-->
-    <section class="container pb-4 pb-md-5 mb-lg-4">
-        <div
-            class="bg-size-cover bg-repeat-0 bg-position-center rounded-1 mb-md-2 py-xl-4 py-xxl-5"
-            style="background-image: url({{ asset('assets/img/shop/single/01.jpg') }})">
-            <div class="row py-lg-5">
-                <div
-                    class="col-md-8 offset-md-3 col-lg-6 offset-lg-5 col-xl-5 offset-xl-6 py-5">
-                    <div class="bg-light rounded-1 mx-4 p-4 p-md-5">
-                        <div class="py-3 p-sm-3">
-                            <h2 class="h3 mb-sm-4">Scented candle</h2>
-                            <p class="mb-0">
-                                Ut sit at orci cursus gravida pretium proin nulla id purus,
-                                placerat eget mauris eu ac volutpat facilisi eget morbi
-                                ullamcorper turpis nisi aconsequat cursus malesuada leo
-                                ultrices nisl dictumst turpis tortor sem amet, euismod
-                                aliquam, lacus laoreet dui facilisi morbi ullamcorper turpis
-                                nisi aconsequat cursus volutpat facilisi eget.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Dscription section #2-->
-    <section class="container pb-5 mb-sm-2 mb-lg-3 mb-xl-4 mb-xxl-5">
-        <div class="row align-items-center pb-md-3">
-            <div class="col-md-6 col-lg-5 mb-4 mb-md-0">
-                <img
-                    class="rounded-1"
-                    src="{{ asset('assets/img/shop/single/02.jpg') }}"
-                    alt="Image" />
-            </div>
-            <div class="col-md-6 col-lg-5 offset-lg-1">
-                <div class="ps-md-4 ps-lg-0">
-                    <h2 class="h3 mb-sm-4">Description</h2>
-                    <p class="mb-4 mb-lg-5">
-                        Ut sit at orci cursus gravida pretium proin nulla id purus,
-                        placerat eget mauris eu ac volutpat facilisi eget morbi
-                        ullamcorper turpis nisi aconsequat cursus malesuada leo ultrices
-                        nisl dictumst turpis tortor sem eu ac volutpat facilisi eget
-                        morbi
-                    </p>
-                    <ul class="list-unstyled mb-0">
-                        <li class="mb-3">
-                            Weight:<span class="text-dark fw-semibold ms-2"
-                            >140 - 440 gramms</span
-                            >
-                        </li>
-                        <li class="mb-3">
-                            Material:<span class="text-dark fw-semibold ms-2"
-                            >Concrete bowl</span
-                            >
-                        </li>
-                        <li class="mb-3">
-                            Duration:<span class="text-dark fw-semibold ms-2"
-                            >60 hours of comfort and combustion</span
-                            >
-                        </li>
-                        <li class="mb-3">
-                            Composition:<span class="text-dark fw-semibold ms-2"
-                            >100% soy wax, cotton wick</span
-                            >
-                        </li>
-                        <li>
-                            Country:<span class="text-dark fw-semibold ms-2"
-                            >Frances</span
-                            >
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
     <hr class="d-md-none mb-5" />
     <!-- Relevant products carousel-->
     <section class="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5">

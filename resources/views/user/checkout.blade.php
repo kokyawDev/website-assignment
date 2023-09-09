@@ -1,4 +1,4 @@
-@extends('user.layouts.front')
+@extends('user.layouts.app')
 
 @section('content')
     <div class="d-none d-lg-block bg-secondary position-fixed top-0 start-0 h-100" style="width: 52.5%;"></div>

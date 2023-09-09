@@ -1,4 +1,4 @@
-@extends('user.layouts.front')
+@extends('user.layouts.app')
 @section('content')
     <!-- Hero-->
     <section>
@@ -20,13 +20,12 @@
                 <div class="row pt-lg-2 py-xl-4 py-xxl-5 mb-md-4 mb-lg-5">
                     <div class="col-md-10 col-lg-9 col-xl-8 col-xxl-7 pt-5 mb-5">
                         <h1 class="display-2 text-light text-uppercase pb-sm-2 pb-md-3">
-                            Decor to create comfort at home
+                            Daily Beauty Products For Our Queens
                         </h1>
                         <p
                             class="text-light opacity-70 pb-3 pb-md-4 mb-3"
                             style="max-width: 520px">
-                            On the site you will find all the wonderful decor items from
-                            photo frames to tablecloths for the dining table
+                            On the site you will find all the wonderful beauty products
                         </p>
                         <a class="btn btn-outline-light" href="shop-catalog.html"
                         >Explore the catalog</a
@@ -587,7 +586,7 @@
         <div class="text-center mt-2 mb-sm-1 mt-lg-0 pt-4 pt-lg-5 pb-2 pb-md-4">
             <a
                 class="btn btn-outline-primary w-100 w-sm-auto"
-                href="landing-shop.html#"
+                href="{{ route('blogs') }}"
             >More articles</a
             >
         </div>

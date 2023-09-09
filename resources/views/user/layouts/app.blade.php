@@ -97,7 +97,7 @@
     @include('user.layouts.cart-off-canvas')
 
     @if(!in_array(request()->segment(1), $no_nav_pages))
-        @include('user.layouts.front-navbar')
+        @include('user.layouts.navbar')
     @endif
 
     <!-- Page content-->
@@ -105,7 +105,7 @@
 </main>
 <!-- Footer-->
 @if(!in_array(request()->segment(1), $no_nav_pages))
-    @include('user.layouts.front-footer')
+    @include('user.layouts.footer')
 @endif
 <!-- Vendor scripts: js libraries and plugins-->
 
