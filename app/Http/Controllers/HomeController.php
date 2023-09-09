@@ -43,7 +43,7 @@ class HomeController extends Controller
             ]
         ];
 
-        return view('index')
+        return view('user.index')
             ->with([
                 'trending_products' => $trending_products
             ]);

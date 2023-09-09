@@ -15,11 +15,23 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/sign-in', function() {
+   return view('user.auth.sign-in');
+})->name('sign-in');
+
+Route::get('/sign-up', function() {
+    return view('user.auth.sign-up');
+})->name('sign-up');
 
 Route::get('/product-detail', function() {
     return view('user.product-detail');
-});
+})->name('product-detail');
+
+Route::get('/checkout', function() {
+    return view('user.checkout');
+})->name('checkout');
 
 Route::get('/dashboard', function () {
     return view('home');

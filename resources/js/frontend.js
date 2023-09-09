@@ -16,15 +16,13 @@ window.decreaseQty = (id) => {
 
     let cart = store.get('cart')
 
-    let curProduct = cart.find(product => product.id = id)
-
     if(parseInt(curQtyValue.value) > 1) {
-
         cart = cart.map(product => {
+            let prod_qty = parseInt(product.qty) - 1
             if(product.id == id) {
                 return {
                     ...product,
-                    qty: parseInt(product.qty) - 1
+                    qty: prod_qty
                 }
             }
 
@@ -33,14 +31,18 @@ window.decreaseQty = (id) => {
 
         store.set('cart', cart)
 
-        curQtyValue.value = parseInt(curQtyValue.value) - 1
+        let curProductTmps = document.querySelectorAll(`.cart-product-${id}`)
+
+        curProductTmps.forEach(el => {
+            let elQty = el.querySelector('#qtyValue')
+
+            elQty.value = parseInt(elQty.value) - 1
+        })
 
         setCartQtyCountBadge(cart)
 
     }else {
-
         removeProductFromCartById(id)
-
     }
 }
 
@@ -64,7 +66,13 @@ window.increaseQty = (id) => {
 
     store.set('cart', cart)
 
-    curQtyValue.value = +curQtyValue.value + 1
+    let curProductTmps = document.querySelectorAll(`.cart-product-${id}`)
+
+    curProductTmps.forEach(el => {
+        let elQty = el.querySelector('#qtyValue')
+
+        elQty.value = parseInt(elQty.value) + 1
+    })
 
     setCartQtyCountBadge(cart)
 }
@@ -72,13 +80,13 @@ window.increaseQty = (id) => {
 window.removeProductFromCartById = (id) => {
     let cart = store.get('cart')
 
-    let curProductTmp = document.querySelector(`.cart-product-${id}`)
+    let curProductTmps = document.querySelectorAll(`.cart-product-${id}`)
 
     cart = cart.filter(product => product.id != id)
 
     store.set('cart', cart)
 
-    curProductTmp.remove()
+    curProductTmps.forEach(el => el.remove())
 
     setCartQtyCountBadge(cart)
 
@@ -86,13 +94,13 @@ window.removeProductFromCartById = (id) => {
 }
 
 window.addProductsToCart = (data) => {
-    let cartContainer = document.getElementById('cartContainer')
+    let cartContainers = document.querySelectorAll('.cartContainer')
 
-    cartContainer.innerHTML = ''
+    cartContainers.forEach(el => el.innerHTML = '')
 
     data.map((product) => {
         let cartProductTmp = getCartProductTmp(product)
-        cartContainer.insertAdjacentHTML('beforeend', cartProductTmp)
+        cartContainers.forEach(el => el.insertAdjacentHTML('beforeend', cartProductTmp))
     })
 
     setCartQtyCountBadge(data)
@@ -135,18 +143,18 @@ window.setCartQtyCountBadge = (data) => {
         .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
 
     // badge and some text about product qty
-    let yourCartQty = document.getElementById('yourCartQty')
+    let yourCartQties = document.querySelectorAll('.yourCartQty')
 
     let cartQtyBadge = document.getElementById('cartQtyBadge')
 
     // total amount
-    let total_amount_el = document.getElementById('totalAmount')
+    let total_amount_els = document.querySelectorAll('.totalAmount')
 
-    yourCartQty.innerText = `${qty_count}  ${(qty_count > 1) ? 'items' : 'item'}`
+    yourCartQties.forEach(el => el.innerText = `${qty_count}  ${(qty_count > 1) ? 'items' : 'item'}`)
 
     cartQtyBadge.innerText = qty_count
 
-    total_amount_el.innerText = `${formattedPrice(total_amount)} ${total_amount ? ' $' : ''}`
+    total_amount_els.forEach(el => el.innerText = `${formattedPrice(total_amount)} ${total_amount ? ' $' : ''}`)
 }
 
 window.getCartProductTmp = (data) => {
@@ -154,7 +162,7 @@ window.getCartProductTmp = (data) => {
         <div class="d-sm-flex align-items-center pb-4 cart-product-${data.id}">
             <a
                 class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-sm-2 p-md-3 mb-2 mb-sm-0"
-                href="shop-single.html"
+                href="/product-detail"
             ><img src="${data.thumbnail}" width="110" alt="Product"
                 /></a>
             <div class="w-100 pt-1 ps-sm-4">

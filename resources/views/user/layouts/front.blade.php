@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Around | Shop Homepage</title>
     <!-- SEO Meta Tags-->
     <meta
         name="description"
-        content="Around - Multipurpose Bootstrap HTML Template" />
+        content="Around - Multipurpose Bootstrap HTML Template"/>
     <meta
         name="keywords"
-        content="bootstrap, business, corporate, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, saas, multipurpose, product landing, shop, software, ui kit, web studio, landing, dark mode, html5, css3, javascript, gallery, slider, touch, creative" />
-    <meta name="author" content="Createx Studio" />
+        content="bootstrap, business, corporate, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, saas, multipurpose, product landing, shop, software, ui kit, web studio, landing, dark mode, html5, css3, javascript, gallery, slider, touch, creative"/>
+    <meta name="author" content="Createx Studio"/>
     <!-- Viewport-->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Favicon and Touch Icons-->
     <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="{{ asset('assets/favicon/apple-touch-icon.png') }}" />
+        href="{{ asset('assets/favicon/apple-touch-icon.png') }}"/>
     <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="{{ asset('assets/favicon/favicon-32x32.png') }}" />
+        href="{{ asset('assets/favicon/favicon-32x32.png') }}"/>
     <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="{{ asset('assets/favicon/favicon-16x16.png') }}" />
-    <link rel="manifest" href="{{ asset('assets/favicon/site.webmanifest') }}" />
+        href="{{ asset('assets/favicon/favicon-16x16.png') }}"/>
+    <link rel="manifest" href="{{ asset('assets/favicon/site.webmanifest') }}"/>
     <link
         rel="mask-icon"
         color="#6366f1"
-        href="{{ asset('assets/favicon/safari-pinned-tab.svg') }}" />
-    <meta name="msapplication-TileColor" content="#080032" />
+        href="{{ asset('assets/favicon/safari-pinned-tab.svg') }}"/>
+    <meta name="msapplication-TileColor" content="#080032"/>
     <meta
         name="msapplication-config"
-        content="{{ asset('assets/favicon/browserconfig.xml') }}" />
-    <meta name="theme-color" content="white" />
+        content="{{ asset('assets/favicon/browserconfig.xml') }}"/>
+    <meta name="theme-color" content="white"/>
     <!-- Import Google Font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
         rel="stylesheet"
-        id="google-font" />
+        id="google-font"/>
     <!-- Vendor styles-->
     <link
         rel="stylesheet"
         media="screen"
-        href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" />
+        href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}"/>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     @yield('css')
 
     <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" href="{{ asset('assets/css/theme.min.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ asset('assets/css/theme.min.css') }}"/>
 
     <!-- Theme mode-->
     <script>
@@ -83,28 +83,47 @@
 
 <body>
 
-<!-- Page wrapper-->
+@php
+    $no_nav_pages = [
+        'sign-in',
+        'sign-up',
+    ];
+@endphp
+
+    <!-- Page wrapper-->
 <main class="page-wrapper">
-    @include('layouts.front-navbar')
+    @include('user.layouts.search')
+
+    @include('user.layouts.cart-off-canvas')
+
+    @if(!in_array(request()->segment(1), $no_nav_pages))
+        @include('user.layouts.front-navbar')
+    @endif
+
     <!-- Page content-->
     @yield('content')
 </main>
 <!-- Footer-->
-@include('layouts.front-footer')
+@if(!in_array(request()->segment(1), $no_nav_pages))
+    @include('user.layouts.front-footer')
+@endif
 <!-- Vendor scripts: js libraries and plugins-->
+
 <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jarallax/dist/jarallax.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/timezz/dist/timezz.js') }}"></script>
+<script src="{{ asset('assets/vendor/cleave.js/dist/cleave.min.js') }}"></script>
 <!-- Main theme script-->
 <script src="{{ asset('assets/js/theme.min.js') }}"></script>
+<!-- Customizer-->
 @vite(['resources/js/frontend.js'])
 @yield('js')
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        if(!store.has('cart')) {
+        if (!store.has('cart')) {
             store.set('cart', [])
         }
 
@@ -112,7 +131,7 @@
 
         setCartQtyCountBadge(cart)
 
-        if(cart.length) {
+        if (cart.length) {
             addProductsToCart(cart)
         }
     });
