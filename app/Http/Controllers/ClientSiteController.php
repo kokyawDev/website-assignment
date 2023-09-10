@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ClientSiteController extends Controller
 {
     public function index()
     {
@@ -46,6 +48,35 @@ class HomeController extends Controller
         return view('user.index')
             ->with([
                 'trending_products' => $trending_products
+            ]);
+    }
+
+    public function productDetail()
+    {
+        return view('user.product-detail');
+    }
+
+    public function checkout()
+    {
+        return view('user.checkout');
+    }
+
+    public function posts()
+    {
+        $posts = Post::latest()->paginate(5);
+
+        return view('user.blogs')
+            ->with([
+                'tags' => Tag::pluck('name', 'id')->toArray(),
+                'posts' => $posts
+            ]);
+    }
+
+    public function postDetail(Post $post)
+    {
+        return view('user.blog-detail')
+            ->with([
+                'post' => $post
             ]);
     }
 }

@@ -12,11 +12,15 @@ class AdminUserSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@mail.com',
-            'password' => bcrypt('password'),
-            'role' => 'admin'
-        ]);
+        $users = \App\Models\User::all();
+
+        if($users->isEmpty()) {
+            $admin = \App\Models\User::factory()->create([
+                'name' => 'Admin',
+                'email' => 'admin@mail.com',
+                'password' => bcrypt('password'),
+                'role' => 'admin'
+            ]);
+        }
     }
 }

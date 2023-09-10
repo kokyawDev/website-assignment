@@ -14,82 +14,37 @@
             <div class="col-lg-5">
                 <h1 class="mb-lg-0">Blog list</h1>
             </div>
-{{--            <div class="col-xl-2 offset-xl-1 col-lg-3 col-sm-5">--}}
-{{--                <select class="form-select">--}}
-{{--                    <option>All categories</option>--}}
-{{--                    <option>Inspiration</option>--}}
-{{--                    <option>Brand strategy</option>--}}
-{{--                    <option>Advertisement</option>--}}
-{{--                    <option>Ecommerce</option>--}}
-{{--                    <option>Travel &amp; Vacation</option>--}}
-{{--                </select>--}}
-{{--            </div>--}}
-            <div class="col-lg-4 col-sm-7 ms-auto">
+            <div class="col-xl-2 offset-xl-1 col-lg-3 col-sm-5">
+                <select class="form-select">
+                    <option class="">All tags</option>
+                    @foreach($tags as $key => $value)
+                        <option class="{{ $key }}">{{ $value }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-lg-4 col-sm-7">
                 <div class="position-relative"><i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
                     <input class="form-control ps-5" type="search" placeholder="Enter keyword">
                 </div>
             </div>
         </div>
         <!-- Post-->
-        <article class="row g-0 border-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" style="background-image: url(assets/img/blog/list/01.jpg); min-height: 16rem"></a>
+        @foreach($posts as $post)
+        <article class="row g-0 border-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="{{ route('blog-detail', $post) }}" style="background-image: url({{ $post->thumbnail }}); min-height: 16rem"></a>
             <div class="col-sm-7 col-lg-8">
                 <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                    <h3><a href="blog-single-v1.html">Business strategy for a brand of vintage bags</a></h3>
-                    <p class="d-sm-none d-md-block">Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque proin lectus et massa fames ac scelerisque sit commodo dignissim. Tellus sagittis dolor pellentesque vel porttitor magna aliquet arcu. Interdum risus mauris pulvinar et vel morbi tellus, scelerisque vel metus ...</p>
+                    <h3><a href="{{ route('blog-detail', $post) }}">{{ $post->name }}</a></h3>
+                    <p class="d-sm-none d-md-block">
+                        {{ $post->short_description }}
+                    </p>
                     <div class="d-flex flex-wrap align-items-center mt-n2">
-                        <span class="fs-sm text-muted mt-2">April 25, 2022</span>
+                        <span class="fs-sm text-muted mt-2">{{ date('F j, Y', strtotime($post->updated_at)) }}</span>
+                        <span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="{{ route('blogs') }}">{{ $post->tag->name }}</a>
                     </div>
                 </div>
             </div>
         </article>
-        <!-- Post-->
-        <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v2.html" style="background-image: url(assets/img/blog/list/02.jpg); min-height: 16rem"></a>
-            <div class="col-sm-7 col-lg-8">
-                <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                    <h3><a href="blog-single-v2.html">Top books for inspiration</a></h3>
-                    <p class="d-sm-none d-md-block">Sapien ultrices egestas at faucibus eu diam velit diam id amet nibh quam rutrum fermentum diam natoque scelerisque viverra molestie fames. Nulla fringilla arcu justo augue fringilla in nunc volutpat sit. Dui diam, faucibus vitae ultricies vitae mollis nunc elementum. Habitasse porta neque tempor tellus ut ...</p>
-                    <div class="d-flex flex-wrap align-items-center mt-n2">
-                        <span class="fs-sm text-muted mt-2">April 25, 2022</span>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <!-- Post-->
-        <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v3.html" style="background-image: url(assets/img/blog/list/03.jpg); min-height: 16rem"></a>
-            <div class="col-sm-7 col-lg-8">
-                <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                    <h3><a href="blog-single-v3.html">Destinations to inspire and restore resources</a></h3>
-                    <p class="d-sm-none d-md-block">Sapien ultrices egestas at faucibus eu diam velit diam id amet nibh quam rutrum diam fermentum diam natoque scelerisque viverra molestie fames. Aliquet donec cras amet orci in in neque ut sed diam quis consectetur purus lorem eu, sit. Aliquam eget arcu sed urna feugiat. In integer nisl at dui malesuada ...</p>
-                    <div class="d-flex flex-wrap align-items-center mt-n2">
-                        <span class="fs-sm text-muted mt-2">April 25, 2022</span>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <!-- Post-->
-        <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" style="background-image: url(assets/img/blog/list/04.jpg); min-height: 16rem"></a>
-            <div class="col-sm-7 col-lg-8">
-                <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                    <h3><a href="blog-single-v1.html">Promotion of an online store from scratch, first sales</a></h3>
-                    <p class="d-sm-none d-md-block">Pharetra in morbi quis is massa maecenas arcu vulputate pulvinar elit non nullage a, duis tortor mi massa ipsum in eu eu eget libero pulvinar elit vulputate. Nunc aliquet scelerisque pellentesque imperdiet tortor elit, dictum. Tristique odio at dignissim viverra aliquet eleifend erat tellus, at arcu, egestas praesent...</p>
-                    <div class="d-flex flex-wrap align-items-center mt-n2">
-                        <span class="fs-sm text-muted mt-2">April 25, 2022</span>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <!-- Post-->
-        <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v2.html" style="background-image: url(assets/img/blog/list/05.jpg); min-height: 16rem"></a>
-            <div class="col-sm-7 col-lg-8">
-                <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                    <h3><a href="blog-single-v2.html">New series from Netflix</a></h3>
-                    <p class="d-sm-none d-md-block">Egestas in neque scelerisque semper sit at eu cursus faucibus velit cras at aliquam sed dictum at at orci curabitur dictumst viverra non pharetra etiam non, vitae tristique eu in morbi felis nulla. Tellus sagittis dolor pellentesque vel porttitor magna aliquet arcu. Interdum risus mauris pulvinar et vel morbi ...</p>
-                    <div class="d-flex flex-wrap align-items-center mt-n2">
-                        <span class="fs-sm text-muted mt-2">April 25, 2022</span>
-                    </div>
-                </div>
-            </div>
-        </article>
+        @endforeach
         <!-- Pagination-->
         <div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-3 pt-lg-0 mb-md-2 mb-xl-4">
             <div class="col col-md-4 col-6 order-md-1 order-1">
