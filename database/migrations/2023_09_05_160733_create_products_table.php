@@ -18,8 +18,13 @@ return new class extends Migration
             $table->string('description');
             $table->string('thumbnail');
             $table->string('status');
+            $table->decimal('price', 10, 2);
+            $table->integer('quantity')->default(0);
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

@@ -51,4 +51,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+    Route::resource('products', \App\Http\Controllers\ProductController::class);
+    Route::resource('orders', \App\Http\Controllers\OrderController::class);
+    Route::resource('users', \App\Http\Controllers\UserController::class);
+});
+
 require __DIR__.'/auth.php';
