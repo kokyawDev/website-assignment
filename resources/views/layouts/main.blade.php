@@ -24,8 +24,7 @@
     <!-- Sidebar -->
     @include('layouts.sidebar')
 
-
-    <main class="p-4 md:ml-64 h-full pt-20 ">
+    <main class="p-4 md:ml-64 h-full pt-20 min-h-[100vh]">
         @yield('content')
     </main>
 </div>

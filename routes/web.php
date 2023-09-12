@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,44 +16,19 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->prefix('admin/')->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('home');
+    })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/sign-in', function() {
-   return view('user.auth.sign-in');
-})->name('sign-in');
-
-Route::get('/sign-up', function() {
-    return view('user.auth.sign-up');
-})->name('sign-up');
-
-Route::get('/product-detail', function() {
-    return view('user.product-detail');
-})->name('product-detail');
-
-Route::get('/checkout', function() {
-    return view('user.checkout');
-})->name('checkout');
-
-Route::get('/blogs', function() {
-    return view('user.blogs');
-})->name('blogs');
-
-Route::get('/blogs/{id?}', function() {
-    return view('user.blog-detail');
-})->name('blog-detail');
-
-Route::get('/dashboard', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
+    Route::resource('/tags', TagController::class)->except(['create', 'edit', 'show']);
 
-Route::middleware(['auth'])->group(function () {
+    Route::resource('/posts', PostController::class)->except(['create', 'edit', 'show']);
+
     Route::resource('categories', \App\Http\Controllers\CategoryController::class);
     Route::resource('products', \App\Http\Controllers\ProductController::class);
     Route::resource('orders', \App\Http\Controllers\OrderController::class);
@@ -60,3 +36,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+require __DIR__.'/frontend.php';

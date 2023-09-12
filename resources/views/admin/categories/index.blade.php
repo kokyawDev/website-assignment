@@ -12,7 +12,7 @@
                     </div>
                     <div
                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <a href="{{ route('categories.create') }}"
+                        <a href="{{ route('admin.categories.create') }}"
                                 class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                             <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
                                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -43,7 +43,7 @@
                                 <td class="px-4 py-1">{{ $category->name }}</td>
 
                                 <td class="px-4 py-3 flex items-center justify-end">
-                                    <a href="{{ route('categories.edit', $category->id) }}"
+                                    <a href="{{ route('admin.categories.edit', $category->id) }}"
                                        class="flex w-50 items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
                                         <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg"
                                              viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -54,7 +54,7 @@
                                         </svg>
                                         Edit
                                     </a>
-                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                    <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                     <button type="submit" onclick="confirm('Are you sure?')"
