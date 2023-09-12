@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
             <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blog list no sidebar</li>
+                <li class="breadcrumb-item active" aria-current="page">Blog list</li>
             </ol>
         </nav>
         <!-- Page title + filters-->
@@ -47,30 +47,7 @@
         @endforeach
         <!-- Pagination-->
         <div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-3 pt-lg-0 mb-md-2 mb-xl-4">
-            <div class="col col-md-4 col-6 order-md-1 order-1">
-{{--                <div class="d-flex align-items-center"><span class="text-muted fs-sm">Show</span>--}}
-{{--                    <select class="form-select form-select-flush w-auto">--}}
-{{--                        <option value="6">6</option>--}}
-{{--                        <option value="9" selected>9</option>--}}
-{{--                        <option value="12">12</option>--}}
-{{--                        <option value="24">24</option>--}}
-{{--                    </select>--}}
-{{--                </div>--}}
-            </div>
-{{--            <div class="col col-md-4 col-12 order-md-2 order-3 text-center">--}}
-{{--                <button class="btn btn-primary w-md-auto w-100" type="button">Load more posts</button>--}}
-{{--            </div>--}}
-            <div class="col col-md-4 col-6 order-md-3 order-2">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination pagination-sm justify-content-end">
-                        <li class="page-item active" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-                        <li class="page-item"><a class="page-link" href="blog-list.html#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="blog-list.html#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="blog-list.html#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="blog-list.html#">5</a></li>
-                    </ul>
-                </nav>
-            </div>
+            {{ $posts->links('pagination::bootstrap-5') }}
         </div>
     </div>
 @endsection

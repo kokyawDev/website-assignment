@@ -63,7 +63,7 @@ class ClientSiteController extends Controller
 
     public function posts()
     {
-        $posts = Post::latest()->paginate(5);
+        $posts = Post::latest()->paginate(2);
 
         return view('user.blogs')
             ->with([
