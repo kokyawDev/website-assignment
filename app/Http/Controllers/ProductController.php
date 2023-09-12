@@ -55,12 +55,10 @@ class ProductController extends Controller
                 $data['thumbnail'] = $filename;
             }
 
-            // store product with no product images
             $product = Product::create($data);
 
 
             if($request->hasFile('product_images')){
-                $images = [];
                 foreach($request->file('product_images') as $file){
                     $extension = $file->getClientOriginalExtension();
                     $filename = time() . '.' . $extension;
