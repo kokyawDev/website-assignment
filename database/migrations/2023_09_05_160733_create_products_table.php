@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->uuid('uuid')->unique();
             $table->string('name');
-            $table->unsignedBigInteger('category_id');
             $table->string('shop_description');
             $table->text('description');
             $table->string('thumbnail');
