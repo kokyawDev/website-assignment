@@ -12,7 +12,8 @@
             <div
                 class="jarallax-img"
                 style="
-              background-image: url('{{ asset('assets/img/landing/shop/hero/bg.jpg') }}');
+              {{--background-image: url('{{ asset('assets/img/landing/shop/hero/bg.jpg') }}');--}}
+              background-image: url('{{ asset('img/cosmetic-banner-2.jpg') }}');
             "></div>
             <div
                 class="container position-relative zindex-5 py-sm-4 py-lg-5 mt-4">
@@ -27,8 +28,8 @@
                             style="max-width: 520px">
                             On the site you will find all the wonderful beauty products
                         </p>
-                        <a class="btn btn-outline-light" href="shop-catalog.html"
-                        >Explore the catalog</a
+                        <a class="btn btn-outline-light" href="{{ route('products') }}"
+                        >Explore products</a
                         >
                     </div>
                 </div>
@@ -251,13 +252,7 @@
                         <div
                             class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
                             <span class="badge bg-faded-danger text-danger position-absolute top-0 start-0 mt-3 ms-3">{{ $trending_product['status'] }}</span>
-                            <button
-                                class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"
-                                type="button">
-                                <i class="ai-heart fs-xl d-dark-mode-none"></i>
-                                <i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i>
-                            </button>
-                            <a class="d-block p-2 p-xl-4" href="shop-single.html">
+                            <a class="d-block p-2 p-xl-4" href="{{ route('products.detail', $trending_product['id']) }}">
                                 <img
                                     class="d-block mx-auto"
                                     src="{{ $trending_product['thumbnail'] }}"
@@ -270,78 +265,6 @@
                             <h3 class="h6 mb-0">
                                 <a href="shop-single.html">{{ $trending_product['name'] }}</a>
                             </h3>
-                            <div class="d-flex ps-2 mt-n1 ms-auto">
-                                <div class="ms-1">
-                                    <input
-                                        class="btn-check"
-                                        type="radio"
-                                        name="color1"
-                                        value="Dark gray"
-                                        checked
-                                        id="color1-1"
-                                    />
-                                    <label
-                                        class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
-                                        for="color1-1"
-                                    >
-                                        <span
-                                            class="d-block rounded-circle"
-                                            style="
-                                                width: 0.625rem;
-                                                height: 0.625rem;
-                                                background-color: #576071;
-                                            "
-                                        >
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="ms-1">
-                                    <input
-                                        class="btn-check"
-                                        type="radio"
-                                        name="color1"
-                                        value="Light gray"
-                                        id="color1-2"
-                                    />
-                                    <label
-                                        class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
-                                        for="color1-2"
-                                    >
-                                        <span
-                                        class="d-block rounded-circle"
-                                        style="
-                                            width: 0.625rem;
-                                            height: 0.625rem;
-                                            background-color: #d5d4d3;
-                                        "
-                                        ></span>
-                                    </label>
-                                </div>
-                                <div class="ms-1">
-                                    <input
-                                        class="btn-check"
-                                        type="radio"
-                                        name="color1"
-                                        value="Blue"
-                                        id="color1-3"
-                                    />
-                                    <label
-                                        class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
-                                        for="color1-3"
-                                    >
-                                        <span
-                                            class="d-block rounded-circle"
-                                            style="
-                                                width: 0.625rem;
-                                                height: 0.625rem;
-                                                background-color: #a1b7d9;
-                                            "
-                                        >
-
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
                         </div>
                         <div class="d-flex align-items-center">
                             <span class="me-2">${{ $trending_product['discounted_price'] ? number_format($trending_product['discounted_price'], 2) : number_format($trending_product['price'], 2) }}</span>
@@ -355,6 +278,7 @@
                                 data-bs-placement="left"
                                 title="Add to cart"
                                 onClick='setProductToStore(@json($trending_product))'
+                                style="cursor: pointer;"
                             >
                                 <span class="nav-link fs-lg py-2 px-1">
                                     <i class="ai-cart"></i>
@@ -371,7 +295,7 @@
             class="text-center mt-2 mt-md-0 mb-xxl-2 pt-4 pt-md-5 pb-2 pb-sm-3 pb-md-4">
             <a
                 class="btn btn-outline-primary w-100 w-sm-auto"
-                href="shop-catalog.html"
+                href="{{ route('products') }}"
             >View all products</a
             >
         </div>
@@ -514,69 +438,27 @@
               }
             }'>
             <div class="swiper-wrapper">
-                <!-- Item-->
-                <div class="swiper-slide">
+                @foreach($posts as $post)
+                    <!-- Item-->
+                    <div class="swiper-slide">
                     <div class="position-relative">
                         <img
                             class="rounded-1"
-                            src="{{ asset('assets/img/landing/shop/blog/01.jpg') }}"
+                            src="{{ $post->thumbnail }}"
                             alt="Post image" />
                         <div class="pt-3 mt-3">
                             <h3 class="h4 mb-3">
-                                <a class="stretched-link" href="landing-shop.html#"
-                                >Paintings for home decor</a
+                                <a class="stretched-link" href="{{ route('blogs.detail', $post) }}"
+                                >{{ $post->name }}</a
                                 >
                             </h3>
                             <p class="mb-0">
-                                Morbi et massa fames ac scelerisque sit commodo dignissim
-                                faucibus vel quisque proin lectus laoreet sem adipiscing
-                                sollicitudin erat massa tellus lorem
+                                {{ $post->short_description }}
                             </p>
                         </div>
                     </div>
                 </div>
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div class="position-relative">
-                        <img
-                            class="rounded-1"
-                            src="{{ asset('assets/img/landing/shop/blog/02.jpg') }}"
-                            alt="Post image" />
-                        <div class="pt-3 mt-3">
-                            <h3 class="h4 mb-3">
-                                <a class="stretched-link" href="landing-shop.html#"
-                                >How to keep flowers fresh longer</a
-                                >
-                            </h3>
-                            <p class="mb-0">
-                                Morbi et massa fames ac scelerisque sit commodo dignissim
-                                faucibus vel quisque proin lectus laoreet sem adipiscing
-                                sollicitudin erat massa tellus lorem
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div class="position-relative">
-                        <img
-                            class="rounded-1"
-                            src="{{ asset('assets/img/landing/shop/blog/03.jpg') }}"
-                            alt="Post image" />
-                        <div class="pt-3 mt-3">
-                            <h3 class="h4 mb-3">
-                                <a class="stretched-link" href="landing-shop.html#"
-                                >Bedroom decoration explained</a
-                                >
-                            </h3>
-                            <p class="mb-0">
-                                Morbi et massa fames ac scelerisque sit commodo dignissim
-                                faucibus vel quisque proin lectus laoreet sem adipiscing
-                                sollicitudin erat massa tellus lorem
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!-- Pagination (Bullets)-->
             <div
@@ -587,8 +469,9 @@
             <a
                 class="btn btn-outline-primary w-100 w-sm-auto"
                 href="{{ route('blogs') }}"
-            >More articles</a
             >
+                More articles
+            </a>
         </div>
     </section>
 @endsection

@@ -13,12 +13,12 @@
         <!-- Breadcrumb-->
         <nav aria-label="breadcrumb">
             <ol class="pt-lg-3 pb-2 pb-md-4 breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                 <li class="breadcrumb-item">
-                    <a href="shop-catalog.html">Shop catalog</a>
+                    <a href="{{ route('products') }}">products</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Single product
+                    product name
                 </li>
             </ol>
         </nav>
@@ -34,7 +34,7 @@
             <div class="col-md-6 gallery mb-3 mb-md-0">
                 <!-- Item--><a
                     class="d-block gallery-item card-hover zoom-effect mb-4"
-                    href="assets/img/shop/single/gallery/01.png">
+                    href="{{ asset('assets/img/shop/single/gallery/01.png') }}">
                     <div
                         class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
                         <i
@@ -46,7 +46,7 @@
                         <div class="zoom-effect-img bg-secondary p-4">
                             <img
                                 class="d-block mx-auto"
-                                src="assets/img/shop/single/gallery/01.png"
+                                src="{{ asset('assets/img/shop/single/gallery/01.png') }}"
                                 width="562"
                                 alt="Candle image #1" />
                         </div></div
@@ -56,7 +56,7 @@
                     <div class="col">
                         <a
                             class="d-block gallery-item card-hover zoom-effect"
-                            href="assets/img/shop/single/gallery/01.png">
+                            href="{{ asset('assets/img/shop/single/gallery/01.png') }}">
                             <div
                                 class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
                                 <i
@@ -68,7 +68,7 @@
                                 <div class="zoom-effect-img bg-secondary p-4">
                                     <img
                                         class="d-block mx-auto"
-                                        src="assets/img/shop/single/gallery/th01.png"
+                                        src="{{ asset('assets/img/shop/single/gallery/th01.png') }}"
                                         width="226"
                                         alt="Candle image #2" />
                                 </div></div
@@ -78,7 +78,7 @@
                     <div class="col">
                         <a
                             class="d-block gallery-item card-hover zoom-effect"
-                            href="assets/img/shop/single/gallery/02.png">
+                            href="{{ asset('assets/img/shop/single/gallery/02.png') }}">
                             <div
                                 class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
                                 <i
@@ -90,7 +90,7 @@
                                 <div class="zoom-effect-img bg-secondary p-4">
                                     <img
                                         class="d-block mx-auto"
-                                        src="assets/img/shop/single/gallery/th02.png"
+                                        src="{{ asset('assets/img/shop/single/gallery/th02.png') }}"
                                         width="226"
                                         alt="Candle image #3" />
                                 </div></div
@@ -99,7 +99,7 @@
                 </div>
                 <!-- Item--><a
                     class="d-block gallery-item card-hover zoom-effect"
-                    href="assets/img/shop/single/gallery/03.png">
+                    href="{{ asset('assets/img/shop/single/gallery/03.png') }}">
                     <div
                         class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
                         <i
@@ -111,7 +111,7 @@
                         <div class="zoom-effect-img bg-secondary p-4">
                             <img
                                 class="d-block mx-auto"
-                                src="assets/img/shop/single/gallery/03.png"
+                                src="{{ asset('assets/img/shop/single/gallery/03.png') }}"
                                 width="460"
                                 alt="Candle image #4" />
                         </div></div
@@ -142,155 +142,6 @@
                         <div class="h3 mb-0 me-3">$14.00</div>
                         <del class="fs-5 fw-medium text-muted">$19.00</del>
                     </div>
-{{--                    <!-- Color button selector-->--}}
-{{--                    <div class="h6">--}}
-{{--                        Color:<span class="text-muted fw-normal ms-1" id="colorOption"--}}
-{{--                        >Gray concrete</span--}}
-{{--                        >--}}
-{{--                    </div>--}}
-{{--                    <div class="d-flex pb-3">--}}
-{{--                        <div class="me-2 mb-2">--}}
-{{--                            <input--}}
-{{--                                class="btn-check"--}}
-{{--                                type="radio"--}}
-{{--                                name="color"--}}
-{{--                                data-binded-label="colorOption"--}}
-{{--                                value="Gray concrete"--}}
-{{--                                checked--}}
-{{--                                id="color1" />--}}
-{{--                            <label--}}
-{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
-{{--                                for="color1"--}}
-{{--                            ><span--}}
-{{--                                    class="d-block bg-size-cover bg-position-center rounded-circle"--}}
-{{--                                    style="--}}
-{{--                                        width: 1.5rem;--}}
-{{--                                        height: 1.5rem;--}}
-{{--                                        background-color: #c0c0c0;--}}
-{{--                                        background-image: url({{ asset('assets/img/shop/pattern/marble.jpg') }});--}}
-{{--                                        "></span--}}
-{{--                                ></label>--}}
-{{--                        </div>--}}
-{{--                        <div class="me-2 mb-2">--}}
-{{--                            <input--}}
-{{--                                class="btn-check"--}}
-{{--                                type="radio"--}}
-{{--                                name="color"--}}
-{{--                                data-binded-label="colorOption"--}}
-{{--                                value="Soft beige"--}}
-{{--                                id="color2" />--}}
-{{--                            <label--}}
-{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
-{{--                                for="color2"--}}
-{{--                            ><span--}}
-{{--                                    class="d-block rounded-circle"--}}
-{{--                                    style="--}}
-{{--                        width: 1.5rem;--}}
-{{--                        height: 1.5rem;--}}
-{{--                        background-color: #d9c9a1;--}}
-{{--                      "></span--}}
-{{--                                ></label>--}}
-{{--                        </div>--}}
-{{--                        <div class="me-2 mb-2">--}}
-{{--                            <input--}}
-{{--                                class="btn-check"--}}
-{{--                                type="radio"--}}
-{{--                                name="color"--}}
-{{--                                data-binded-label="colorOption"--}}
-{{--                                value="Bluish sky"--}}
-{{--                                id="color3" />--}}
-{{--                            <label--}}
-{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
-{{--                                for="color3"--}}
-{{--                            ><span--}}
-{{--                                    class="d-block rounded-circle"--}}
-{{--                                    style="--}}
-{{--                        width: 1.5rem;--}}
-{{--                        height: 1.5rem;--}}
-{{--                        background-color: #a1b7d9;--}}
-{{--                      "></span--}}
-{{--                                ></label>--}}
-{{--                        </div>--}}
-{{--                        <div class="me-2 mb-2">--}}
-{{--                            <input--}}
-{{--                                class="btn-check"--}}
-{{--                                type="radio"--}}
-{{--                                name="color"--}}
-{{--                                data-binded-label="colorOption"--}}
-{{--                                value="Green grass"--}}
-{{--                                id="color4" />--}}
-{{--                            <label--}}
-{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
-{{--                                for="color4"--}}
-{{--                            ><span--}}
-{{--                                    class="d-block rounded-circle"--}}
-{{--                                    style="--}}
-{{--                        width: 1.5rem;--}}
-{{--                        height: 1.5rem;--}}
-{{--                        background-color: #74947d;--}}
-{{--                      "></span--}}
-{{--                                ></label>--}}
-{{--                        </div>--}}
-{{--                        <div class="me-2 mb-2">--}}
-{{--                            <input--}}
-{{--                                class="btn-check"--}}
-{{--                                type="radio"--}}
-{{--                                name="color"--}}
-{{--                                data-binded-label="colorOption"--}}
-{{--                                value="Woody brown"--}}
-{{--                                id="color5" />--}}
-{{--                            <label--}}
-{{--                                class="btn btn-icon btn-sm btn-outline-secondary rounded-circle"--}}
-{{--                                for="color5"--}}
-{{--                            ><span--}}
-{{--                                    class="d-block bg-size-cover bg-position-center rounded-circle"--}}
-{{--                                    style="--}}
-{{--                                        width: 1.5rem;--}}
-{{--                                        height: 1.5rem;--}}
-{{--                                        background-color: #af8352;--}}
-{{--                                        background-image: url({{ asset('assets/img/shop/pattern/wood.jpg') }});--}}
-{{--                                        "></span--}}
-{{--                                ></label>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-                    <!-- Weight button selector-->
-{{--                    <div class="h6">Weight</div>--}}
-{{--                    <div class="d-flex">--}}
-{{--                        <div class="me-3">--}}
-{{--                            <input--}}
-{{--                                class="btn-check"--}}
-{{--                                type="radio"--}}
-{{--                                name="weight"--}}
-{{--                                value="140 g"--}}
-{{--                                checked--}}
-{{--                                id="weight1" />--}}
-{{--                            <label class="btn btn-outline-secondary px-2" for="weight1"--}}
-{{--                            ><span class="mx-1">140 g</span></label--}}
-{{--                            >--}}
-{{--                        </div>--}}
-{{--                        <div class="me-3">--}}
-{{--                            <input--}}
-{{--                                class="btn-check"--}}
-{{--                                type="radio"--}}
-{{--                                name="weight"--}}
-{{--                                value="260 g"--}}
-{{--                                id="weight2" />--}}
-{{--                            <label class="btn btn-outline-secondary px-2" for="weight2"--}}
-{{--                            ><span class="mx-1">260 g</span></label--}}
-{{--                            >--}}
-{{--                        </div>--}}
-{{--                        <div class="me-3">--}}
-{{--                            <input--}}
-{{--                                class="btn-check"--}}
-{{--                                type="radio"--}}
-{{--                                name="weight"--}}
-{{--                                value="440 g"--}}
-{{--                                id="weight3" />--}}
-{{--                            <label class="btn btn-outline-secondary px-2" for="weight3"--}}
-{{--                            ><span class="mx-1">440 g</span></label--}}
-{{--                            >--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                     <!-- Action buttons-->
                     <div
                         class="d-sm-flex d-md-block d-lg-flex py-4 py-md-5 my-3 my-md-0 mt-lg-0 mb-lg-4">
@@ -320,34 +171,8 @@
                                 type="button">
                                 <i class="ai-cart me-2 ms-n1"></i>Add to cart
                             </button>
-{{--                            <div class="nav">--}}
-{{--                                <a--}}
-{{--                                    class="nav-link fs-3 px-3"--}}
-{{--                                    href="shop-single.html#"--}}
-{{--                                    data-bs-toggle="tooltip"--}}
-{{--                                    title="Add to Favorites"--}}
-{{--                                ><i class="ai-heart"></i--}}
-{{--                                    ></a>--}}
-{{--                            </div>--}}
                         </div>
                     </div>
-                    <!-- Sharing-->
-{{--                    <div class="d-flex align-items-center">--}}
-{{--                        <h4 class="h6 me-4">Share product:</h4>--}}
-{{--                        <a--}}
-{{--                            class="btn btn-secondary btn-icon btn-sm btn-telegram rounded-circle me-3 mb-3"--}}
-{{--                            href="shop-single.html#"--}}
-{{--                        ><i class="ai-telegram"></i></a--}}
-{{--                        ><a--}}
-{{--                            class="btn btn-secondary btn-icon btn-sm btn-instagram rounded-circle me-3 mb-3"--}}
-{{--                            href="shop-single.html#"--}}
-{{--                        ><i class="ai-instagram"></i></a--}}
-{{--                        ><a--}}
-{{--                            class="btn btn-secondary btn-icon btn-sm btn-facebook rounded-circle mb-3"--}}
-{{--                            href="shop-single.html#"--}}
-{{--                        ><i class="ai-facebook"></i--}}
-{{--                            ></a>--}}
-{{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -661,7 +486,7 @@
                         ><a class="d-block p-2 p-xl-4" href="shop-single.html"
                         ><img
                                 class="d-block mx-auto"
-                                src="assets/img/shop/products/09.png"
+                                src="{{ asset('assets/img/shop/products/09.png') }}"
                                 width="226"
                                 alt="Product"
                             /></a>

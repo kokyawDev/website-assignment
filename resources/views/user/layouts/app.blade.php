@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Around | Shop Homepage</title>
+    <title>Beauty</title>
     <!-- SEO Meta Tags-->
     <meta
         name="description"
-        content="Around - Multipurpose Bootstrap HTML Template"/>
+        content="Beauty"/>
     <meta
         name="keywords"
         content="bootstrap, business, corporate, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, saas, multipurpose, product landing, shop, software, ui kit, web studio, landing, dark mode, html5, css3, javascript, gallery, slider, touch, creative"/>
@@ -22,21 +22,27 @@
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="{{ asset('assets/favicon/favicon-32x32.png') }}"/>
+{{--        href="{{ asset('assets/favicon/favicon-32x32.png') }}"--}}
+        href="{{ asset('img/peach.png') }}"
+    />
     <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="{{ asset('assets/favicon/favicon-16x16.png') }}"/>
+{{--        href="{{ asset('assets/favicon/favicon-16x16.png') }}"--}}
+        href="{{ asset('img/peach.png') }}"
+    />
     <link rel="manifest" href="{{ asset('assets/favicon/site.webmanifest') }}"/>
     <link
         rel="mask-icon"
         color="#6366f1"
-        href="{{ asset('assets/favicon/safari-pinned-tab.svg') }}"/>
+{{--        href="{{ asset('assets/favicon/safari-pinned-tab.svg') }}"--}}
+        href="{{ asset('img/peach.png') }}"
+    />
     <meta name="msapplication-TileColor" content="#080032"/>
-    <meta
-        name="msapplication-config"
-        content="{{ asset('assets/favicon/browserconfig.xml') }}"/>
+{{--    <meta--}}
+{{--        name="msapplication-config"--}}
+{{--        content="{{ asset('assets/favicon/browserconfig.xml') }}"/>--}}
     <meta name="theme-color" content="white"/>
     <!-- Import Google Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -50,8 +56,6 @@
         rel="stylesheet"
         media="screen"
         href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}"/>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     @yield('css')
 
@@ -68,15 +72,15 @@
             root.classList.remove("dark-mode");
         }
 
-        // (function () {
-        //     window.onload = function () {
-        //         const preloader = document.querySelector(".page-loading");
-        //         preloader.classList.remove("active");
-        //         setTimeout(function () {
-        //             preloader.remove();
-        //         }, 1500);
-        //     };
-        // })();
+        (function () {
+            window.onload = function () {
+                const preloader = document.querySelector(".page-loading");
+                preloader.classList.remove("active");
+                setTimeout(function () {
+                    preloader.remove();
+                }, 1500);
+            };
+        })();
     </script>
 </head>
 <!-- Body-->
@@ -90,7 +94,14 @@
     ];
 @endphp
 
-    <!-- Page wrapper-->
+<!-- Page loading spinner-->
+<div class="page-loading active">
+    <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+    </div>
+</div>
+
+<!-- Page wrapper-->
 <main class="page-wrapper">
     @include('user.layouts.search')
 
@@ -115,11 +126,11 @@
 <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/timezz/dist/timezz.js') }}"></script>
 <script src="{{ asset('assets/vendor/cleave.js/dist/cleave.min.js') }}"></script>
+@yield('js')
 <!-- Main theme script-->
 <script src="{{ asset('assets/js/theme.min.js') }}"></script>
 <!-- Customizer-->
 @vite(['resources/js/frontend.js'])
-@yield('js')
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {

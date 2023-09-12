@@ -6,13 +6,15 @@ use App\Http\Controllers\ClientSiteController;
 Route::middleware('web')->group(function() {
     Route::get('/', [ClientSiteController::class, 'index'])->name('home');
 
-    Route::get('/product-detail', [ClientSiteController::class, 'productDetail'])->name('product-detail');
+    Route::get('/products', [ClientSiteController::class, 'products'])->name('products');
+
+    Route::get('/products/{id?}', [ClientSiteController::class, 'productDetail'])->name('products.detail');
 
     Route::get('/checkout', [ClientSiteController::class, 'checkout'])->name('checkout');
 
     Route::get('/blogs', [ClientSiteController::class, 'posts'])->name('blogs');
 
-    Route::get('/blogs/{post}', [ClientSiteController::class, 'postDetail'])->name('blog-detail');
+    Route::get('/blogs/{post}', [ClientSiteController::class, 'postDetail'])->name('blogs.detail');
 
     Route::get('/sign-in', function() {
         return view('user.auth.sign-in');

@@ -45,12 +45,19 @@ class ClientSiteController extends Controller
             ]
         ];
 
+        $posts = Post::latest()->limit(3)->get();
+
         return view('user.index')
             ->with([
-                'trending_products' => $trending_products
+                'trending_products' => $trending_products,
+                'posts' => $posts
             ]);
     }
 
+    public function products()
+    {
+        return view('user.products');
+    }
     public function productDetail()
     {
         return view('user.product-detail');
