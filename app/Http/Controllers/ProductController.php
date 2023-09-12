@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -20,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -28,7 +32,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'min:3', 'max:255'],
+            'description' => ['required', 'min:3', 'max:255'],
+            'price' => ['required', 'numeric'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'thumbnail' => ['required', 'image'],
+            'quantity' => ['required', 'numeric'],
+        ]);
+
+
+        if($request->hasFile('thumbnail')){
+            $file = $request->file('thumbnail');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/products/', $filename);
+            $data['thumbnail'] = $filename;
+        }
+
+        $product = Product::create($data);
+
+        return redirect()->route('admin.products.index')->with('success', 'Product created successfully!');
     }
 
     /**
