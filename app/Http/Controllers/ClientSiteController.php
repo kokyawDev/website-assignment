@@ -45,7 +45,7 @@ class ClientSiteController extends Controller
             ]
         ];
 
-        $posts = Post::latest()->limit(3)->get();
+        $posts = Post::latest()->get();
 
         return view('user.index')
             ->with([
@@ -60,7 +60,12 @@ class ClientSiteController extends Controller
     }
     public function productDetail()
     {
-        return view('user.product-detail');
+        $posts = Post::latest()->get();
+
+        return view('user.product-detail')
+            ->with([
+                'posts' => $posts
+            ]);
     }
 
     public function checkout()

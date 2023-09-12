@@ -7,7 +7,7 @@
         <nav aria-label="breadcrumb">
             <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('blogs') }}">Blog</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('blogs') }}">Blog List</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($post->name) }}</li>
             </ol>
         </nav>

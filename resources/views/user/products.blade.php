@@ -8,7 +8,7 @@
             <ol class="pt-lg-3 pb-2 breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    products
+                    Product list
                 </li>
             </ol>
         </nav>

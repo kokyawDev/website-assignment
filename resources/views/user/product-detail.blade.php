@@ -15,7 +15,7 @@
             <ol class="pt-lg-3 pb-2 pb-md-4 breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('products') }}">products</a>
+                    <a href="{{ route('products') }}">Product List</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     product name
@@ -660,6 +660,66 @@
             <!-- Pagination (Bullets)-->
             <div
                 class="swiper-pagination position-relative bottom-0 pt-1 mt-4 d-lg-none"></div>
+        </div>
+    </section>
+
+    <!-- Blog-->
+
+    <section class="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5">
+        <h2 class="h1 pb-3 pb-md-4">Related blog</h2>
+        <div
+            class="swiper"
+            data-swiper-options='{
+              "slidesPerView": 1,
+              "spaceBetween": 24,
+              "pagination": {
+                "el": ".swiper-pagination",
+                "clickable": true
+              },
+              "breakpoints": {
+                "500": {
+                  "slidesPerView": 2
+                },
+                "991": {
+                  "slidesPerView": 3
+                }
+              }
+            }'>
+            <div class="swiper-wrapper">
+                @foreach($posts as $post)
+                    <!-- Item-->
+                    <div class="swiper-slide">
+                        <div class="position-relative">
+                            <img
+                                class="rounded-1"
+                                src="{{ $post->thumbnail }}"
+                                alt="Post image" />
+                            <div class="pt-3 mt-3">
+                                <h3 class="h4 mb-3">
+                                    <a class="stretched-link" href="{{ route('blogs.detail', $post) }}"
+                                    >{{ $post->name }}</a
+                                    >
+                                </h3>
+                                <p class="mb-0">
+                                    {{ $post->short_description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <!-- Pagination (Bullets)-->
+            <div
+                class="swiper-pagination position-relative bottom-0 pt-1 mt-4 d-lg-none"></div>
+        </div>
+        <!-- View all button-->
+        <div class="text-center mt-2 mb-sm-1 mt-lg-0 pt-4 pt-lg-5 pb-2 pb-md-4">
+            <a
+                class="btn btn-outline-primary w-100 w-sm-auto"
+                href="{{ route('blogs') }}"
+            >
+                More articles
+            </a>
         </div>
     </section>
 @endsection
