@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -30,7 +30,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'string'],
+        ]);
+
+        $data['password'] = bcrypt($data['password']);
+        $data['role'] = 'admin';
+        User::create($data);
+
+        return redirect()->route('admin.users.index')->with('success', 'User created successfully');
     }
 
     /**

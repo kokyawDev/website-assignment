@@ -6,7 +6,7 @@
         <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
 
             <!-- Modal body -->
-            <form action="{{ route('users.store') }}" method="POST">
+            <form action="{{ route('admin.users.store') }}" method="POST">
                 @csrf
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
