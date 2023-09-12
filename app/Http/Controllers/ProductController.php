@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -32,7 +34,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = $request->validate([
             'name' => ['required', 'min:3', 'max:255'],
             'description' => ['required', 'min:3', 'max:255'],
@@ -40,20 +41,49 @@ class ProductController extends Controller
             'category_id' => ['required', 'exists:categories,id'],
             'thumbnail' => ['required', 'image'],
             'quantity' => ['required', 'numeric'],
+            'product_images.*' => ['required', 'image']
         ]);
 
+        DB::beginTransaction();
 
-        if($request->hasFile('thumbnail')){
-            $file = $request->file('thumbnail');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/products/', $filename);
-            $data['thumbnail'] = $filename;
+        try {
+            if($request->hasFile('thumbnail')){
+                $file = $request->file('thumbnail');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('uploads/products/', $filename);
+                $data['thumbnail'] = $filename;
+            }
+
+            // store product with no product images
+            $product = Product::create($data);
+
+
+            if($request->hasFile('product_images')){
+                $images = [];
+                foreach($request->file('product_images') as $file){
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = time() . '.' . $extension;
+                    $file->move('uploads/products/', $filename);
+
+                    $productImage = ProductImage::create([
+                        'product_id' => $product->id,
+                        'image' => $filename
+                    ]);
+                }
+            }
+
+            DB::commit();
+
+            return redirect()->route('admin.products.index')->with('success', 'Product created successfully!');
+
+        }  catch (\Exception $e) {
+
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
 
-        $product = Product::create($data);
 
-        return redirect()->route('admin.products.index')->with('success', 'Product created successfully!');
     }
 
     /**

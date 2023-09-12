@@ -10,7 +10,14 @@ class Product extends Model
 {
     use SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'category_id',
+        'name',
+        'description',
+        'price',
+        'thumbnail',
+        'quantity'
+    ];
 
     public function category()
     {
