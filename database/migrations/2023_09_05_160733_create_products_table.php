@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('thumbnail');
             $table->string('status');
             $table->decimal('price', 10, 2);
-//            $table->integer('quantity')->default(0);
+            $table->integer('quantity')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
