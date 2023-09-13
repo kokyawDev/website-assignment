@@ -15,13 +15,12 @@ return new class extends Migration {
             $table->uuid('uuid')->unique();
             $table->string('name');
             $table->unsignedBigInteger('category_id');
-            $table->string('shop_description');
+            $table->string('short_description');
             $table->text('description');
             $table->string('thumbnail');
             $table->string('status');
             $table->decimal('price', 10, 2);
-            $table->integer('quantity')->default(0);
-            $table->unsignedBigInteger('category_id');
+//            $table->integer('quantity')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

@@ -16,8 +16,8 @@
             </div>
             <div class="col-xl-2 offset-xl-1 col-lg-3 col-sm-5">
                 <select class="form-select">
-                    <option class="">All tags</option>
-                    @foreach($tags as $key => $value)
+                    <option class="">All Categories</option>
+                    @foreach($categories as $key => $value)
                         <option class="{{ $key }}">{{ $value }}</option>
                     @endforeach
                 </select>
@@ -39,7 +39,7 @@
                     </p>
                     <div class="d-flex flex-wrap align-items-center mt-n2">
                         <span class="fs-sm text-muted mt-2">{{ date('F j, Y', strtotime($post->updated_at)) }}</span>
-                        <span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="{{ route('blogs') }}">{{ $post->tag->name }}</a>
+                        <span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="{{ route('blogs') }}">{{ $post->category->name }}</a>
                     </div>
                 </div>
             </div>

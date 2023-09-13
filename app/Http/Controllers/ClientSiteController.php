@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
-use App\Models\Tag;
-use Illuminate\Http\Request;
 
 class ClientSiteController extends Controller
 {
@@ -79,7 +78,7 @@ class ClientSiteController extends Controller
 
         return view('user.blogs')
             ->with([
-                'tags' => Tag::pluck('name', 'id')->toArray(),
+                'categories' => Category::pluck('name', 'id')->toArray(),
                 'posts' => $posts
             ]);
     }

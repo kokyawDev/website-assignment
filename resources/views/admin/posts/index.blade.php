@@ -70,7 +70,7 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-4 py-3">Post</th>
-                            <th scope="col" class="px-4 py-3">Tag</th>
+                            <th scope="col" class="px-4 py-3">Category</th>
                             <th scope="col" class="px-4 py-3">Thumbnail</th>
                             <th scope="col" class="px-4 py-3">Short Desc</th>
                             <th scope="col" class="px-4 py-3">is Published</th>
@@ -88,7 +88,7 @@
                                     </th>
                                     <th scope="row"
                                         class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $post->tag->name }}
+                                        {{ $post->category->name }}
                                     </th>
                                     <th scope="row">
                                         <img class="w-10 h-10 rounded-md mx-auto" src="{{ $post->thumbnail }}" alt="Jese image">
