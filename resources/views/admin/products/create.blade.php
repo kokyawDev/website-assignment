@@ -5,6 +5,9 @@
         <!-- Modal content -->
         <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
 
+            @if($errors->any())
+                @dd($errors)
+            @endif
             <!-- Modal body -->
             <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -31,6 +34,17 @@
 
                         </select>
                     </div>
+                </div>
+
+                <div class="grid gap-4 mb-4 sm:grid-cols-1">
+                    <div>
+                        <label for="short_description"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Short Description</label>
+                        <textarea rows="5" name="short_description" id="short_description"
+                                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  placeholder="Type Product Description" required=""></textarea>
+                    </div>
+
                 </div>
 
                 <div class="grid gap-4 mb-4 sm:grid-cols-1">

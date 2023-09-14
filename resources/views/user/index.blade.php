@@ -78,106 +78,33 @@
                     }'>
                     <div class="swiper-wrapper">
                         <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/01.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-3 ps-md-4">
-                                            <h3 class="fs-sm mb-2">Exquisite glass vase</h3>
-                                            <p class="fs-sm mb-0">$19.00</p>
+                        @foreach($popular_products as $popular_product)
+                            <div class="swiper-slide h-auto">
+                                <a
+                                    class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
+                                    href="{{ route('products.detail', $popular_product->id) }}">
+                                    <div class="card-body p-4 px-sm-3 px-md-4">
+                                        <div class="d-flex align-items-center">
+                                            <img
+                                                src="{{ $popular_product->thumbnail }}"
+                                                width="97"
+                                                alt="Product" />
+                                            <div class="ps-3 ps-md-4">
+                                                <h3 class="fs-sm mb-2">{{ $popular_product->name }}</h3>
+                                                <p class="fs-sm mb-0">
+                                                    $ {{ $popular_product->discounted_price ? number_format($popular_product->discounted_price, 2) : number_format($popular_product->price, 2) }}
+                                                    @if($popular_product->discounted_price)
+                                                        <del class="text-muted fs-xs">
+                                                            $ {{ number_format($popular_product->price, 2) }}
+                                                        </del>
+                                                    @endif
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/02.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-3 ps-md-4">
-                                            <h3 class="fs-sm mb-2">Pot for home flowers</h3>
-                                            <p class="fs-sm mb-0">
-                                                $11.00 <del class="text-muted fs-xs">$15.00</del>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/03.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-4">
-                                            <h3 class="fs-sm mb-2">Ceramic soap dispenser</h3>
-                                            <p class="fs-sm mb-0">$16.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/04.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-3 ps-md-4">
-                                            <h3 class="fs-sm mb-2">
-                                                Wooden clock with metal hands
-                                            </h3>
-                                            <p class="fs-sm mb-0">$24.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Item-->
-                        <div class="swiper-slide h-auto">
-                            <a
-                                class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
-                                href="shop-single.html">
-                                <div class="card-body p-4 px-sm-3 px-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="assets/img/landing/shop/hero/05.png"
-                                            width="97"
-                                            alt="Product" />
-                                        <div class="ps-3 ps-md-4">
-                                            <h3 class="fs-sm mb-2">
-                                                Scented candle in ceramic shell
-                                            </h3>
-                                            <p class="fs-sm mb-0">$13.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -187,6 +114,7 @@
     <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
         <div class="row pt-2 py-md-4">
             <div class="col-lg-10 col-xl-9">
+                <h2 class="h1 pt-1 mb-3">Who we are</h2>
                 <p class="lead text-dark pb-md-2 pb-lg-3 mb-2">
                     We do not believe that one style suits everyone. That is why we
                     choose three design directions for the new season. Get inspired by
@@ -194,9 +122,9 @@
                     your own home. On the site you will find all the wonderful decor
                     items from photo frames to tablecloths for the dining table.
                 </p>
-                <a class="btn btn-lg btn-link px-0" href="landing-shop.html#"
-                >About us<i class="ai-arrow-right ms-2"></i
-                    ></a>
+{{--                <a class="btn btn-lg btn-link px-0" href="landing-shop.html#"--}}
+{{--                >About us<i class="ai-arrow-right ms-2"></i--}}
+{{--                    ></a>--}}
             </div>
         </div>
     </section>
@@ -248,7 +176,7 @@
                 <div class="swiper-wrapper">
                     <!-- Item-->
                     @foreach($trending_products as $trending_product)
-                        <div class="swiper-slide" x-data='@json($trending_product)'>
+                        <div class="swiper-slide">
                         <div
                             class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
                             <span class="badge bg-faded-danger text-danger position-absolute top-0 start-0 mt-3 ms-3">{{ $trending_product['status'] }}</span>
@@ -263,7 +191,7 @@
                         </div>
                         <div class="d-flex mb-1">
                             <h3 class="h6 mb-0">
-                                <a href="shop-single.html">{{ $trending_product['name'] }}</a>
+                                <a href="{{ route('products.detail', $trending_product['id']) }}">{{ $trending_product['name'] }}</a>
                             </h3>
                         </div>
                         <div class="d-flex align-items-center">

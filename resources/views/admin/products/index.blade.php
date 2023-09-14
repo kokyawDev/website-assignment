@@ -28,7 +28,6 @@
                         <tr>
                             <th scope="col" class="px-4 py-4">Product name</th>
                             <th scope="col" class="px-4 py-3">Category</th>
-                            <th scope="col" class="px-4 py-3">Brand</th>
                             <th scope="col" class="px-4 py-3">Description</th>
                             <th scope="col" class="px-4 py-3">Price</th>
                             <th scope="col" class="px-4 py-3">
@@ -43,9 +42,11 @@
                                     class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}
                                 </th>
                                 <td class="px-4 py-1">{{ $product->name }}</td>
+                                <td class="px-4 py-1">{{ $product->category->id }}</td>
+                                <td class="px-4 py-1">{{ $product->price }}</td>
 
                                 <td class="px-4 py-3 flex items-center justify-end">
-                                    <a href="{{ route('categories.edit', $product->id) }}"
+                                    <a href="{{ route('admin.products.edit', $product->id) }}"
                                        class="flex w-50 items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
                                         <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg"
                                              viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -56,7 +57,7 @@
                                         </svg>
                                         Edit
                                     </a>
-                                    <form action="{{ route('categories.destroy', $product->id) }}" method="POST">
+                                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="confirm('Are you sure?')"

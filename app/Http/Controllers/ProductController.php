@@ -36,7 +36,8 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'min:3', 'max:255'],
-            'description' => ['required', 'min:3', 'max:255'],
+            'description' => ['required', 'min:3'],
+            'short_description' => ['required', 'min:3', 'max:255'],
             'price' => ['required', 'numeric'],
             'category_id' => ['required', 'exists:categories,id'],
             'thumbnail' => ['required', 'image'],
@@ -54,6 +55,8 @@ class ProductController extends Controller
                 $file->move('uploads/products/', $filename);
                 $data['thumbnail'] = $filename;
             }
+
+            $data['status'] = 'New';
 
             $product = Product::create($data);
 
@@ -78,6 +81,9 @@ class ProductController extends Controller
         }  catch (\Exception $e) {
 
             DB::rollBack();
+
+            dd($e->getMessage());
+
             return redirect()->back()->with('error', $e->getMessage());
         }
 

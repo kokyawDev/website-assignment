@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -13,11 +14,22 @@ class Product extends Model
     protected $fillable = [
         'category_id',
         'name',
+        'short_description',
         'description',
         'price',
+        'discounted_price',
+        'status',
         'thumbnail',
         'quantity'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->uuid = Str::uuid()->toString();
+        });
+    }
 
     public function category()
     {
