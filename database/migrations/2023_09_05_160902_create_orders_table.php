@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('shipping_method');
             $table->string('shipping_status');
             $table->string('shipping_address');
+            $table->string('order_note')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
