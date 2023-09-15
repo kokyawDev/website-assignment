@@ -19,6 +19,10 @@ class ProductValidationRule implements Rule
 //    }
     public function passes($attribute, $value)
     {
+        if(empty($value)) {
+            return false;
+        }
+
         foreach ($value as $product) {
             if (!isset($product['id']) || !isset($product['qty'])) {
                 return false;
