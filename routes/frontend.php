@@ -16,7 +16,7 @@ Route::middleware('web')->group(function() {
 
     Route::get('/blogs', [ClientSiteController::class, 'posts'])->name('blogs');
 
-    Route::get('/blogs/{post}', [ClientSiteController::class, 'postDetail'])->name('blogs.detail');
+    Route::get('/blogs/{post:slug}', [ClientSiteController::class, 'postDetail'])->name('blogs.detail');
 
     Route::get('/sign-in', function() {
         return view('user.auth.sign-in');

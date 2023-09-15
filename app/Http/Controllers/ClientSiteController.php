@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\Post;
 use App\Models\Product;
 use App\Rules\ProductValidationRule;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +18,11 @@ class ClientSiteController extends Controller
     public function index()
     {
 
-        $popular_products = Product::select('id', 'uuid', 'name', 'status', 'price', 'discounted_price', 'thumbnail')->latest()->get()->shuffle();
+        $popular_products = Product::select('id', 'uuid', 'name', 'status', 'price', 'discounted_price',
+            'thumbnail')->latest()->get()->shuffle();
 
-        $trending_products = Product::select('id', 'uuid', 'name', 'status', 'price', 'discounted_price', 'thumbnail')->latest()->get()->shuffle()->toArray();
+        $trending_products = Product::select('id', 'uuid', 'name', 'status', 'price', 'discounted_price',
+            'thumbnail')->latest()->get()->shuffle()->toArray();
 
         $posts = Post::latest()->get();
 
@@ -33,7 +36,8 @@ class ClientSiteController extends Controller
 
     public function products()
     {
-        $products = Product::select('id', 'uuid', 'name', 'status', 'price', 'discounted_price', 'thumbnail')->latest()->paginate(3);
+        $products = Product::select('id', 'uuid', 'name', 'status', 'price', 'discounted_price',
+            'thumbnail')->latest()->paginate(3);
 
         return view('user.products')
             ->with([
@@ -41,6 +45,7 @@ class ClientSiteController extends Controller
                 'products' => $products
             ]);
     }
+
     public function productDetail(Product $product)
     {
         $posts = Post::latest()->get();
@@ -86,7 +91,7 @@ class ClientSiteController extends Controller
                 ->with([
                     'success' => 'Your order has been placed successfully.'
                 ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             return redirect()->route('checkout')
@@ -94,25 +99,6 @@ class ClientSiteController extends Controller
                     'error' => $e->getMessage()
                 ]);
         }
-    }
-
-    public function posts()
-    {
-        $posts = Post::latest()->paginate(2);
-
-        return view('user.blogs')
-            ->with([
-                'categories' => Category::pluck('name', 'id')->toArray(),
-                'posts' => $posts
-            ]);
-    }
-
-    public function postDetail(Post $post)
-    {
-        return view('user.blog-detail')
-            ->with([
-                'post' => $post
-            ]);
     }
 
     public function createOrder($data)
@@ -129,29 +115,49 @@ class ClientSiteController extends Controller
 
         $product_data = [];
 
-        foreach ($order_items as $order_item)
-        {
+        foreach ($order_items as $order_item) {
             $product = Product::FindOrFail($order_item['id']);
 
             $qty_price = ($product->discounted_price) ? $order_item['qty'] * $product->discounted_price : $order_item['qty'] * $product->price;
 
-            array_push($product_data, [
+            $product_data[] = [
                 'product_id' => $product->id,
                 'quantity' => $order_item['qty'],
                 'price' => $qty_price
-            ]);
+            ];
+
         }
 
         $order_data['total_price'] = array_sum(array_column($product_data, 'price'));
 
         $order = Order::create($order_data);
 
-        foreach($product_data as $prod_data) {
+        foreach ($product_data as $prod_data) {
             $prod_data['order_id'] = $order->id;
 
             OrderItem::create($prod_data);
         }
 
         return $order;
+    }
+
+    public function posts()
+    {
+        $posts = Post::latest()->paginate(2);
+
+        return view('user.blogs')
+            ->with([
+                'categories' => Category::pluck('name', 'id')->toArray(),
+                'posts' => $posts
+            ]);
+    }
+
+    public function postDetail($slug)
+    {
+        $post = Post::where('slug', $slug)->first();
+        return view('user.blog-detail')
+            ->with([
+                'post' => $post
+            ]);
     }
 }
