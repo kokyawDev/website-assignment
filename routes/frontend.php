@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientSiteController;
 
-Route::middleware('web')->group(function() {
+Route::middleware('web')->group(function () {
     Route::get('/', [ClientSiteController::class, 'index'])->name('home');
 
     Route::get('/products', [ClientSiteController::class, 'products'])->name('products');
@@ -18,11 +18,11 @@ Route::middleware('web')->group(function() {
 
     Route::get('/blogs/{post:slug}', [ClientSiteController::class, 'postDetail'])->name('blogs.detail');
 
-    Route::get('/sign-in', function() {
+    Route::get('/sign-in', function () {
         return view('user.auth.sign-in');
     })->name('sign-in');
 
-    Route::get('/sign-up', function() {
+    Route::get('/sign-up', function () {
         return view('user.auth.sign-up');
     })->name('sign-up');
 });

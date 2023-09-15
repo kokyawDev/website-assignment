@@ -89,7 +89,7 @@ class ClientSiteController extends Controller
 
             return redirect()->route('home')
                 ->with([
-                    'success' => 'Your order has been placed successfully.'
+                    'success' => 'Your order has been created successfully.'
                 ]);
         } catch (Exception $e) {
             DB::rollBack();
