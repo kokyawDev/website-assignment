@@ -31,7 +31,7 @@ Route::middleware('auth')->prefix('admin/')->name('admin.')->group(function () {
 
     //    Route::resource('/tags', TagController::class)->except(['create', 'edit', 'show']);
 
-    Route::resource('/posts', PostController::class)->except(['create', 'edit', 'show']);
+    Route::resource('/posts', PostController::class);
 
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);

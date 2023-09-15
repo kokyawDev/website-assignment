@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -13,7 +15,6 @@ class PostController extends Controller
      */
     public function index()
     {
-
         $query = Post::query();
 
         if(request()->has('keyword')) {
@@ -30,27 +31,83 @@ class PostController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $categories = Category::all();
+
+        return view('admin.posts.create', compact('categories'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|unique:tags|max:255',
-            'is_published' => 'boolean',
+        $data = $request->validate([
+            'name' => ['required', 'min:3', 'max:255'],
+            'description' => ['required', 'min:3', 'max:10000'],
+            'short_description' => ['required', 'min:3', 'max:255'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'thumbnail' => ['required', 'image'],
+            'cover' => ['required', 'image'],
         ]);
 
-        if(!isset($validated['is_published'])) {
-            $validated['is_published'] = 0;
+        DB::beginTransaction();
+
+        try {
+            if($request->hasFile('thumbnail')) {
+                $file = $request->file('thumbnail');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('uploads/posts/', $filename);
+                $data['thumbnail'] = '/uploads/posts/'.$filename;
+            }
+
+            if($request->hasFile('cover')) {
+                $file = $request->file('cover');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('uploads/posts/', $filename);
+                $data['thumbnail'] = '/uploads/posts/'.$filename;
+            }
+
+            Post::create($data);
+
+            DB::commit();
+
+            return redirect()->route('admin.posts.index')
+                ->with('success', 'Post has been created successfully!');
+
+        } catch (\Exception $e) {
+            dd($e);
+            DB::rollBack();
+
+            return redirect()->back()->with('error', $e->getMessage());
         }
+    }
 
-        $post = Post::create([
-            'name' => $validated['name'],
+    /**
+     * Display the specified resource.
+     */
+    public function show(Post $post)
+    {
+        abort(404);
+    }
 
-            'is_published' => $validated['is_published']
-        ]);
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Post $post)
+    {
+        $categories = Category::all();
 
-        return redirect()->route('admin.posts.index')
-            ->with('success', "$post->name is successfully created.");
+        return view('admin.posts.edit')
+            ->with([
+                'categories' => $categories,
+                'post' => $post
+            ]);
     }
 
     /**
@@ -58,19 +115,38 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'unique:tags,name,' . $post->id],
-            'is_published' => 'boolean',
+        $data = $request->validate([
+            'name' => ['required', 'min:3', 'max:255'],
+            'description' => ['required', 'min:3', 'max:10000'],
+            'short_description' => ['required', 'min:3', 'max:255'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'thumbnail' => ['nullable', 'image'],
+            'cover' => ['nullable', 'image'],
         ]);
 
-        if(!isset($validated['is_published'])) {
-            $validated['is_published'] = 0;
+        DB::beginTransaction();
+
+        try {
+            if($request->hasFile('thumbnail')) {
+                $file = $request->file('thumbnail');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('uploads/products/', $filename);
+                $data['thumbnail'] = '/uploads/products/'.$filename;
+            }
+
+            $post->update($data);
+
+            DB::commit();
+
+            return redirect()->route('admin.posts.index')->with('success', 'Post has been updated successfully!');
+
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
+            return redirect()->back()->with('error', $e->getMessage());
         }
-
-        $post->update($validated);
-
-        return redirect()->route('admin.posts.index')
-            ->with('success', "$post->name is successfully updated.");
     }
 
     /**
@@ -80,7 +156,7 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('admin.posts.index')
-            ->with('success', "Post has been successfully deleted.");
+        return redirect()->route('admin.posts.index')->with('success', 'Post has been deleted successfully!');
+
     }
 }

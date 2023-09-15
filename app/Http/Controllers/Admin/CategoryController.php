@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(5);
 
         return view('admin.categories.index', compact('categories'));
     }
@@ -37,7 +37,8 @@ class CategoryController extends Controller
 
         Category::create($data);
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully');
+        return redirect()->route('admin.categories.index')
+            ->with('success', 'Category created successfully');
     }
 
     /**
@@ -45,7 +46,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -67,7 +68,7 @@ class CategoryController extends Controller
 
         $category->update($data);
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
+        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully');
     }
 
     /**
@@ -75,8 +76,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if($category->products->isNotEmpty() or $category->posts->isNotEmpty()) {
+            return redirect()->route('admin.categories.index')->with('error', 'You can\'t delete the category.');
+        }
+
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+        return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully');
     }
 }
