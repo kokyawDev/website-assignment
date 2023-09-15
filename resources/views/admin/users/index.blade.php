@@ -31,7 +31,6 @@
                             <th scope="col" class="px-4 py-4">Name</th>
                             <th scope="col" class="px-4 py-3">Email</th>
                             <th scope="col" class="px-4 py-3">Role</th>
-{{--                            actions th with left align --}}
                             <th scope="col" class="pr-10 py-3 text-right">Actions</th>
                         </tr>
                         </thead>

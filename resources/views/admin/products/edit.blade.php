@@ -3,6 +3,7 @@
 
     <div class="relative p-4 w-full max-w-full max-h-full">
         <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+
             <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
@@ -28,7 +29,6 @@
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
-
                         </select>
                         @if($errors->has('category_id'))
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
@@ -40,7 +40,8 @@
                 <div class="grid gap-4 mb-4 sm:grid-cols-1">
                     <div>
                         <label for="short_description"
-                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Short Description</label>
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Short
+                            Description</label>
                         <textarea rows="5" name="short_description" id="short_description"
                                   class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                   placeholder="Type Product Description" required=""></textarea>
@@ -95,7 +96,9 @@
                     <div>
                         <label for="thumbnail"
                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Thumbnail</label>
-                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="thumbnail" id="file_input" type="file" accept="image/*">
+                        <input
+                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                            name="thumbnail" id="file_input" type="file" accept="image/*">
                         @if($errors->has('thumbnail'))
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                                     class="font-medium">{{ $errors->first('thumbnail') }}</p>
@@ -106,8 +109,11 @@
                 <div class="grid gap-4 mb-4 sm:grid-cols-1">
 
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="product_images">Product Images</label>
-                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="product_images[]" id="product_images" type="file" accept="image/*" multiple>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                               for="product_images">Product Images</label>
+                        <input
+                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                            name="product_images[]" id="product_images" type="file" accept="image/*" multiple>
                         @if($errors->has('product_images'))
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                                     class="font-medium">{{ $errors->first('product_images') }}</p>
@@ -121,8 +127,13 @@
                 <button type="submit"
                         class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
 
-                    Create
+                    Update
                 </button>
+
+                <a href="{{ route('admin.products.index') }}"
+                   class="text-white inline-flex items-center bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                    Cancel
+                </a>
             </form>
         </div>
     </div>

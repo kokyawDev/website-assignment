@@ -69,10 +69,10 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
+                            <th scope="col" class="px-4 py-3">No</th>
                             <th scope="col" class="px-4 py-3">Post</th>
                             <th scope="col" class="px-4 py-3">Category</th>
                             <th scope="col" class="px-4 py-3">Thumbnail</th>
-                            <th scope="col" class="px-4 py-3">Short Desc</th>
                             <th scope="col" class="px-4 py-3">is Published</th>
                             <th scope="col" class="px-4 py-3">Created at</th>
                             <th scope="col" class="px-4 py-3">Updated at</th>
@@ -83,22 +83,15 @@
                             @foreach($posts as $post)
                                 <tr class="border-b dark:border-gray-700">
                                     <th scope="row"
-                                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $post->name }}
+                                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}
                                     </th>
-                                    <th scope="row"
-                                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <td class="px-4 py-3">{{ $post->name }}</td>
+                                    <td class="px-4 py-3">
                                         {{ $post->category->name }}
-                                    </th>
-                                    <th scope="row">
+                                    </td>
+                                    <td class="px-4 py-3">
                                         <img class="w-10 h-10 rounded-md mx-auto" src="{{ $post->thumbnail }}" alt="Jese image">
-                                    </th>
-                                    <th scope="row"
-                                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <span class="w-[200px] truncate block">
-                                            {{ $post->short_description }}
-                                        </span>
-                                    </th>
+                                    </td>
                                     <td class="px-4 py-3">{{ $post->is_published ? 'true' : 'false' }}</td>
                                     <td class="px-4 py-3">{{ date('d-m-Y', strtotime($post->created_at)) }}</td>
                                     <td class="px-4 py-3">{{ date('d-m-Y', strtotime($post->updated_at)) }}</td>

@@ -1,4 +1,4 @@
-Admin\<?php
+<?php
 
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;

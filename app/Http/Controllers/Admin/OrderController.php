@@ -72,7 +72,7 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Order $order): \Illuminate\Http\RedirectResponse
     {
         $data = $request->validate([
             'customer_name' => 'required|string|max:255',
@@ -95,7 +95,6 @@ class OrderController extends Controller
         return redirect()
             ->route('admin.orders.index')
             ->with('success', 'Order has been updated successfully.');
-
     }
 
     /**

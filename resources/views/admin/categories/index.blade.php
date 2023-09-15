@@ -27,8 +27,8 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-4 py-4">No</th>
-                            <th scope="col" class="px-4 py-4">Name</th>
+                            <th scope="col" class="px-4 py-3">No</th>
+                            <th scope="col" class="px-4 py-3">Name</th>
                             <th scope="col" class="px-4 py-3">
                                 <span class="sr-only">Actions</span>
                             </th>
@@ -38,9 +38,9 @@
                         @foreach($categories as $category)
                             <tr class="border-b dark:border-gray-700">
                                 <th scope="row"
-                                    class="px-4 py-1 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}
+                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}
                                 </th>
-                                <td class="px-4 py-1">{{ $category->name }}</td>
+                                <td class="px-4 py-3">{{ $category->name }}</td>
 
                                 <td class="px-4 py-3 flex items-center justify-end">
                                     <a href="{{ route('admin.categories.edit', $category->id) }}"

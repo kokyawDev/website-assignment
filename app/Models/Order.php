@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Order extends Model
@@ -11,6 +12,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
+        'order_no',
         'customer_name',
         'customer_email',
         'customer_phone',
@@ -24,7 +26,7 @@ class Order extends Model
         'order_note'
     ];
 
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
         static::creating(function ($model) {
@@ -32,7 +34,12 @@ class Order extends Model
         });
     }
 
-    public function order_items()
+    public function setOrderNoAttribute(): void
+    {
+        $this->attributes['order_no'] = 'ORD-' . '-' . sprintf('%04d', (self::max('id') + 1));
+    }
+
+    public function order_items(): HasMany
     {
         return $this->hasMany(OrderItem::class, 'order_id', 'id');
     }

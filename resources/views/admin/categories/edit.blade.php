@@ -6,7 +6,7 @@
         <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
 
             <!-- Modal body -->
-            <form action="{{ route('categories.update', $category->id) }}" method="POST">
+            <form action="{{ route('admin.categories.update', $category->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
@@ -25,9 +25,13 @@
                 </div>
                 <button type="submit"
                         class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-
                     Update
                 </button>
+                <a href="{{ route('admin.categories.index') }}"
+                   class="text-white inline-flex items-center bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                    Cancel
+                </a>
+
             </form>
         </div>
     </div>
