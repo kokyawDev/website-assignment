@@ -108,34 +108,29 @@
                     <!-- Action buttons-->
                     <div
                         class="d-sm-flex d-md-block d-lg-flex py-4 py-md-5 my-3 my-md-0 mt-lg-0 mb-lg-4">
-                        <div
-                            class="count-input bg-gray rounded-3 me-4 mb-3 mb-sm-0 mb-md-3 mb-lg-0">
-                            <button
-                                class="btn btn-icon btn-lg fs-xl"
-                                type="button"
-                                data-decrement>
-                                -
-                            </button>
-                            <input
-                                class="form-control"
-                                type="number"
-                                value="1"
-                                readonly />
-                            <button
-                                class="btn btn-icon btn-lg fs-xl"
-                                type="button"
-                                data-increment>
-                                +
-                            </button>
-                        </div>
                         <div class="d-flex align-items-center">
                             <button
+                                onClick='setProductToStore(@json($product))'
                                 class="btn btn-lg btn-primary w-100 w-lg-auto me-2"
                                 type="button">
                                 <i class="ai-cart me-2 ms-n1"></i>Add to cart
                             </button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dscription section #2-->
+    <section class="container pb-5 mb-sm-2 mb-lg-3 mb-xl-4 mb-xxl-5">
+        <div class="row align-items-center pb-md-3">
+            <div class="col-md-12 ">
+                <div class="ps-md-4 ps-lg-0">
+                    <h2 class="h3 mb-sm-4">Description</h2>
+                    <p class="mb-4 mb-lg-5">
+                        {!! $product->description !!}
+                    </p>
                 </div>
             </div>
         </div>
@@ -409,5 +404,9 @@
     <script src="{{ asset('assets/vendor/lightgallery/plugins/fullscreen/lg-fullscreen.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/lightgallery/plugins/zoom/lg-zoom.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/lightgallery/plugins/thumbnail/lg-thumbnail.min.js') }}"></script>
+
+    <script>
+
+    </script>
 @endsection
 
