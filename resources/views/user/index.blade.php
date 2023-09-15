@@ -116,11 +116,7 @@
             <div class="col-lg-10 col-xl-9">
                 <h2 class="h1 pt-1 mb-3">Who we are</h2>
                 <p class="lead text-dark pb-md-2 pb-lg-3 mb-2">
-                    We do not believe that one style suits everyone. That is why we
-                    choose three design directions for the new season. Get inspired by
-                    new trends and create an atmosphere of coziness and comfort in
-                    your own home. On the site you will find all the wonderful decor
-                    items from photo frames to tablecloths for the dining table.
+                    Beauty was created with the simple vision of making reasonably priced and superior cosmetic products available to the Myanmar market. Frustrated with the lack of quality options accessible to the majority of the local population, we saw no reason as to why Myanmar, a country full of people who set the highest bar for themselves on presentation and perfection, should not have its own home-grown cosmetic brand that it could be proud of.
                 </p>
 {{--                <a class="btn btn-lg btn-link px-0" href="landing-shop.html#"--}}
 {{--                >About us<i class="ai-arrow-right ms-2"></i--}}
@@ -134,20 +130,6 @@
             class="d-flex align-items-center justify-content-between pb-4 mb-2 mb-md-3">
             <h2 class="h1 pt-1 mb-0">Trending products</h2>
             <!-- Slider prev/next buttons-->
-            <div class="d-flex">
-                <button
-                    class="btn btn-prev btn-icon btn-sm btn-outline-primary rounded-circle ms-3"
-                    type="button"
-                    id="trending-prev">
-                    <i class="ai-arrow-left"></i>
-                </button>
-                <button
-                    class="btn btn-next btn-icon btn-sm btn-outline-primary rounded-circle ms-3"
-                    type="button"
-                    id="trending-next">
-                    <i class="ai-arrow-right"></i>
-                </button>
-            </div>
         </div>
         <!-- Slider (popular items)-->
         <div>
@@ -179,7 +161,7 @@
                         <div class="swiper-slide">
                         <div
                             class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                            <span class="badge bg-faded-danger text-danger position-absolute top-0 start-0 mt-3 ms-3">{{ $trending_product['status'] }}</span>
+{{--                            <span class="badge bg-faded-danger text-danger position-absolute top-0 start-0 mt-3 ms-3">{{ $trending_product['status'] }}</span>--}}
                             <a class="d-block p-2 p-xl-4" href="{{ route('products.detail', $trending_product['id']) }}">
                                 <img
                                     class="d-block mx-auto"

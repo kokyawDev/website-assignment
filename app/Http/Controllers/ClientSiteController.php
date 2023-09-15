@@ -35,10 +35,18 @@ class ClientSiteController extends Controller
     }
 
     public function products()
-    {
-        $products = Product::select('id', 'uuid', 'name', 'status', 'price', 'discounted_price',
-            'thumbnail')->latest()->paginate(3);
+    {=
+        $query = Product::select('id', 'uuid', 'name', 'status', 'price', 'discounted_price', 'thumbnail');
 
+        if(request()->category_id) {
+            $query = $query->where('category_id', request()->category_id);
+        }
+
+        if(request()->keyword) {
+            $query = $query->where('name', 'like', '%'.request()->keyword.'%');
+        }
+
+        $products = $query->latest()->paginate(3);
         return view('user.products')
             ->with([
                 'categories' => Category::pluck('name', 'id')->toArray(),
@@ -101,6 +109,38 @@ class ClientSiteController extends Controller
         }
     }
 
+<<<<<<< HEAD
+=======
+    public function posts()
+    {
+        $query = Post::query();
+
+        if(request()->category_id) {
+            $query = $query->where('category_id', request()->category_id);
+        }
+
+        if(request()->keyword) {
+            $query = $query->where('name', 'like', '%'.request()->keyword.'%');
+        }
+
+        $posts = $query->latest()->paginate(2);
+
+        return view('user.blogs')
+            ->with([
+                'categories' => Category::pluck('name', 'id')->toArray(),
+                'posts' => $posts
+            ]);
+    }
+
+    public function postDetail(Post $post)
+    {
+        return view('user.blog-detail')
+            ->with([
+                'post' => $post
+            ]);
+    }
+
+>>>>>>> kokyaw
     public function createOrder($data)
     {
         $order_items = collect($data['products']);

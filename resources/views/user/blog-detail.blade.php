@@ -29,7 +29,7 @@
     <section class="container py-5 mt-md-2 mt-lg-3 mt-xl-4">
         <div class="row justify-content-center pt-xxl-2">
             <div class="col-lg-9 col-xl-8">
-                {{ $post->description }}
+                {!! $post->description !!}
             </div>
         </div>
     </section>

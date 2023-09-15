@@ -18,17 +18,44 @@
                 <h1 class="mb-lg-0">Product List</h1>
             </div>
             <div class="col-xl-2 offset-xl-1 col-lg-3 col-sm-5">
-                <select class="form-select">
-                    <option class="">All Categories</option>
-                    @foreach($categories as $key => $value)
-                        <option class="{{ $key }}">{{ $value }}</option>
-                    @endforeach
-                </select>
+                <div class="dropdown" style="min-width: 185px;">
+                    <button class="btn btn-secondary dropdown-toggle text-left w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ request()->category_id ? $categories[request()->category_id] : 'Select Category' }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        @if(isset(request()->category_id))
+                            <li>
+                                <a class="dropdown-item" href="
+                                    {{ route('products', [
+                                        'category_id' => "",
+                                        'keyword' => request()->keyword ?? '',
+                                        'page' => request()->page ?? ''
+                                    ]) }}">
+                                    Select Category
+                                </a>
+                            </li>
+                        @endif
+                        @foreach($categories as $key => $value)
+                            <li>
+                                <a class="dropdown-item" href="
+                                {{ route('products', [
+                                    'category_id' => $key,
+                                    'keyword' => request()->keyword ?? '',
+                                    'page' => request()->page ?? ''
+                                ]) }}">
+                                    {{ $value }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="col-lg-4 col-sm-7">
-                <div class="position-relative"><i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                    <input class="form-control ps-5" type="search" placeholder="Enter keyword">
-                </div>
+                <form id="searchForm" method="GET">
+                    <div class="position-relative"><i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                        <input value="{{ request()->keyword ?? '' }}" name="keyword" class="form-control ps-5" type="text" id="keyword" placeholder="Enter keyword" />
+                    </div>
+                </form>
             </div>
         </div>
         <div class="row pb-2 pb-sm-4">
