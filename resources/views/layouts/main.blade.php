@@ -14,6 +14,18 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        .ck-editor__editable[role="textbox"] {
+            /* editing area */
+            min-height: 200px;
+        }
+        .ck-content .image {
+            /* block images */
+            max-width: 80%;
+            margin: 20px auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,6 +40,16 @@
         @yield('content')
     </main>
 </div>
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
+<script>
+    document.querySelectorAll('.ckeditor').forEach(element => {
+        ClassicEditor
+            .create(element)
+            .catch(error => {
+                console.error(error);
+            })
+    })
+</script>
 @yield('js')
 </body>
 
