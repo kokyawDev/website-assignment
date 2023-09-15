@@ -60,7 +60,7 @@
                                 <tr class="border-b dark:border-gray-700">
                                     <th scope="row"
                                         class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $loop->iteration }}
+                                        {{ $categories->firstItem() + $loop->index }}
                                     </th>
                                     <td class="px-4 py-3">{{ $category->name }}</td>
 
