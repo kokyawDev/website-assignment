@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\TagController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +29,10 @@ Route::middleware('auth')->prefix('admin/')->name('admin.')->group(function () {
 
     Route::resource('/posts', PostController::class)->except(['create', 'edit', 'show']);
 
-    Route::resource('categories', \App\Http\Controllers\CategoryController::class);
-    Route::resource('products', \App\Http\Controllers\ProductController::class);
-    Route::resource('orders', \App\Http\Controllers\OrderController::class);
-    Route::resource('users', \App\Http\Controllers\UserController::class);
+    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
+    Route::resource('orders', \App\Http\Controllers\Admin\OrderController::class);
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Post;
+use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +14,17 @@ class PostController extends Controller
     public function index()
     {
 
-        $query = Post::query();
+        $query = Tag::query();
 
         if(request()->has('keyword')) {
             $query = $query->where('name', 'like', '%'.request()->keyword.'%');
         }
 
-        $posts = $query->latest()->paginate(5);
+        $tags = $query->latest()->paginate(5);
 
-        return view('admin.posts.index')
+        return view('admin.tags.index')
             ->with([
-                'posts' => $posts,
+                'tags' => $tags,
                 'keyword' => request()->keyword ?? null
             ]);
     }
@@ -42,23 +43,22 @@ class PostController extends Controller
             $validated['is_published'] = 0;
         }
 
-        $post = Post::create([
+        $tag = Tag::create([
             'name' => $validated['name'],
-
             'is_published' => $validated['is_published']
         ]);
 
-        return redirect()->route('admin.posts.index')
-            ->with('success', "$post->name is successfully created.");
+        return redirect()->route('admin.tags.index')
+            ->with('success', "$tag->name is successfully created.");
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Tag $tag)
     {
         $validated = $request->validate([
-            'name' => ['required', 'unique:tags,name,' . $post->id],
+            'name' => ['required', 'unique:tags,name,' . $tag->id],
             'is_published' => 'boolean',
         ]);
 
@@ -66,20 +66,20 @@ class PostController extends Controller
             $validated['is_published'] = 0;
         }
 
-        $post->update($validated);
+        $tag->update($validated);
 
-        return redirect()->route('admin.posts.index')
-            ->with('success', "$post->name is successfully updated.");
+        return redirect()->route('admin.tags.index')
+            ->with('success', "$tag->name is successfully updated.");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Tag $tag)
     {
-        $post->delete();
+        $tag->delete();
 
-        return redirect()->route('admin.posts.index')
-            ->with('success', "Post has been successfully deleted.");
+        return redirect()->route('admin.tags.index')
+            ->with('success', "Tag has been successfully deleted.");
     }
 }
