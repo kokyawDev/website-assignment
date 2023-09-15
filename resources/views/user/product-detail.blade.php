@@ -18,23 +18,25 @@
                     <a href="{{ route('products') }}">Product List</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    product name
+                    {{ ucfirst($product->name) }}
                 </li>
             </ol>
         </nav>
         <!-- Title + price shown on screens < 768px-->
-        <h2 class="h1 d-md-none">Scented candle</h2>
+        <h2 class="h1 d-md-none">{{ ucfirst($product->name) }}</h2>
         <div class="d-flex d-md-none align-items-center pb-3 mb-3">
-            <div class="h3 mb-0 me-3">$14.00</div>
-            <del class="fs-5 fw-medium text-muted me-3">$19.00</del
-            ><span class="badge bg-faded-danger text-danger d-md-none">Sale</span>
+            <span class="h3 mb-0 me-3">${{ $product->discounted_price ? number_format($product->discounted_price, 2) : number_format($product->price, 2) }}</span>
+            @if($product->discounted_price)
+                <del class="fs-5 fw-medium text-muted me-3">${{ number_format($product->price, 2) }}</del>
+            @endif
         </div>
         <div class="row pb-sm-1 pb-md-4">
             <!-- Gallery-->
             <div class="col-md-6 gallery mb-3 mb-md-0">
-                <!-- Item--><a
+                <!-- Item-->
+                <a
                     class="d-block gallery-item card-hover zoom-effect mb-4"
-                    href="{{ asset('assets/img/shop/single/gallery/01.png') }}">
+                    href="{{ $product->thumbnail }}">
                     <div
                         class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
                         <i
@@ -46,76 +48,41 @@
                         <div class="zoom-effect-img bg-secondary p-4">
                             <img
                                 class="d-block mx-auto"
-                                src="{{ asset('assets/img/shop/single/gallery/01.png') }}"
+                                src="{{ $product->thumbnail }}"
                                 width="562"
-                                alt="Candle image #1" />
-                        </div></div
-                    ></a>
-                <div class="row row-cols-1 row-cols-sm-2 g-4 mb-4">
-                    <!-- Item-->
-                    <div class="col">
-                        <a
-                            class="d-block gallery-item card-hover zoom-effect"
-                            href="{{ asset('assets/img/shop/single/gallery/01.png') }}">
-                            <div
-                                class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
-                                <i
-                                    class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
+                                alt="{{ $product->name }}#0" />
+                        </div>
+                    </div>
+                </a>
+
+                @if($product->images->isNotEmpty())
+                    <div class="row row-cols-1 row-cols-sm-2 g-4 mb-4">
+                        <!-- Item-->
+                        @foreach($product->images as $image)
+                            <div class="col">
+                            <a
+                                class="d-block gallery-item card-hover zoom-effect"
+                                href="{{ $image->image }}">
                                 <div
-                                    class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
-                            </div>
-                            <div class="zoom-effect-wrapper rounded-1">
-                                <div class="zoom-effect-img bg-secondary p-4">
-                                    <img
-                                        class="d-block mx-auto"
-                                        src="{{ asset('assets/img/shop/single/gallery/th01.png') }}"
-                                        width="226"
-                                        alt="Candle image #2" />
-                                </div></div
-                            ></a>
+                                    class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
+                                    <i
+                                        class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
+                                    <div
+                                        class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
+                                </div>
+                                <div class="zoom-effect-wrapper rounded-1">
+                                    <div class="zoom-effect-img bg-secondary p-4">
+                                        <img
+                                            class="d-block mx-auto"
+                                            src="{{ $image->image }}"
+                                            width="226"
+                                            alt="{{ $product->name }}#{{ $loop->iteration }}" />
+                                    </div></div
+                                ></a>
+                        </div>
+                        @endforeach
                     </div>
-                    <!-- Item-->
-                    <div class="col">
-                        <a
-                            class="d-block gallery-item card-hover zoom-effect"
-                            href="{{ asset('assets/img/shop/single/gallery/02.png') }}">
-                            <div
-                                class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
-                                <i
-                                    class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
-                                <div
-                                    class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
-                            </div>
-                            <div class="zoom-effect-wrapper rounded-1">
-                                <div class="zoom-effect-img bg-secondary p-4">
-                                    <img
-                                        class="d-block mx-auto"
-                                        src="{{ asset('assets/img/shop/single/gallery/th02.png') }}"
-                                        width="226"
-                                        alt="Candle image #3" />
-                                </div></div
-                            ></a>
-                    </div>
-                </div>
-                <!-- Item--><a
-                    class="d-block gallery-item card-hover zoom-effect"
-                    href="{{ asset('assets/img/shop/single/gallery/03.png') }}">
-                    <div
-                        class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">
-                        <i
-                            class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
-                        <div
-                            class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
-                    </div>
-                    <div class="zoom-effect-wrapper rounded-1">
-                        <div class="zoom-effect-img bg-secondary p-4">
-                            <img
-                                class="d-block mx-auto"
-                                src="{{ asset('assets/img/shop/single/gallery/03.png') }}"
-                                width="460"
-                                alt="Candle image #4" />
-                        </div></div
-                    ></a>
+                @endif
             </div>
             <!-- Product details-->
             <div class="col-md-6 col-xl-5 offset-xl-1">
@@ -123,19 +90,15 @@
                 <div class="position-md-sticky top-0 ps-md-4 ps-lg-5 ps-xl-0">
                     <div class="d-none d-md-block" style="padding-top: 90px"></div>
                     <div class="d-flex align-items-center pt-3 py-3">
-                <span
-                    class="badge bg-faded-danger text-danger d-none d-md-inline-block me-4"
-                >Sale</span
-                ><span class="fs-sm">V00273124</span>
+{{--                <span--}}
+{{--                    class="badge bg-faded-danger text-danger d-none d-md-inline-block me-4"--}}
+{{--                >Sale</span--}}
+{{--                ><span class="fs-sm">V00273124</span>--}}
                     </div>
-                    <h1 class="d-none d-md-inline-block pb-1 mb-2">Scented candle</h1>
+                    <h1 class="d-none d-md-inline-block pb-1 mb-2">{{ ucfirst($product->name) }}</h1>
 
                     <p class="mb-4 mb-lg-5">
-                        Ut sit at orci cursus gravida pretium proin nulla id purus,
-                        placerat eget mauris eu ac volutpat facilisi eget morbi
-                        ullamcorper turpis nisi aconsequat cursus malesuada leo ultrices
-                        nisl dictumst turpis tortor sem eu ac volutpat facilisi eget
-                        morbi
+                        {{ $product->short_description }}
                     </p>
 
                     <div class="d-none d-md-flex align-items-center pb-3 mb-3">
@@ -224,329 +187,46 @@
               }
             }'>
             <div class="swiper-wrapper">
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div
-                        class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                        <span
-                            class="badge bg-faded-danger text-danger position-absolute top-0 start-0 mt-3 ms-3"
-                        >
-                            Sale
-                        </span>
-{{--                        <button--}}
-{{--                            class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"--}}
-{{--                            type="button">--}}
-{{--                            <i class="ai-heart fs-xl d-dark-mode-none"></i--}}
-{{--                            >--}}
-{{--                            <i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i>--}}
-{{--                        </button>--}}
-                        <a class="d-block p-2 p-xl-4" href="shop-single.html">
-                            <img
-                                class="d-block mx-auto"
-                                src="{{ asset('assets/img/shop/products/01.png') }}"
-                                width="226"
-                                alt="Product"
-                            />
-                        </a>
-                    </div>
-                    <div class="d-flex mb-1">
-                        <h3 class="h6 mb-0">
-                            <a href="shop-single.html">Loft style lamp</a>
-                        </h3>
-                        <div class="d-flex ps-2 mt-n1 ms-auto">
-                            <div class="ms-1">
-                                <input
-                                    class="btn-check"
-                                    type="radio"
-                                    name="color1"
-                                    value="Dark gray"
-                                    checked
-                                    id="color1-1" />
-                                <label
-                                    class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
-                                    for="color1-1"
-                                >
-                                    <span
-                                        class="d-block rounded-circle"
-                                        style="
-                                        width: 0.625rem;
-                                        height: 0.625rem;
-                                        background-color: #576071;
-                                    "></span>
-                                </label>
-                            </div>
-                            <div class="ms-1">
-                                <input
-                                    class="btn-check"
-                                    type="radio"
-                                    name="color1"
-                                    value="Light gray"
-                                    id="color1-2" />
-                                <label
-                                    class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
-                                    for="color1-2"
-                                ><span
-                                        class="d-block rounded-circle"
-                                        style="
-                          width: 0.625rem;
-                          height: 0.625rem;
-                          background-color: #d5d4d3;
-                        "></span
-                                    ></label>
-                            </div>
-                            <div class="ms-1">
-                                <input
-                                    class="btn-check"
-                                    type="radio"
-                                    name="color1"
-                                    value="Blue"
-                                    id="color1-3" />
-                                <label
-                                    class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
-                                    for="color1-3"
-                                ><span
-                                        class="d-block rounded-circle"
-                                        style="
-                          width: 0.625rem;
-                          height: 0.625rem;
-                          background-color: #a1b7d9;
-                        "></span
-                                    ></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <span class="me-2">$21.00</span>
-                        <del class="fs-sm text-muted">$35.00</del>
+                @foreach($products as $item)
+                    <!-- Item-->
+                    <div class="swiper-slide">
                         <div
-                            class="nav ms-auto"
-                            data-bs-toggle="tooltip"
-                            data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
-                            data-bs-placement="left"
-                            title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
-                            ><i class="ai-cart"></i
-                                ></a>
+                            class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
+                            <a class="d-block p-2 p-xl-4" href="{{ route('products.detail', $item) }}">
+                                <img
+                                    class="d-block mx-auto"
+                                    src="{{ $item->thumbnail }}"
+                                    width="226"
+                                    alt="Product"
+                                />
+                            </a>
                         </div>
-                    </div>
-                </div>
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div
-                        class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                        <button
-                            class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"
-                            type="button">
-                            <i class="ai-heart fs-xl d-dark-mode-none"></i
-                            ><i
-                                class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button
-                        ><a class="d-block p-2 p-xl-4" href="shop-single.html"
-                        ><img
-                                class="d-block mx-auto"
-                                src="{{asset('assets/img/shop/products/02.png')}}"
-                                width="226"
-                                alt="Product"
-                            /></a>
-                    </div>
-                    <div class="d-flex mb-1">
-                        <h3 class="h6 mb-0">
-                            <a href="shop-single.html">Dispenser for soap</a>
-                        </h3>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <span class="me-2">$16.00</span>
-                        <div
-                            class="nav ms-auto"
-                            data-bs-toggle="tooltip"
-                            data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
-                            data-bs-placement="left"
-                            title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
-                            ><i class="ai-cart"></i
-                                ></a>
+                        <div class="d-flex mb-1">
+                            <h3 class="h6 mb-0">
+                                <a href="{{ route('products.detail', $item) }}">{{ $item->name }}</a>
+                            </h3>
                         </div>
-                    </div>
-                </div>
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div
-                        class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                <span
-                    class="badge bg-faded-danger text-danger position-absolute top-0 start-0 mt-3 ms-3"
-                >Sale</span
-                >
-                        <button
-                            class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"
-                            type="button">
-                            <i class="ai-heart fs-xl d-dark-mode-none"></i
-                            ><i
-                                class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button
-                        ><a class="d-block p-2 p-xl-4" href="shop-single.html"
-                        ><img
-                                class="d-block mx-auto"
-                                src="{{ asset('assets/img/shop/products/03.png') }}"
-                                width="226"
-                                alt="Product"
-                            /></a>
-                    </div>
-                    <div class="d-flex mb-1">
-                        <h3 class="h6 mb-0">
-                            <a href="shop-single.html">Glossy round vase</a>
-                        </h3>
-                        <div class="d-flex ps-2 mt-n1 ms-auto">
-                            <div class="ms-1">
-                                <input
-                                    class="btn-check"
-                                    type="radio"
-                                    name="color2"
-                                    value="Light gray"
-                                    checked
-                                    id="color2-1" />
-                                <label
-                                    class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
-                                    for="color2-1"
-                                ><span
-                                        class="d-block rounded-circle"
-                                        style="
-                          width: 0.625rem;
-                          height: 0.625rem;
-                          background-color: #d5d4d3;
-                        "></span
-                                    ></label>
-                            </div>
-                            <div class="ms-1">
-                                <input
-                                    class="btn-check"
-                                    type="radio"
-                                    name="color2"
-                                    value="Dark gray"
-                                    id="color2-2" />
-                                <label
-                                    class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
-                                    for="color2-2"
-                                ><span
-                                        class="d-block rounded-circle"
-                                        style="
-                          width: 0.625rem;
-                          height: 0.625rem;
-                          background-color: #576071;
-                        "></span
-                                    ></label>
-                            </div>
-                            <div class="ms-1">
-                                <input
-                                    class="btn-check"
-                                    type="radio"
-                                    name="color2"
-                                    value="Blue"
-                                    id="color2-3" />
-                                <label
-                                    class="btn btn-icon btn-xs btn-outline-secondary rounded-circle"
-                                    for="color2-3"
-                                ><span
-                                        class="d-block rounded-circle"
-                                        style="
-                          width: 0.625rem;
-                          height: 0.625rem;
-                          background-color: #a1b7d9;
-                        "></span
-                                    ></label>
+                        <div class="d-flex align-items-center">
+                            <span class="me-2">${{ $item->discounted_price ? number_format($item->discounted_price, 2) : number_format($item->price, 2) }}</span>
+                            @if($item->discounted_price)
+                                <del class="fs-sm text-muted">${{ number_format($item->price, 2) }}</del>
+                            @endif
+                            <div
+                                class="nav ms-auto"
+                                data-bs-toggle="tooltip"
+                                data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
+                                data-bs-placement="left"
+                                onClick='setProductToStore(@json($item))'
+                                title="Add to cart"
+                                style="cursor:pointer;"
+                            >
+                                <span class="nav-link fs-lg py-2 px-1"
+                                ><i class="ai-cart"></i
+                                    ></span>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <span class="me-2">$11.00</span>
-                        <del class="fs-sm text-muted">$15.00</del>
-                        <div
-                            class="nav ms-auto"
-                            data-bs-toggle="tooltip"
-                            data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
-                            data-bs-placement="left"
-                            title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
-                            ><i class="ai-cart"></i
-                                ></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div
-                        class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                <span
-                    class="badge bg-faded-primary text-primary position-absolute top-0 start-0 mt-3 ms-3"
-                >New</span
-                >
-                        <button
-                            class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"
-                            type="button">
-                            <i class="ai-heart fs-xl d-dark-mode-none"></i
-                            ><i
-                                class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button
-                        ><a class="d-block p-2 p-xl-4" href="shop-single.html"
-                        ><img
-                                class="d-block mx-auto"
-                                src="{{ asset('assets/img/shop/products/09.png') }}"
-                                width="226"
-                                alt="Product"
-                            /></a>
-                    </div>
-                    <div class="d-flex mb-1">
-                        <h3 class="h6 mb-0">
-                            <a href="shop-single.html">Scented candle</a>
-                        </h3>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <span class="me-2">$13.00</span>
-                        <div
-                            class="nav ms-auto"
-                            data-bs-toggle="tooltip"
-                            data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
-                            data-bs-placement="left"
-                            title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
-                            ><i class="ai-cart"></i
-                                ></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item-->
-                <div class="swiper-slide">
-                    <div
-                        class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                        <button
-                            class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"
-                            type="button">
-                            <i class="ai-heart fs-xl d-dark-mode-none"></i
-                            ><i
-                                class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button
-                        ><a class="d-block p-2 p-xl-4" href="shop-single.html"
-                        ><img
-                                class="d-block mx-auto"
-                                src="{{ asset('assets/img/shop/products/06.png') }}"
-                                width="226"
-                                alt="Product"
-                            /></a>
-                    </div>
-                    <div class="d-flex mb-1">
-                        <h3 class="h6 mb-0">
-                            <a href="shop-single.html">Living room table</a>
-                        </h3>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <span class="me-2">$46.00</span>
-                        <div
-                            class="nav ms-auto"
-                            data-bs-toggle="tooltip"
-                            data-bs-template='&lt;div class="tooltip fs-xs" role="tooltip"&gt;&lt;div class="tooltip-inner bg-light text-muted p-0"&gt;&lt;/div&gt;&lt;/div&gt;'
-                            data-bs-placement="left"
-                            title="Add to cart">
-                            <a class="nav-link fs-lg py-2 px-1" href="shop-single.html#"
-                            ><i class="ai-cart"></i
-                                ></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

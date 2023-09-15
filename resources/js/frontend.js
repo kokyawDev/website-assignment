@@ -4,8 +4,9 @@ import Toastify from 'toastify-js'
 window.store = store
 window.Toastify = Toastify
 
-const notiBg = {
-    success: "linear-gradient(to right, #00b09b, #96c93d)"
+window.notiBg = {
+    success: "linear-gradient(to right, #00b09b, #96c93d)",
+    danger: "linear-gradient(to right, #FF4136, #FF851B)"
 }
 
 // cart
@@ -210,7 +211,7 @@ window.getCartProductTmp = (data) => {
 }
 
 // notify
-function notify(text, notiBg) {
+window.notify = (text, notiBg) => {
     Toastify({
         text: text,
         duration: 1000,

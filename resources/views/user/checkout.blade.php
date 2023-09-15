@@ -2,103 +2,102 @@
 
 @section('content')
     <div class="d-none d-lg-block bg-secondary position-fixed top-0 start-0 h-100" style="width: 52.5%;"></div>
-    <form class="needs-validation container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2" novalidate>
+    <form action="{{ route('checkout') }}" method="POST" id="checkoutForm" class="needs-validation container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2" novalidate>
+        @csrf
         <div class="row">
             <div class="col-lg-6">
                 <!-- Breadcrumb-->
                 <nav aria-label="breadcrumb">
                     <ol class="mt-5 pt-lg-3 pb-md-1 pb-lg-3 breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="shop-catalog.html">Shop</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Checkout</li>
                     </ol>
                 </nav>
                 <h1 class="h2 pb-3">Checkout</h1>
                 <!-- Checkout form fields-->
-                <h3 class="fs-base fw-normal text-body text-uppercase pb-2 pb-sm-3">1.<span class="text-decoration-underline ms-1">Shipping details</span></h3>
+{{--                <h3 class="fs-base fw-normal text-body text-uppercase pb-2 pb-sm-3">1.<span class="text-decoration-underline ms-1">Shipping details</span></h3>--}}
                 <div class="row g-4 pb-4 pb-md-5 mb-3 mb-md-1">
-                    <div class="col-sm-6">
-                        <label class="form-label fs-base" for="c-fn">First name</label>
-                        <input class="form-control form-control-lg" type="text" placeholder="Your first name" required id="c-fn">
+                    <div class="col-sm-12">
+                        <label class="form-label fs-base" for="c-fn">Name</label><span class="text-danger"> *</span>
+                        <input class="form-control form-control-lg" value="{{ old('customer_name') }}" name="customer_name" type="text" placeholder="Your first name" required id="c-fn">
+                        @if($errors->has('customer_name'))
+                            <small class="text-danger">* {{ $errors->first('customer_name') }} *</small>
+                        @endif
                     </div>
                     <div class="col-sm-6">
-                        <label class="form-label fs-base" for="c-ln">Last name</label>
-                        <input class="form-control form-control-lg" type="text" placeholder="Your last name" required id="c-ln">
-                    </div>
-                    <div class="col-sm-6">
-                        <label class="form-label fs-base" for="c-email">Email</label>
+                        <label class="form-label fs-base" for="c-email">Email</label><span class="text-danger"> *</span>
                         <div class="position-relative"><i class="ai-mail fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                            <input class="form-control form-control-lg ps-5" type="email" placeholder="Email address" required id="c-email">
+                            <input class="form-control form-control-lg ps-5" value="{{ old('customer_email') }}" type="email" name="customer_email" placeholder="Email address" required id="c-email">
                         </div>
+                        @if($errors->has('customer_email'))
+                            <small class="text-danger">* {{ $errors->first('customer_email') }} *</small>
+                        @endif
                     </div>
                     <div class="col-sm-6">
-                        <label class="form-label fs-base" for="c-phone">Phone</label>
+                        <label class="form-label fs-base" for="c-phone">Phone</label><span class="text-danger"> *</span>
                         <div class="position-relative"><i class="ai-phone fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                            <input class="form-control form-control-lg ps-5" type="tel" data-format="{&quot;numericOnly&quot;: true, &quot;delimiters&quot;: [&quot;+1 &quot;, &quot; &quot;, &quot; &quot;], &quot;blocks&quot;: [0, 3, 3, 2]}" placeholder="+1 ___ ___ __" required id="c-phone">
+                            <input class="form-control form-control-lg ps-5" value="{{ old('customer_phone') }}" type="tel" name="customer_phone" placeholder="+95 ___ ___ __" required id="c-phone">
                         </div>
+                        @if($errors->has('customer_phone'))
+                            <small class="text-danger">* {{ $errors->first('customer_phone') }} *</small>
+                        @endif
                     </div>
                     <div class="col-12">
-                        <label class="form-label fs-base" for="c-country">Country</label>
-                        <select class="form-select form-select-lg" required id="c-country">
-                            <option value="" selected disabled>Select a country</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Belgium">Belgium</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Denmark">Denmark</option>
-                            <option value="USA">USA</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-6">
-                        <label class="form-label fs-base" for="c-city">City</label>
-                        <select class="form-select form-select-lg" required id="c-city">
-                            <option value="" selected disabled>Select a city</option>
-                            <option value="Sydney">Sydney</option>
-                            <option value="Brussels">Brussels</option>
-                            <option value="Toronto">Toronto</option>
-                            <option value="Copenhagen">Copenhagen</option>
-                            <option value="New York">New York</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-6">
-                        <label class="form-label fs-base" for="c-zip">Zip code</label>
-                        <input class="form-control form-control-lg" type="text" data-format="{&quot;delimiter&quot;: &quot;-&quot;, &quot;blocks&quot;: [3, 4], &quot;uppercase&quot;: true}" placeholder="XXX-XXXX" required id="c-zip">
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label fs-base" for="c-address">Address line</label>
-                        <input class="form-control form-control-lg" type="text" required id="c-address">
+                        <label class="form-label fs-base" for="c-address">Address</label><span class="text-danger"> *</span>
+                        <textarea class="form-control form-control-lg" name="shipping_address" rows="5" id="c-address">{{ old('shipping_address') }}</textarea>
+                        @if($errors->has('shipping_address'))
+                            <small class="text-danger">* {{ $errors->first('shipping_address') }} *</small>
+                        @endif
                     </div>
                     <div class="col-12">
                         <label class="form-label fs-base" for="c-notes">Order notes <span class='text-muted'>(optional)</span></label>
-                        <textarea class="form-control form-control-lg" rows="5" id="c-notes"></textarea>
+                        <textarea class="form-control form-control-lg" name="order_note" rows="5" id="c-notes">{{ old('order_note') }}</textarea>
+                        @if($errors->has('order_note'))
+                            <small class="text-danger">* {{ $errors->first('order_note') }} *</small>
+                        @endif
                     </div>
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="same-address">
-                            <label class="form-check-label text-dark fw-medium" for="same-address">Billing address same as delivery</label>
-                        </div>
+{{--                    <div class="col-12">--}}
+{{--                        <div class="form-check">--}}
+{{--                            <input class="form-check-input" type="checkbox" id="same-address">--}}
+{{--                            <label class="form-check-label text-dark fw-medium" for="same-address">Billing address same as delivery</label>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+                </div>
+{{--                <h3 class="fs-base fw-normal text-body text-uppercase pb-2 pb-sm-3">2.<span class="text-decoration-underline ms-1">Shipping method</span></h3>--}}
+                <div class="mb-4">
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="radio" name="shipping_method" value="Standard Delivery" id="standard">
+                        <label class="form-check-label d-flex justify-content-between" for="standard"><span><span class="d-block fs-base text-dark fw-medium mb-1">Standard Delivery</span><span class="text-body">Delivery in 5 - 8 working days</span></span><span class="fs-base text-dark fw-semibold">$8.00</span></label>
                     </div>
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="radio" name="shipping_method" value="Express Shipping" checked id="express">
+                        <label class="form-check-label d-flex justify-content-between" for="express"><span><span class="d-block fs-base text-dark fw-medium mb-1">Express Shipping</span><span class="text-body">Delivery in 3 - 5 working days</span></span><span class="fs-base text-dark fw-semibold">$15.00</span></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="shipping_method" value="Local Pickup" id="local">
+                        <label class="form-check-label d-flex justify-content-between" for="local"><span><span class="d-block fs-base text-dark fw-medium mb-1">Local Pickup</span><span class="text-body">Delivery in 1 - 2 working days</span></span><span class="fs-base text-dark fw-semibold">Free</span></label>
+                    </div>
+                    @if($errors->has('shipping_method'))
+                        <small class="text-danger">* {{ $errors->first('shipping_method') }} *</small>
+                    @endif
                 </div>
-                <h3 class="fs-base fw-normal text-body text-uppercase pb-2 pb-sm-3">2.<span class="text-decoration-underline ms-1">Shipping method</span></h3>
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="radio" name="shipping" id="standard">
-                    <label class="form-check-label d-flex justify-content-between" for="standard"><span><span class="d-block fs-base text-dark fw-medium mb-1">Standard Delivery</span><span class="text-body">Delivery in 5 - 8 working days</span></span><span class="fs-base text-dark fw-semibold">$8.00</span></label>
-                </div>
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="radio" name="shipping" checked id="express">
-                    <label class="form-check-label d-flex justify-content-between" for="express"><span><span class="d-block fs-base text-dark fw-medium mb-1">Express Shipping</span><span class="text-body">Delivery in 3 - 5 working days</span></span><span class="fs-base text-dark fw-semibold">$15.00</span></label>
-                </div>
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="radio" name="shipping" id="local">
-                    <label class="form-check-label d-flex justify-content-between" for="local"><span><span class="d-block fs-base text-dark fw-medium mb-1">Local Pickup</span><span class="text-body">Delivery in 1 - 2 working days</span></span><span class="fs-base text-dark fw-semibold">Free</span></label>
-                </div>
-                <h3 class="fs-base fw-normal text-body text-uppercase mt-n4 mt-md-n3 pt-5 pb-2 pb-sm-3">3.<span class="text-decoration-underline ms-1">Payment method</span></h3>
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="radio" name="payment" checked id="card">
-                    <label class="form-check-label" for="card"><span><span class="d-block fs-base text-dark fw-medium mb-1">Credit Card</span><span class="text-body">Mastercard, Maestro, American Express, Visa are accepted</span></span></label>
-                </div>
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="radio" name="payment" id="cash">
-                    <label class="form-check-label" for="cash"><span><span class="d-block fs-base text-dark fw-medium mb-1">Cash on Delivery</span><span class="text-body">Pay with cash upon the delivery</span></span></label>
+{{--                <h3 class="fs-base fw-normal text-body text-uppercase mt-n4 mt-md-n3 pt-5 pb-2 pb-sm-3">3.<span class="text-decoration-underline ms-1">Payment method</span></h3>--}}
+                <hr>
+                <div>
+                    <div class="form-check mb-4 mt-4">
+                        <input class="form-check-input" type="radio" name="payment_method" value="Online Payment" checked id="card">
+                        <label class="form-check-label" for="card"><span><span class="d-block fs-base text-dark fw-medium mb-1">Online Payment </span><span class="text-body">Mastercard, Maestro, American Express, Visa are accepted</span></span></label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="payment_method" value="Cash on Delivery" id="cash">
+                        <label class="form-check-label" for="cash"><span><span class="d-block fs-base text-dark fw-medium mb-1">Cash on Delivery</span><span class="text-body">Pay with cash upon the delivery</span></span></label>
+                    </div>
+
+                    @if($errors->has('payment_method'))
+                        <small class="text-danger">* {{ $errors->first('payment_method') }} *</small>
+                    @endif
+
                 </div>
                 <!-- Place an order button visible on screens > 991px-->
                 <div class="d-none d-lg-block pt-5 mt-n3">
@@ -122,7 +121,45 @@
                 <input class="form-check-input" type="checkbox" checked id="save-info2">
                 <label class="form-check-label" for="save-info2"><span class="text-muted">Your personal information will be used to process your order, to support your experience on this site and for other purposes described in the </span><a class="fw-medium" href="shop-checkout.html#">privacy policy</a></label>
             </div>
-            <button class="btn btn-lg btn-primary w-100 w-sm-auto" type="submit">Place an order</button>
+            <button class="btn btn-lg btn-primary w-100 w-sm-auto" id="checkoutBtn" type="button">Place an order</button>
         </div>
     </form>
+@endsection
+
+@section('js')
+    <script>
+        let checkoutBtn = document.getElementById('checkoutBtn')
+
+        let form = document.getElementById('checkoutForm');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            @if(session()->has('error'))
+                notify(@json(session()->get('error')), notiBg.danger)
+            @endif
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                let cart = store.get('cart');
+
+                cart.forEach(function(product, index) {
+                    let productId_input = document.createElement('input')
+                    let productQty_input = document.createElement('input')
+
+                    productId_input.type = 'hidden'
+                    productQty_input.type = 'hidden'
+                    productId_input.classList.add('checkout-product')
+                    productQty_input.classList.add('checkout-product')
+                    productId_input.name = `products[${index}][id]`
+                    productQty_input.name = `products[${index}][qty]`
+                    productId_input.value = product.id
+                    productQty_input.value = product.qty
+
+                    form.appendChild(productId_input)
+                    form.appendChild(productQty_input)
+                })
+
+                form.submit()
+            });
+        });
+    </script>
 @endsection

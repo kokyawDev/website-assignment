@@ -403,3 +403,14 @@
         </div>
     </section>
 @endsection
+
+@section('js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if(session()->has('success'))
+                store.set('cart', [])
+                notify(@json(session()->get('success')), notiBg.success)
+            @endif
+        })
+    </script>
+@endsection

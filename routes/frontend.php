@@ -8,9 +8,11 @@ Route::middleware('web')->group(function() {
 
     Route::get('/products', [ClientSiteController::class, 'products'])->name('products');
 
-    Route::get('/products/{id?}', [ClientSiteController::class, 'productDetail'])->name('products.detail');
+    Route::get('/products/{product}', [ClientSiteController::class, 'productDetail'])->name('products.detail');
 
-    Route::get('/checkout', [ClientSiteController::class, 'checkout'])->name('checkout');
+    Route::get('/checkout', [ClientSiteController::class, 'checkoutPage'])->name('checkout');
+
+    Route::post('/checkout', [ClientSiteController::class, 'checkout'])->name('checkout');
 
     Route::get('/blogs', [ClientSiteController::class, 'posts'])->name('blogs');
 

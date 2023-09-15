@@ -130,7 +130,7 @@
 <!-- Main theme script-->
 <script src="{{ asset('assets/js/theme.min.js') }}"></script>
 <!-- Customizer-->
-@vite(['resources/js/frontend.js'])
+@vite(['resources/css/frontend.css', 'resources/js/frontend.js'])
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
