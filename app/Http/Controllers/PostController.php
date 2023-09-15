@@ -44,6 +44,7 @@ class PostController extends Controller
 
         $post = Post::create([
             'name' => $validated['name'],
+
             'is_published' => $validated['is_published']
         ]);
 
