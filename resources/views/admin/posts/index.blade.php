@@ -71,7 +71,6 @@
                                 <th scope="col" class="px-4 py-3">Post</th>
                                 <th scope="col" class="px-4 py-3">Category</th>
                                 <th scope="col" class="px-4 py-3">Thumbnail</th>
-                                <th scope="col" class="px-4 py-3">is Published</th>
                                 <th scope="col" class="px-4 py-3">Created at</th>
                                 <th scope="col" class="px-4 py-3">Updated at</th>
                                 <th scope="col" class="px-4 py-3"><span class="sr-only">Actions</span></th>
@@ -92,7 +91,6 @@
                                         <img class="w-10 h-10 rounded-md mx-auto" src="{{ $post->thumbnail }}"
                                             alt="Jese image">
                                     </td>
-                                    <td class="px-4 py-3">{{ $post->is_published ? 'true' : 'false' }}</td>
                                     <td class="px-4 py-3">{{ date('d-m-Y', strtotime($post->created_at)) }}</td>
                                     <td class="px-4 py-3">{{ date('d-m-Y', strtotime($post->updated_at)) }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">

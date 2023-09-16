@@ -152,7 +152,6 @@ class OrderController extends Controller
                 echo $order->invoice();
             }, 200, ['Content-Type' => 'application/pdf']);
         } catch (Exception $exception) {
-
             return $exception->getMessage();
         }
     }

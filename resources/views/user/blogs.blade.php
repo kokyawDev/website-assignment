@@ -62,7 +62,7 @@
                 <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                     <h3><a href="{{ route('blogs.detail', $post->slug) }}">{{ $post->name }}</a></h3>
                     <p class="d-sm-none d-md-block">
-                        {{ Str::words($post->description, 30) }}
+                        {{ Str::words($post->short_description, 30) }}
                     </p>
                     <div class="d-flex flex-wrap align-items-center mt-n2">
                         <span class="fs-sm text-muted mt-2">{{ date('F j, Y', strtotime($post->updated_at)) }}</span>

@@ -13,7 +13,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_no',
+        'order_number',
         'customer_name',
         'customer_email',
         'customer_phone',
@@ -32,12 +32,8 @@ class Order extends Model
         parent::boot();
         static::creating(function ($model) {
             $model->uuid = Str::uuid()->toString();
+            $model->order_number = 'ORD-' . '-' . sprintf('%04d', (self::max('id') + 1));
         });
-    }
-
-    public function setOrderNoAttribute(): void
-    {
-        $this->attributes['order_no'] = 'ORD-' . '-' . sprintf('%04d', (self::max('id') + 1));
     }
 
     public function order_items(): HasMany

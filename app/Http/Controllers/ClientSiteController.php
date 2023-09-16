@@ -35,7 +35,7 @@ class ClientSiteController extends Controller
     }
 
     public function products()
-    {=
+    {
         $query = Product::select('id', 'uuid', 'name', 'status', 'price', 'discounted_price', 'thumbnail');
 
         if(request()->category_id) {
@@ -56,7 +56,7 @@ class ClientSiteController extends Controller
 
     public function productDetail(Product $product)
     {
-        $posts = Post::latest()->get();
+        $posts = Post::where('category_id', $product->category_id)->latest()->get();
 
         $products = Product::where('id', '!=', $product->id)->get();
 
@@ -109,8 +109,6 @@ class ClientSiteController extends Controller
         }
     }
 
-<<<<<<< HEAD
-=======
     public function posts()
     {
         $query = Post::query();
@@ -140,7 +138,6 @@ class ClientSiteController extends Controller
             ]);
     }
 
->>>>>>> kokyaw
     public function createOrder($data)
     {
         $order_items = collect($data['products']);
@@ -181,23 +178,23 @@ class ClientSiteController extends Controller
         return $order;
     }
 
-    public function posts()
-    {
-        $posts = Post::latest()->paginate(2);
+//    public function posts()
+//    {
+//        $posts = Post::latest()->paginate(2);
+//
+//        return view('user.blogs')
+//            ->with([
+//                'categories' => Category::pluck('name', 'id')->toArray(),
+//                'posts' => $posts
+//            ]);
+//    }
 
-        return view('user.blogs')
-            ->with([
-                'categories' => Category::pluck('name', 'id')->toArray(),
-                'posts' => $posts
-            ]);
-    }
-
-    public function postDetail($slug)
-    {
-        $post = Post::where('slug', $slug)->first();
-        return view('user.blog-detail')
-            ->with([
-                'post' => $post
-            ]);
-    }
+//    public function postDetail($slug)
+//    {
+//        $post = Post::where('slug', $slug)->first();
+//        return view('user.blog-detail')
+//            ->with([
+//                'post' => $post
+//            ]);
+//    }
 }

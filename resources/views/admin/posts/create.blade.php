@@ -10,16 +10,28 @@
             <!-- Modal body -->
             <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                <div class="grid gap-4 mb-4 sm:grid-cols-3">
                     <div>
                         <label for="name"
                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name <span class="text-red-500">*</span></label>
                         <input type="text" name="name" id="name"
                                value="{{ old('name') }}"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                               placeholder="Type Post name">
+                               placeholder="Type Post Name">
                         @if($errors->has('name'))
                             <small class="text-red-500">* {{ $errors->first('name') }} *</small>
+                        @endif
+                    </div>
+
+                    <div>
+                        <label for="slug"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug <span class="text-red-500">*</span></label>
+                        <input type="text" name="slug" id="slug"
+                               value="{{ old('slug') }}"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                               placeholder="Type Post Slug">
+                        @if($errors->has('slug'))
+                            <small class="text-red-500">* {{ $errors->first('slug') }} *</small>
                         @endif
                     </div>
 

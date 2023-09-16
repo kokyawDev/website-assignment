@@ -47,6 +47,7 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'min:3', 'max:255'],
+            'slug' => ['required', 'unique:posts,slug', 'max:255'],
             'description' => ['required', 'min:3', 'max:10000'],
             'short_description' => ['required', 'min:3', 'max:255'],
             'category_id' => ['required', 'exists:categories,id'],
@@ -81,7 +82,6 @@ class PostController extends Controller
                 ->with('success', 'Post has been created successfully!');
 
         } catch (\Exception $e) {
-            dd($e);
             DB::rollBack();
 
             return redirect()->back()->with('error', $e->getMessage());
@@ -117,6 +117,7 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'min:3', 'max:255'],
+            'slug' => ['required', 'unique:posts,slug,'.$post->id, 'max:255'],
             'description' => ['required', 'min:3', 'max:10000'],
             'short_description' => ['required', 'min:3', 'max:255'],
             'category_id' => ['required', 'exists:categories,id'],
