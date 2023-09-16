@@ -102,8 +102,8 @@
                     </p>
 
                     <div class="d-none d-md-flex align-items-center pb-3 mb-3">
-                        <span class="me-2">{{ $product->discounted_price ? number_format($product->discounted_price, 2) : number_format($product->price, 2) }} Ks</span>
-                        @if($product->discounted_price)
+                        <span class="me-2">{{ (int) $product->discounted_price ? number_format($product->discounted_price, 2) : number_format($product->price, 2) }} Ks</span>
+                        @if((int) $product->discounted_price)
                             <del class="fs-sm text-muted">{{ number_format($product->price, 2) }} Ks</del>
                         @endif
                     </div>
