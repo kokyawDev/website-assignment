@@ -36,6 +36,7 @@ Route::middleware('auth')->prefix('admin/')->name('admin.')->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::resource('orders', OrderController::class);
+    Route::get('orders/{order}/invoice', [OrderController::class, 'invoice'])->name('orders.invoice');
     Route::resource('users', UserController::class);
 });
 

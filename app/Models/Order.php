@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
+use Spatie\Browsershot\Browsershot;
 
 class Order extends Model
 {
@@ -42,5 +43,16 @@ class Order extends Model
     public function order_items(): HasMany
     {
         return $this->hasMany(OrderItem::class, 'order_id', 'id');
+    }
+
+    public function invoice()
+    {
+        try {
+            $content = view('invoice', ['order' => $this])->render();
+
+            return Browsershot::html($content)->format('A5')->pdf();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }
