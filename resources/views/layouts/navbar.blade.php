@@ -19,9 +19,9 @@
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
             </button>
-            <a href="https://flowbite.com" class="flex items-center justify-between mr-4">
-                <img src="https://flowbite.s3.amazonaws.com/logo.svg" class="mr-3 h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Shop</span>
+            <a href="{{ route('home') }}" class="flex items-center justify-between mr-4">
+                <img src="{{ asset('img/peach.png') }}" class="mr-3 h-8" alt="Beauty Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Beauty</span>
             </a>
         </div>
         <div class="flex items-center lg:order-2">

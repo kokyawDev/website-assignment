@@ -102,8 +102,10 @@
                     </p>
 
                     <div class="d-none d-md-flex align-items-center pb-3 mb-3">
-                        <div class="h3 mb-0 me-3">$14.00</div>
-                        <del class="fs-5 fw-medium text-muted">$19.00</del>
+                        <span class="me-2">{{ $product->discounted_price ? number_format($product->discounted_price, 2) : number_format($product->price, 2) }} Ks</span>
+                        @if($product->discounted_price)
+                            <del class="fs-sm text-muted">{{ number_format($product->price, 2) }} Ks</del>
+                        @endif
                     </div>
                     <!-- Action buttons-->
                     <div
@@ -202,9 +204,9 @@
                             </h3>
                         </div>
                         <div class="d-flex align-items-center">
-                            <span class="me-2">${{ $item->discounted_price ? number_format($item->discounted_price, 2) : number_format($item->price, 2) }}</span>
-                            @if($item->discounted_price)
-                                <del class="fs-sm text-muted">${{ number_format($item->price, 2) }}</del>
+                            <span class="me-2">{{ $item->discounted_price ? number_format($item->discounted_price, 2) : number_format($item->price, 2) }} Ks</span>
+                            @if((int) $item->discounted_price)
+                                <del class="fs-sm text-muted">{{ number_format($item->price, 2) }} Ks</del>
                             @endif
                             <div
                                 class="nav ms-auto"

@@ -126,7 +126,7 @@ class OrderController extends Controller
         foreach ($order_items as $order_item) {
             $product = Product::FindOrFail($order_item['id']);
 
-            $qty_price = ($product->discounted_price) ? $order_item['qty'] * $product->discounted_price : $order_item['qty'] * $product->price;
+            $qty_price = ((int) $product->discounted_price) ? $order_item['qty'] * $product->discounted_price : $order_item['qty'] * $product->price;
 
             $sub_total += $qty_price;
 
@@ -152,6 +152,7 @@ class OrderController extends Controller
                 echo $order->invoice();
             }, 200, ['Content-Type' => 'application/pdf']);
         } catch (Exception $exception) {
+            dd($exception);
             return $exception->getMessage();
         }
     }

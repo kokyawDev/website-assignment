@@ -155,7 +155,7 @@ class ClientSiteController extends Controller
         foreach ($order_items as $order_item) {
             $product = Product::FindOrFail($order_item['id']);
 
-            $qty_price = ($product->discounted_price) ? $order_item['qty'] * $product->discounted_price : $order_item['qty'] * $product->price;
+            $qty_price = ((int) $product->discounted_price) ? $order_item['qty'] * $product->discounted_price : $order_item['qty'] * $product->price;
 
             $product_data[] = [
                 'product_id' => $product->id,

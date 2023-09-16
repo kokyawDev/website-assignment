@@ -92,10 +92,10 @@
                                             <div class="ps-3 ps-md-4">
                                                 <h3 class="fs-sm mb-2">{{ $popular_product->name }}</h3>
                                                 <p class="fs-sm mb-0">
-                                                    $ {{ $popular_product->discounted_price ? number_format($popular_product->discounted_price, 2) : number_format($popular_product->price, 2) }}
-                                                    @if($popular_product->discounted_price)
+                                                    {{ (int) $popular_product->discounted_price ? number_format($popular_product->discounted_price, 2) : number_format($popular_product->price, 2) }} Ks
+                                                    @if((int) $popular_product->discounted_price)
                                                         <del class="text-muted fs-xs">
-                                                            $ {{ number_format($popular_product->price, 2) }}
+                                                            {{ number_format($popular_product->price, 2) }} Ks
                                                         </del>
                                                     @endif
                                                 </p>
@@ -177,9 +177,9 @@
                             </h3>
                         </div>
                         <div class="d-flex align-items-center">
-                            <span class="me-2">${{ $trending_product['discounted_price'] ? number_format($trending_product['discounted_price'], 2) : number_format($trending_product['price'], 2) }}</span>
-                            @if($trending_product['discounted_price'])
-                                <del class="fs-sm text-muted">${{ number_format($trending_product['price'], 2) }}</del>
+                            <span class="me-2">{{ (int) $trending_product['discounted_price'] ? number_format($trending_product['discounted_price'], 2) : number_format($trending_product['price'], 2) }} Ks</span>
+                            @if((int) $trending_product['discounted_price'])
+                                <del class="fs-sm text-muted">{{ number_format($trending_product['price'], 2) }} Ks</del>
                             @endif
                             <div
                                 class="nav ms-auto text-decoration-none cursor-pointer"

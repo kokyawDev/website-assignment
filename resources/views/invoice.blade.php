@@ -64,7 +64,6 @@
             <p class="address">Hotline - 0994394343</p>
         </div>
         <div class="w-32 rounded-lg">
-            <img src="{{ asset('images/logo.png') }}" alt="logo" style="width: 9rem;" class="rounded-lg">
         </div>
     </div>
 

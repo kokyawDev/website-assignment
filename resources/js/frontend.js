@@ -182,8 +182,8 @@ window.getCartProductTmp = (data) => {
                         </div>
                     </div>
                     <div class="text-end ms-auto">
-                        <div class="fs-5 mb-2">${'$'+ formattedPrice((data.discounted_price ? data.discounted_price : data.price))}</div>
-                        <del class="text-muted ms-auto ${data.discounted_price ? '' : 'd-none'}">${'$'+ formattedPrice(data.price)}</del>
+                        <div class="fs-5 mb-2">${formattedPrice((parseInt(data.discounted_price) ? data.discounted_price : data.price))+' Ks'}</div>
+                        <del class="text-muted ms-auto ${parseInt(data.discounted_price) ? '' : 'd-none'}">${formattedPrice(data.price) + ' Ks'}</del>
                     </div>
                 </div>
                 <div class="count-input ms-n3">

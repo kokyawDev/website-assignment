@@ -136,7 +136,7 @@ class ProductController extends Controller
             'category_id' => ['required', 'exists:categories,id'],
             'thumbnail' => ['nullable', 'image'],
             'quantity' => ['nullable', 'numeric'],
-            'product_images' => ['nullable', 'image'],
+            'product_images' => ['nullable'],
             'product_images.*' => ['nullable', 'image']
         ]);
 
@@ -153,8 +153,6 @@ class ProductController extends Controller
                 $product_data['thumbnail'] = '/uploads/products/'.$filename;
             }
 
-            $product = $product->update($product_data);
-
             if($request->hasFile('product_images')){
                 $product->images()->delete();
 
@@ -169,6 +167,8 @@ class ProductController extends Controller
                     ]);
                 }
             }
+
+            $product->update($product_data);
 
             DB::commit();
 

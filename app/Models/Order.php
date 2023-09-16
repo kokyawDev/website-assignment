@@ -44,10 +44,13 @@ class Order extends Model
     public function invoice()
     {
         try {
+
             $content = view('invoice', ['order' => $this])->render();
+
 
             return Browsershot::html($content)->format('A5')->pdf();
         } catch (\Exception $e) {
+            dd($e);
             return $e->getMessage();
         }
     }

@@ -17,13 +17,13 @@ class CategorySeeder extends Seeder
 
         if($categories->isEmpty()) {
             DB::table('categories')->insert([
-                ['name' => 'beauty', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'love', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'fashion', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'makeup', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'style', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'model', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'skincare', 'created_at' => now(), 'updated_at' => now()],
+                ['name' => 'Lip', 'created_at' => now(), 'updated_at' => now()],
+                ['name' => 'Eyes', 'created_at' => now(), 'updated_at' => now()],
+                ['name' => 'Beauty Tools', 'created_at' => now(), 'updated_at' => now()],
+                ['name' => 'Face', 'created_at' => now(), 'updated_at' => now()],
+                ['name' => 'Best Seller', 'created_at' => now(), 'updated_at' => now()],
+                ['name' => 'Perfume', 'created_at' => now(), 'updated_at' => now()],
+                ['name' => 'Skincare', 'created_at' => now(), 'updated_at' => now()],
             ]);
         }
     }
