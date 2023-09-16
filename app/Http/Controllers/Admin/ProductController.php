@@ -158,7 +158,7 @@ class ProductController extends Controller
 
                 foreach($request->file('product_images') as $file){
                     $extension = $file->getClientOriginalExtension();
-                    $filename = time() . '.' . $extension;
+                    $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME).time() . '.' . $extension;
                     $file->move('uploads/products/', $filename);
 
                     ProductImage::create([

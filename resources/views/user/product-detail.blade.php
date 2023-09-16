@@ -406,9 +406,5 @@
     <script src="{{ asset('assets/vendor/lightgallery/plugins/fullscreen/lg-fullscreen.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/lightgallery/plugins/zoom/lg-zoom.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/lightgallery/plugins/thumbnail/lg-thumbnail.min.js') }}"></script>
-
-    <script>
-
-    </script>
 @endsection
 
