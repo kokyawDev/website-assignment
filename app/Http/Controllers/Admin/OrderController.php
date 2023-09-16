@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
 use App\Rules\ProductValidationRule;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -142,5 +143,16 @@ class OrderController extends Controller
         $order->update($order_data);
 
         return $order->refresh();
+    }
+
+    public function invoice(Order $order)
+    {
+        try {
+            return response()->stream(function () use ($order) {
+                echo $order->invoice();
+            }, 200, ['Content-Type' => 'application/pdf']);
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
     }
 }

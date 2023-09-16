@@ -13,7 +13,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $query = User::query();
+
+        if(request()->has('keyword')) {
+            $query = $query->where('name', 'like', '%'.request()->keyword.'%');
+        }
+
+        $users = $query->latest()->paginate(5);
 
         return view('admin.users.index', compact('users'));
     }

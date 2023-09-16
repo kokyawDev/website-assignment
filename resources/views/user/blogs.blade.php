@@ -60,9 +60,9 @@
         <article class="row g-0 border-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="{{ route('blogs.detail', $post) }}" style="background-image: url({{ $post->thumbnail }}); min-height: 16rem"></a>
             <div class="col-sm-7 col-lg-8">
                 <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                    <h3><a href="{{ route('blogs.detail', $post) }}">{{ $post->name }}</a></h3>
+                    <h3><a href="{{ route('blogs.detail', $post->slug) }}">{{ $post->name }}</a></h3>
                     <p class="d-sm-none d-md-block">
-                        {{ $post->short_description }}
+                        {{ Str::words($post->short_description, 30) }}
                     </p>
                     <div class="d-flex flex-wrap align-items-center mt-n2">
                         <span class="fs-sm text-muted mt-2">{{ date('F j, Y', strtotime($post->updated_at)) }}</span>
