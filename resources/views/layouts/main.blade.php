@@ -42,7 +42,8 @@
         @yield('content')
     </main>
 </div>
-<script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
+<script src="{{ asset('js/ckeditor5/build/ckeditor.js') }}"></script>
+{{--<script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>--}}
 <script>
     document.querySelectorAll('.ckeditor').forEach(element => {
         ClassicEditor
