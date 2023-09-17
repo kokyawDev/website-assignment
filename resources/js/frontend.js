@@ -155,7 +155,7 @@ window.setCartQtyCountBadge = (data) => {
 
     cartQtyBadge.innerText = qty_count
 
-    total_amount_els.forEach(el => el.innerText = `${formattedPrice(total_amount)} ${total_amount ? ' $' : ''}`)
+    total_amount_els.forEach(el => el.innerText = `${formattedPrice(total_amount)} ${total_amount ? ' Ks' : ''}`)
 }
 
 window.getCartProductTmp = (data) => {
