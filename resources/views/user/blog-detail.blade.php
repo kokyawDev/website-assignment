@@ -18,6 +18,7 @@
     </section>
     <!-- Post cover image (parallax)-->
     <section class="jarallax" data-jarallax data-speed=".65">
+{{--        @dd($post->cover)--}}
         <div class="jarallax-img bg-position-center-y" style="background-image: url({{ $post->cover }});"></div>
         <div class="d-none d-xxl-block" style="height: 760px;"></div>
         <div class="d-none d-xl-block d-xxl-none" style="height: 650px;"></div>

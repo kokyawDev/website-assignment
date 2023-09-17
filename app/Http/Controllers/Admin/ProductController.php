@@ -66,7 +66,8 @@ class ProductController extends Controller
             if($request->hasFile('thumbnail')) {
                 $file = $request->file('thumbnail');
                 $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
+                $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME).time() . '.' . $extension;
+//                $filename = time() . '.' . $extension;
                 $file->move('uploads/products/', $filename);
                 $data['thumbnail'] = '/uploads/products/'.$filename;
             }
@@ -78,7 +79,8 @@ class ProductController extends Controller
             if($request->hasFile('product_images')){
                 foreach($request->file('product_images') as $file){
                     $extension = $file->getClientOriginalExtension();
-                    $filename = time() . '.' . $extension;
+                    $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME).time() . '.' . $extension;
+//                    $filename = time() . '.' . $extension;
                     $file->move('uploads/products/', $filename);
 
                     ProductImage::create([
@@ -148,7 +150,8 @@ class ProductController extends Controller
             if($request->hasFile('thumbnail')) {
                 $file = $request->file('thumbnail');
                 $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
+//                $filename = time() . '.' . $extension;
+                $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME).time() . '.' . $extension;
                 $file->move('uploads/products/', $filename);
                 $product_data['thumbnail'] = '/uploads/products/'.$filename;
             }

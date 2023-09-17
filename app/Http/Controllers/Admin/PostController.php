@@ -61,7 +61,8 @@ class PostController extends Controller
             if($request->hasFile('thumbnail')) {
                 $file = $request->file('thumbnail');
                 $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
+                $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME).time() . '.' . $extension;
+//                $filename = time() . '.' . $extension;
                 $file->move('uploads/posts/', $filename);
                 $data['thumbnail'] = '/uploads/posts/'.$filename;
             }
@@ -69,9 +70,10 @@ class PostController extends Controller
             if($request->hasFile('cover')) {
                 $file = $request->file('cover');
                 $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
+                $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME).time() . '.' . $extension;
+//                $filename = time() . '.' . $extension;
                 $file->move('uploads/posts/', $filename);
-                $data['thumbnail'] = '/uploads/posts/'.$filename;
+                $data['cover'] = '/uploads/posts/'.$filename;
             }
 
             Post::create($data);
@@ -124,15 +126,27 @@ class PostController extends Controller
             'cover' => ['nullable', 'image'],
         ]);
 
+//        dd($data);
+
         DB::beginTransaction();
 
         try {
             if($request->hasFile('thumbnail')) {
                 $file = $request->file('thumbnail');
                 $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move('uploads/products/', $filename);
-                $data['thumbnail'] = '/uploads/products/'.$filename;
+//                $filename = time() . '.' . $extension;
+                $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME).time() . '.' . $extension;
+                $file->move('uploads/posts/', $filename);
+                $data['thumbnail'] = '/uploads/posts/'.$filename;
+            }
+
+            if($request->hasFile('cover')) {
+                $file = $request->file('cover');
+                $extension = $file->getClientOriginalExtension();
+//                $filename = time() . '.' . $extension;
+                $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME).time() . '.' . $extension;
+                $file->move('uploads/posts/', $filename);
+                $data['cover'] = '/uploads/posts/'.$filename;
             }
 
             $post->update($data);
