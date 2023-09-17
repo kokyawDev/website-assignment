@@ -61,6 +61,7 @@
 
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('assets/css/theme.min.css') }}"/>
+{{--    <link rel="stylesheet" href="{{ asset('build/assets/frontend-a461d729.css') }}">--}}
 
     <!-- Theme mode-->
     <script>
@@ -129,8 +130,12 @@
 @yield('js')
 <!-- Main theme script-->
 <script src="{{ asset('assets/js/theme.min.js') }}"></script>
+<script src="{{ asset('js/frontend.js') }}"></script>
+{{--<script src="{{ asset('build/assets/frontend-eb74e4a6.js') }}"></script>--}}
 <!-- Customizer-->
-@vite(['resources/css/frontend.css', 'resources/js/frontend.js'])
+{{--@vite(['resources/css/frontend.css', 'resources/js/frontend.js'])--}}
+{{--<link rel="stylesheet" href="{{ mix('css/frontend.css') }}">--}}
+{{--<script src="{{ mix('js/frontend.js') }}" defer></script>--}}
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
