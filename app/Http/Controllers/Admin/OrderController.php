@@ -147,13 +147,15 @@ class OrderController extends Controller
 
     public function invoice(Order $order)
     {
-        try {
-            return response()->stream(function () use ($order) {
-                echo $order->invoice();
-            }, 200, ['Content-Type' => 'application/pdf']);
-        } catch (Exception $exception) {
-            dd($exception);
-            return $exception->getMessage();
-        }
+        return view('invoice')
+            ->with('order', $order);
+//        try {
+//            return response()->stream(function () use ($order) {
+//                echo $order->invoice();
+//            }, 200, ['Content-Type' => 'application/pdf']);
+//        } catch (Exception $exception) {
+//            dd($exception);
+//            return $exception->getMessage();
+//        }
     }
 }
