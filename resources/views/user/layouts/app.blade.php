@@ -57,6 +57,8 @@
         media="screen"
         href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}"/>
 
+    <link rel="stylesheet" href="{{ asset('css/toastify.min.css') }}">
+
     @yield('css')
 
     <!-- Main Theme Styles + Bootstrap-->
@@ -130,6 +132,8 @@
 @yield('js')
 <!-- Main theme script-->
 <script src="{{ asset('assets/js/theme.min.js') }}"></script>
+<script src="{{ asset('js/store2.min.js') }}"></script>
+<script src="{{ asset('js/toastify.min.js') }}"></script>
 <script src="{{ asset('js/frontend.js') }}"></script>
 {{--<script src="{{ asset('build/assets/frontend-eb74e4a6.js') }}"></script>--}}
 <!-- Customizer-->
